@@ -1,0 +1,29 @@
+[21-Mar-2011 10:32:59] PHP Fatal error:  Call to undefined method PaginasController::__resumenAndTags() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 64
+[21-Mar-2011 14:16:11] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:17:51] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:31:52] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:33:11] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:35:25] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:35:56] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:37:50] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:38:30] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:39:06] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:41:13] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:42:33] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:44:18] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[21-Mar-2011 14:47:12] PHP Fatal error:  Call to a member function generate() on a non-object in /home2/myperuad/public_html/andeanways/app/views/elements/menu.ctp on line 21
+[31-Mar-2011 17:08:13] PHP Parse error:  syntax error, unexpected $end in /home2/myperuad/public_html/andeanways/app/controllers/paginascabeceras_controller.php on line 76
+[31-Mar-2011 17:25:41] PHP Parse error:  syntax error, unexpected T_STRING in /home2/myperuad/public_html/andeanways/app/views/paginascabeceras/listarxml.ctp on line 1
+[18-Apr-2011 08:16:05] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:16:11] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:16:34] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:16:35] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:16:40] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:17:15] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:17:17] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:17:22] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:17:23] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:17:32] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:17:34] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:20:12] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35
+[18-Apr-2011 08:20:14] PHP Fatal error:  Call to undefined method PaginasController::__menu() in /home2/myperuad/public_html/andeanways/app/controllers/paginas_controller.php on line 35

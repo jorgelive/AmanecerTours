@@ -1,0 +1,38 @@
+/*.x-grid-editor .x-form-check-wrap{text-align: center; padding-left:4px;}
+.x-grid-editor .x-form-check-wrap .x-form-cb-label{display:none;}*/
+.x-tool-es-es {background-image:url(../img/comun/x-tool-es-es.gif);}
+.x-tool-es-es-over {background-position:-15px 0;}
+.x-tool-en-us {background-image:url(../img/comun/x-tool-en-us.gif);}
+.x-tool-en-us-over {background-position:-15px 0;}
+.x-menu-item-agregar {background-image:url(../img/comun/x-menu-item-agregar.png);}
+.x-menu-item-modificar {background-image:url(../img/comun/x-menu-item-modificar.png);}
+.x-menu-item-permisos {background-image:url(../img/comun/x-menu-item-permisos.png);}
+.x-menu-item-borrar {background-image:url(../img/comun/x-menu-item-borrar.png);}
+.x-menu-item-agregarusuario {background-image:url(../img/comun/x-menu-item-agregargrupo.png);}
+.x-menu-item-agregargrupo {background-image:url(../img/comun/x-menu-item-agregarusuario.png);}
+.x-menu-item-cambiarimagen {background-image:url(../img/comun/x-menu-item-cambiarimagen.png);}
+.x-menu-item-modificarpermiso {background-image:url(../img/comun/x-menu-item-modificarpermiso.png);}
+.x-menu-item-borrarpermiso {background-image:url(../img/comun/x-menu-item-borrarpermiso.png);}
+.x-boton-guardar {background-image:url(../img/comun/x-menu-item-guardar.png);}
+.x-boton-agregar {background-image:url(../img/comun/x-menu-item-agregar.png);}
+.x-boton-modificar {background-image:url(../img/comun/x-menu-item-modificar.png);}
+.x-boton-permisos {background-image:url(../img/comun/x-menu-item-permisos.png);}
+.x-boton-cambiarimagen {background-image:url(../img/comun/x-menu-item-cambiarimagen.png);}
+.x-boton-borrar {background-image:url(../img/comun/x-menu-item-borrar.png);}
+.x-boton-agregarpermiso {background-image:url(../img/comun/x-menu-item-agregarpermiso.png);}
+.x-boton-modificarpermiso {background-image:url(../img/comun/x-menu-item-modificarpermiso.png);}
+.x-boton-borrarpermiso {background-image:url(../img/comun/x-menu-item-borrarpermiso.png);}
+.x-row-editor-body .x-form-field-wrap { position: absolute;} /*fix para row editor*/
+.x-tbar-filtro {background-image:url(../img/comun/x-tbar-filtro.png);}
+.x-tbar-borrarfiltro {background-image:url(../img/comun/x-tbar-borrarfiltro.png);}
+.x-tbar-agregarfiltro {background-image:url(../img/comun/x-tbar-agregarfiltro.png);}
+.x-tbar-modificarfiltro {background-image:url(../img/comun/x-tbar-modificarfiltro.png);}
+.x-tbar-aplicar {background-image:url(../img/comun/x-tbar-aplicar.png);}
+.x-tree-node-icon-si {background-image: url(../img/comun/x-tree-node-icon-si.png)!important;}
+.x-tree-node-icon-outdated {background-image: url(../img/comun/x-tree-node-icon-outdated.png)!important;}
+.x-tree-node-icon-soon {background-image: url(../img/comun/x-tree-node-icon-soon.png)!important;}
+.x-tree-node-icon-no {background-image: url(../img/comun/x-tree-node-icon-no.png)!important;}
+#loading-div{display: block; height: 100%; text-align: center; width: 100%;}
+#loading-div #center{margin:120px auto; display: block; text-align: center;}
+#loading-div #center .loading-indicator{width:100px; margin:0 auto;}
+.x-form-check-wrap{text-align: center;}

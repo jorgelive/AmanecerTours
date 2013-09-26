@@ -1,0 +1,50 @@
+/*----- bar style -----*/
+.jx-bar {height:40px; padding:0px; width:80%;}/*jg*/
+.state-fuera{border:#e3e3e3 1px solid;}
+.state-sobre{background-color:#4C4B93; border:#3e3e3e 1px solid;}
+.state-sobre a{color:#d3d3d3;}
+.jx-nav-menu-active a{color:#4C4B93;}
+
+/*----- bar separator -----*/
+.jx-bar span {width:1px;height:100%;background-color:#ccc;}
+.jx-separator-left {float:left;}
+.jx-separator-right {float:right;}
+
+/*----- bar button -----*/
+.jx-bar-button ul {margin:0px;padding:0px;}
+.jx-bar-button li {float:left;list-style:none;}
+.jx-bar-button-right li {float:right;list-style:none;}
+.jx-bar-button li {cursor:pointer;padding:8px 8px 8px 8px;margin:4px 2px 12px 2px;}
+.jx-bar-button li a {text-decoration:none;}
+
+/*----- bar text container -----*/
+.jx-bar-button div, .jx-bar-button iframe {float:left;}
+.jx-bar-button-right div, .jx-bar-button-right iframe {float:right;}
+.jx-bar-button iframe {margin:4px 0px 4px 10px;}
+
+/*----- button tooltip -----*/
+.jx-bar-button-tooltip {height:auto;padding:5px 10px 5px 10px;color:#fff;}
+
+/*----- nav menu -----*/
+.jx-nav-menu {padding:2px;}
+.jx-nav-menu ul {margin:0;padding:0;list-style:none;width:150px; /* width of menu items */}
+.jx-nav-menu ul li a {display:block;text-decoration:none;padding:8px;}
+.jx-nav-menu-active {cursor:pointer;background-color:#ccc;margin:2px;}
+
+/* menu indicator UP state */
+.jx-arrow-up {background-image:url('up.gif');background-repeat:no-repeat;background-position: center;}
+
+/* menu indicator DOWN state */
+.jx-arrow-down {background-image:url('dn.gif');background-repeat:no-repeat;background-position: center;}
+.jx-tool-point-dir-down {background-image:url('ttd.gif');background-repeat:no-repeat;background-position:center bottom;height:5px;width:auto;}
+.jx-tool-point-dir-up {background-image:url('ttu.gif');background-repeat:no-repeat;background-position:center bottom;height:5px;width:auto;}
+
+/* hide and show/unhide item */
+.jx-hide {float:right; background: url('hide.png') no-repeat 0 0; height:16px; width:16px;}
+.state-sobre .jx-hide {background: url('hide.png') no-repeat 0 -16px;}
+.jx-hide-top {float:right;background-image:url('show.png');background-repeat:no-repeat;height:16px;width:16px;}
+.jx-show {height:30px;padding:0px;width:35px;}
+.jx-show-button {float:right;background-image:url('show.png');background-repeat:no-repeat;height:16px;width:16px;
+}
+.jx-show-button-top {float:right;background-image:url('hide.png');background-repeat:no-repeat;height:16px;width:16px;}
+.jx-hide-separator {width:1px;height:100%;background-color:#ccc;float:right;}
