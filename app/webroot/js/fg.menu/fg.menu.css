@@ -2,7 +2,7 @@
 /* Styles for jQuery menu widget*/
 
 /* Styles for jQuery boton menu*/
-.fg-button { margin:0 0 0 10px; padding: 1em 1em 1em; text-decoration:none !important; cursor:pointer; position: relative; text-align: center; zoom: 1; }
+.fg-button { margin:0 0 0 0; padding: .4em 1em .4em 1em; text-decoration:none !important; cursor:pointer; position: relative; text-align: center; zoom: 1; }
 .fg-button .ui-icon { position: absolute; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px; }
 .fg-button-icon-left { padding-left: 2.1em; }
 .fg-button-icon-right { padding-right: 2.1em; }

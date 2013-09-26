@@ -33,8 +33,8 @@ class Pagina extends AppModel {
             'className' => 'Paginasimagen'
             ,'dependent' => true
         )
-		,'Paginasoferta' => array(
-            'className' => 'Paginasoferta'
+		,'Paginaspromocion' => array(
+            'className' => 'Paginaspromocion'
             ,'dependent' => true
         )
 		,'Paginasvideo' => array(
@@ -131,16 +131,16 @@ class Pagina extends AppModel {
                 ,'message' => 'Mostrar panel de adjuntos debe ser solo 1 ó 0'
             )
 		)
-		,'oferta' => array(
+		,'promocion' => array(
 			'empty' => array(
                 'rule' => 'notEmpty'
                 ,'required' => true
-				,'message' => 'Seleccione si quiere mostrar o no ofertas'
+				,'message' => 'Seleccione si quiere mostrar o no las promociones'
 				,'last' => true
             )
             ,'boolean' => array(
                 'rule' => array('boolean')
-                ,'message' => 'Mostrar ofertas debe ser solo 1 ó 0'
+                ,'message' => 'Mostrar promociones debe ser solo 1 ó 0'
             )
 		)
 		,'contacto' => array(

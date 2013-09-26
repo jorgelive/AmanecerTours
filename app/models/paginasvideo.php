@@ -75,7 +75,7 @@ class Paginasvideo extends AppModel {
 			'empty' => array(
                 'rule' => 'notEmpty'
                 ,'required' => true
-                ,'message' => 'Ingrese la descripción de la oferta'
+                ,'message' => 'Ingrese la descripción del video'
 				,'last' => true
             )
             ,'maxlength' => array(

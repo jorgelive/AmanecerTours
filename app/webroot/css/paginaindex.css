@@ -1,14 +1,4 @@
-/*logo*/
-#logo {height:150px; position:absolute; width:550px;}
-#logo #flashMessage{margin:60px 0 0 1%; padding:7px .5% 7px .5%; width:45%; float: right;}
-#logo h1{text-indent:-10000px; background:url(../img/comun/logo.png) no-repeat 0 20px; height:150px; font-size:0; line-height:0; margin:0 0 0 5%; float: left; width: 250px;}
 
-/*menu*/
-#menu {width:100%; height:80px;}
-#menu .ind {padding:18px 0 0 20px}
-
-/*flash header*/
-#flashHeader {margin-bottom:20px;}
 
 /*content*/
 #content .row_1 {width:100%}

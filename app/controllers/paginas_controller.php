@@ -40,21 +40,21 @@ class PaginasController extends AppController {
 		$mostrarInicios=$this->__resumen($mostrarInicios,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 		$mostrarInicios=$this->__thumbImages($mostrarInicios,'Paginastexto.contenido',false);
 		$mostrarInicios=$this->__comprobarIdFoto($mostrarInicios);
-		$mostrarInicios = $this->__comprobarContactos($mostrarInicios);
-		$mostrarInicios = $this->__comprobarDependientes($mostrarInicios,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','oferta'=>'Paginasoferta'));
+		$mostrarInicios=$this->__comprobarContactos($mostrarInicios);
+		$mostrarInicios=$this->__comprobarDependientes($mostrarInicios,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
 		$this->set('mostrarInicios',$mostrarInicios);
 		
-		//ofertas
+		//promocion
 		$this->Pagina->unBindModel(array('hasOne' => array('Paginascontacto'),'hasMany' => array('Paginasimagen','Paginasvideo','Paginasadjunto')));
-		$ofertas=$this->Pagina->find('all',array('conditions'=>array('Pagina.oferta'=>1),'order' => 'Pagina.lft ASC'));
-		$ofertas=$this->__comprobarPublicacion($ofertas,true);
-		$ofertas=$this->__comprobarOferta($ofertas,true);
-		$ofertas=$this->__resumen($ofertas,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
-		$ofertas=$this->__thumbImages($ofertas,'Paginastexto.contenido',false);
-		$ofertas=$this->__comprobarIdFoto($ofertas);
-		$ofertas = $this->__comprobarContactos($ofertas);
-		$ofertas = $this->__comprobarDependientes($ofertas,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','oferta'=>'Paginasoferta'));
-		$this->set('ofertas',$ofertas);
+		$promociones=$this->Pagina->find('all',array('conditions'=>array('Pagina.promocion'=>1),'order' => 'Pagina.lft ASC'));
+		$promociones=$this->__comprobarPublicacion($promociones,true);
+		$promociones=$this->__comprobarPromocion($promociones,true);
+		$promociones=$this->__resumen($promociones,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+		$promociones=$this->__thumbImages($promociones,'Paginastexto.contenido',false);
+		$promociones=$this->__comprobarIdFoto($promociones);
+		$promociones = $this->__comprobarContactos($promociones);
+		$promociones = $this->__comprobarDependientes($promociones,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+		$this->set('promociones',$promociones);
 		
 		//enlaces
 		$enlaces=$this->Paginasenlace->find('all',array('order'=>'Paginasenlace.lft ASC'));
@@ -81,8 +81,8 @@ class PaginasController extends AppController {
 			if (!empty($pagina)){
 				$pagina = $this->__comprobarPublicacion($pagina,true);
 				$pagina = $this->__comprobarContactos($pagina);
-				$pagina = $this->__comprobarOferta($pagina);
-				$pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','oferta'=>'Paginasoferta'));
+				$pagina = $this->__comprobarPromocion($pagina);
+				$pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
 				$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 				$pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
 				$pagina = $this->__comprobarIdFoto($pagina);
@@ -91,8 +91,8 @@ class PaginasController extends AppController {
 				if(!empty($items)){
 					$items = $this->__comprobarPublicacion($items,true);
 					$items = $this->__comprobarContactos($items);
-					$items = $this->__comprobarOferta($items);
-					$items = $this->__comprobarDependientes($items,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','oferta'=>'Paginasoferta'));
+					$items = $this->__comprobarPromocion($items);
+					$items = $this->__comprobarDependientes($items,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
 					$items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 					$items = $this->__thumbImages($items,'Paginastexto.contenido',true);
 					$items = $this->__comprobarIdFoto($items);
@@ -119,7 +119,7 @@ class PaginasController extends AppController {
 		}
 	}
 	
-	function __comprobarOferta($data,$borrar=false){
+	function __comprobarPromocion($data,$borrar=false){
 		if(empty($data)){
 			return false;
 		}
@@ -128,14 +128,14 @@ class PaginasController extends AppController {
 			$extractAtFinish=TRUE;
 		}
 		foreach ($data as $numero => $dummy):
-			if(isset($data{$numero}['Paginasoferta'])){
+			if(isset($data{$numero}['Paginaspromocion'])){
 				
-				foreach($data{$numero}['Paginasoferta'] as $key=>$oferta):
-					if(!$this->__fechaEnRango(NULL,$oferta['inicio'],$oferta['final'])){
-						unset($data{$numero}['Paginasoferta']{$key});
+				foreach($data{$numero}['Paginaspromocion'] as $key=>$promocion):
+					if(!$this->__fechaEnRango(NULL,$promocion['inicio'],$promocion['final'])){
+						unset($data{$numero}['Paginaspromocion']{$key});
 					}
 				endforeach;
-				if($borrar==true&&empty($data{$numero}['Paginasoferta'])){
+				if($borrar==true&&empty($data{$numero}['Paginaspromocion'])){
 					unset($data{$numero});
 				}
 			}
@@ -228,7 +228,7 @@ class PaginasController extends AppController {
 					$data['Pagina']['publicado']=0;
 				}
 				$data['Pagina']['mostrarinicio']=0;
-				$data['Pagina']['oferta']=0;
+				$data['Pagina']['promocion']=0;
 				$data['Pagina']['contacto']=0;
 			}
 			if($caso=='modifydata'){
@@ -530,7 +530,7 @@ class PaginasController extends AppController {
 	function listadofotos() {
 		Configure::write('debug', 0);
 		if (isset($this->params['form']['id'])){
-			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional','Paginascontacto'),'hasMany'=>array('Paginasimagen','Paginasvideo','Paginasadjunto','Paginasoferta')));
+			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional','Paginascontacto'),'hasMany'=>array('Paginasimagen','Paginasvideo','Paginasadjunto','Paginaspromocion')));
 			$pagina=$this->Pagina->findById($this->params['form']['id']);
 			if(isset($pagina['Paginastexto']['contenido'])){
 				preg_match_all('@src=[\'"]?([^\'" >]+)[\'" >]@',$pagina['Paginastexto']['contenido'],$imagenes);
@@ -548,20 +548,20 @@ class PaginasController extends AppController {
 		Configure::write('debug', 0);
 		$tipos=Configure::read('Default.tipos');
 		if (isset($this->params['form']['id'])){
-			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional','Paginascontacto'),'hasMany'=>array('Paginasoferta')));
+			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional','Paginasimagen'),'hasMany'=>array('Paginaspromocion')));
 			$pagina=$this->Pagina->findById($this->params['form']['id']);
-			echo '/*';
-			print_r($pagina);
-			echo '*/';
 			$i=0;
 			foreach($tipos as $key => $nombre):
+				echo '/*';
+					print_r($pagina['Paginas'.$key]);
+				echo '*/';
 				if(
 					!empty($pagina['Pagina']{$key})&&(
 						(
 							!empty($pagina['Paginas'.$key])&&!array_key_exists('id',$pagina['Paginas'.$key])
 						)||(
 							!empty($pagina['Paginas'.$key])&&isset($pagina['Paginas'.$key]['id'])&&!empty($pagina['Paginas'.$key]['id'])
-						)
+						)||$key=='contacto'
 					)
 				){
 					$result['Tipos'][$i]['id']=$key;
@@ -583,7 +583,7 @@ class PaginasController extends AppController {
 	
 	function agregar() {
 		Configure::write('debug', 0);
-		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.oferta'));}
+		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
 		if (!empty($this->data)) {
 			if (isset($this->data['Pagina']['parent_id'])&&$this->data['Pagina']['parent_id']=='root'){
 				$this->data['Pagina']['parent_id']=NULL;
@@ -627,7 +627,7 @@ class PaginasController extends AppController {
 	
 	function modificar() {
 		Configure::write('debug', 0);
-		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.oferta'));}
+		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
 		if (!empty($this->data)) {
 			$pagina=$this->Pagina->findById($this->data['Pagina']['id']);
 			if(!empty($pagina)){

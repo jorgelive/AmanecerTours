@@ -8,7 +8,7 @@
 #E67528 naranja inactivo
 */
 * { margin:0; padding:0;}
-body {background-color:#3d3d3d; font-size:75%; line-height:1em; font-family:segoe ui, Arial; color:#3d3d3d;font-size:75%;}
+body { font-size:75%; line-height:1em; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#3d3d3d;font-size:75%;}
 h1 { font-size:130%;}
 h2 { font-size:120%;}
 h3 { font-size:110%;}
@@ -28,50 +28,39 @@ ul { list-style:none;}
 
 
 /*globales*/
-#main, #footer_main {margin:0 auto; width:100%; text-align:left;}
-#header, #flash_header, #content, #footer {width:100%}
-
-#main {background:url('../img/comun/top_bg.png') repeat-x center top #fcfcfc;}
+#main, #header, #flash_header, #content, #footer {margin:0 auto; text-align:left;}
+#main {width:100%; min-width:966px; max-width:1440px;}
+#header, #content, #footer {width:966px;}
+#flash_header {width:100%;}
 
 /*header*/
-#main #header {height:57px; color:#c0c0c0; font-family:Arial; font-size:1em; line-height:1.25em}
-#main #header .col_1 {width:40%}
-#main #header .col_1 .ind {padding:15px 0 0 22px;}
-#main #header .col_2 {width:59%;}
-#main #header .col_2 .ind{text-align:right;}
-#main #header .col_2 .ind a{padding:2px 8px 5px 8px; font-size:0.9em; text-decoration:none; display:inline-block;}
-#main #header .col_2 .ind a.adminBotones:link,#header .col_2 .ind a.adminBotones:visited{border:1px solid #4C4B93; background:none;}
-#main #header .col_2 .ind a.adminBotones:hover,#header .col_2 .ind a.adminBotones:active{border:1px solid #D05907; background: url("/js/jquery-ui-1.8.6/andeanways/images/ui-bg_highlight-soft_25_d05907_1x100.png") repeat-x scroll 50% 50% #d05907;}
+#header {}
+#header .col_1 {width:400px;}
+#header .col_1 .logo {margin:20px 5px 15px 5px;}
+#header .col_1 h1{}
 
-/*google seach overiding*/
-#main #header .col_1 .ind #cse-search-form .gsc-search-button input{ font-size: 13px; color: #fff; font-weight: bold; text-shadow: none; padding: 3px 8px 4px 8px; background:url("/js/jquery-ui-1.8.6/andeanways/images/ui-bg_highlight-soft_25_e67528_1x100.png") repeat-x scroll 50% 50% #E67528; border: 1px solid #AF490E; border-radius: 4px; -moz-border-radius: 4px; -webkit-border-radius: 4px; -webkit-box-shadow: none; -moz-box-shadow: none;}
-#main #header .col_1 .ind #cse-search-form .gsc-search-button input:hover{background: url("/js/jquery-ui-1.8.6/andeanways/images/ui-bg_highlight-soft_25_d05907_1x100.png") repeat-x scroll 50% 50% #D05907;}
-#main #header .col_1 .ind #cse-search-form input.gsc-input {border: 1px outset #E67528;}
-#cse .gsc-control-cse{padding:0; background:none; border:none;}
-#cse .gsc-thinWrapper,#cse .gsc-adBlockVertical{margin:0px auto; float:none;}
-#main #cse .gsc-webResult.gsc-result:hover{border:1px solid #4C4B93;}
-#cse .gs-visibleUrl{color:#E67528}
-#cse .gsc-cursor-box{border-top: 1px dotted #E67528;}
-#cse .gsc-cursor-page{border: 1px solid #AF490E; background:url("/js/jquery-ui-1.8.6/andeanways/images/ui-bg_highlight-soft_25_e67528_1x100.png") repeat-x scroll 50% 50% #E67528; color: #fff;}
-#cse .gsc-cursor-current-page:hover, #cse .gsc-cursor-current-page{background: url("/js/jquery-ui-1.8.6/andeanways/images/ui-bg_highlight-soft_25_d05907_1x100.png") repeat-x scroll 50% 50% #D05907; color: #fff; text-shadow: none;}
+#header .col_2 {}
+#header .col_2 .row_1{height:85px;}
+#header .col_2 .row_2{}
+#header .col_2 .row_2 #menu {width:100%; height:50px;}
+#header .col_2 .row_2 #menu .ind {padding:18px 0 0 20px}
 
 
+
+
+/*flash header*/
+#flashHeader {margin-bottom:20px;}
+
+#flashMessage{margin:60px 0 0 1%; padding:7px .5% 7px .5%; width:45%; float: right;}
 
 #content {word-wrap: break-word;line-height:1.25em;}
 #content a:hover {text-decoration:none}
 #content a span.link,a.link {text-decoration:underline !important; color:#4C4B93 !important; background:url(../img/comun/marker_link.gif) no-repeat 0 5px !important; padding-left:18px}
 #content a:hover span.link,a.link:hover {text-decoration:none !important; background:url(../img/comun/marker_link.gif) no-repeat 4px 5px!important}
-#content a.divVinculo, a.divVinculo:hover{text-decoration:none !important;}
-#content .bg_col {background:url(../img/comun/col_bg.gif) repeat-y right}
-#content .bg_gray {background:url(../img/comun/block_bg.gif) repeat-x top #FFDCC6}
+
 
 /*footer*/
-#footer_main {color:#d3d3d3;}
 #footer { height:65px; font-size:1em; line-height:1.25em;}
-#footer .indent {padding:0px 25px 20px 19px}
-#footer a {text-decoration:underline; color:#fff}
-#footer a.home {color:#c0c0c0; text-decoration:none}
-#footer a.home:hover {text-decoration:underline}
 #footer .col_1 {width:91%}
 #footer .col_2 {width:8%}
 

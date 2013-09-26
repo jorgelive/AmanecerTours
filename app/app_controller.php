@@ -14,9 +14,10 @@ class AppController extends  Controller{
 		}
 		Configure::write('Default.tipos',array(
 			'texto'=>__('descripcion',true)
-			,'imagen'=>__('imagenes',true)
+			//,'imagen'=>__('imagenes',true)
 			,'video'=>__('videos',true)
 			,'adjunto'=>__('adjuntos',true)
+			,'contacto'=>__('Formulario de Contacto',true)
 		));
 		Configure::write('Menu.Inicio',array('tipo'=>'boton','texto'=>__('inicio',true),'url'=>'/paginas/index'));
 		//Configure::write('Menu.2',array('tipo'=>'tree','controller'=>'Paginaspaquetes','texto'=>'Paquetes'));

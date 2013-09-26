@@ -124,7 +124,7 @@
 	
 	$cfg['base_url'] 	= 'http://' . $_SERVER['SERVER_NAME']; 							// base url; e.g. 'http://localhost/'	
 	//$cfg['main_dir'] 	= dirname($_SERVER['PHP_SELF']); 								// iManager main dir; e.g. '/www/home'	
-	$cfg['main_dir']    = ereg_replace("//", "/", dirname($_SERVER['PHP_SELF']));
+	$cfg['main_dir']    = preg_replace("#//#", "/", dirname($_SERVER['PHP_SELF']));
 	$cfg['scripts']  	= $cfg['main_dir'] . '/scripts/'; 								// scripts dir; e.g. '/www/home/scripts/'	
 	$cfg['fonts']    	= dirname($_SERVER['PHP_SELF']) . '/fonts/';					// ttf font dir; absolute path 
 	$cfg['mask']     	= dirname($_SERVER['PHP_SELF']) . '/masks/'; 					// mask dir; absolute path

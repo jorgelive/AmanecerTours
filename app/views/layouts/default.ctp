@@ -5,13 +5,13 @@
     <meta name="Author" content="Jorge Luis Gómez Valencia" lang="es">
     <?php 
     echo $html->charset('UTF-8')."\n";
-    echo $html->css('/js/ext-3.3.0/resources/css/ext-all')."\n";
-	echo $html->css('/js/ext-3.3.0/resources/css/xtheme-gray')."\n";
+    echo $html->css('/js/ext-3.4.1/resources/css/ext-all')."\n";
+	echo $html->css('/js/ext-3.4.1/resources/css/xtheme-gray')."\n";
 	echo $html->css('/js/Ext.ux.form.FileUploadField')."\n";
 	echo $html->css('/js/Ext.ux.grid.FilterRow/Ext.ux.grid.FilterRow')."\n";
 	echo $html->css('/js/Ext.ux.grid.RowEditor')."\n";
 	echo $html->css('jg.extjs')."\n";
-	echo $javascript->link('jquery-1.4.2.min')."\n";
+	echo $javascript->link('jquery-1.9.1')."\n";
 	echo $javascript->link('Jg.scripts')."\n";
     
     ?>
@@ -24,9 +24,9 @@
     </div>
 </div>
 <?php
-	echo $javascript->link('ext-3.3.0/adapter/jquery/ext-jquery-adapter')."\n";
-    echo $javascript->link('ext-3.3.0/ext-all')."\n";
-	echo $javascript->link('ext-3.3.0/locale/ext-lang-es')."\n";
+	echo $javascript->link('ext-3.4.1/adapter/jquery/ext-jquery-adapter')."\n";
+    echo $javascript->link('ext-3.4.1/ext-all')."\n";
+	echo $javascript->link('ext-3.4.1/locale/ext-lang-es')."\n";
 	echo $javascript->link('Ext.override.form.Field')."\n";
 	echo $javascript->link('Ext.override.form.ComboBox')."\n";
 	echo $javascript->link('Ext.override.PagingToolbar')."\n";

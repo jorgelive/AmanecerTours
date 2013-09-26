@@ -264,7 +264,7 @@ html, body {
 			$files = array();
 			$valids = implode('|', $valid);			
 			while (($file = readdir($handle)) !== false) {                                                            
-				if (is_file($path . $file) && eregi('\.(' . $valids . ')$', $file, $matches)) {                                                                                   
+				if (is_file($path . $file) && preg_match('#\.(' . $valids . ')$#', $file, $matches)) {                                                                                   
 					$files[$path . $file] = $matches[0];
 				}
 			}

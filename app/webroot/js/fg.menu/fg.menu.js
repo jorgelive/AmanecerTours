@@ -17,7 +17,7 @@ $.fn.menu = function(options){
 	var m = new Menu(caller, options);	
 	allUIMenus.push(m);
 	$(this).append('<span class="ui-icon ui-icon-triangle-1-s ui-state-default"></span>');
-	$(this).addClass("fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all");
+	$(this).addClass("fg-button fg-button-icon-right ui-widget ui-state-default");
 	$(this).mouseover(function(){
 		$(this).removeClass('ui-state-default').blur();
 		$(this).addClass('ui-state-hover').blur();

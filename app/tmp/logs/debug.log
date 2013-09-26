@@ -14588,3 +14588,5 @@
 2013-09-25 19:05:59 Notice: Notice (8): Undefined index: id in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginas_controller.php, line 227]
 2013-09-25 19:06:14 Notice: Notice (8): Undefined variable: data in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginas_controller.php, line 187]
 2013-09-25 19:06:14 Notice: Notice (8): Undefined index: id in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginas_controller.php, line 227]
+2013-09-29 19:15:18 Notice: Notice (8): Undefined variable: tipo in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginas_controller.php, line 559]
+2013-09-29 19:19:32 Notice: Notice (8): Undefined index: Paginascontacto in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginas_controller.php, line 559]

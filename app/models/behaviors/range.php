@@ -36,9 +36,10 @@ class rangeBehavior extends ModelBehavior {
 	}
 	
 	function beforeFind(&$model,$querydata) { 
-		//print_r($querydata);
+		echo "hola";
+		print_r($querydata);
 		//print_r($this->settings);
-		$model->contain('Paginasoferta');
+		$model->contain('Paginaspromocion');
 		foreach ($this->settings as $modelName => $dummy):
 			extract($this->settings[$modelName]);
 			foreach ($fields as $field => $settings):
@@ -46,7 +47,7 @@ class rangeBehavior extends ModelBehavior {
 					print_r($settings['inicio']);
 					$querydata['conditions'][$settings['inicio'].' >=']='inicio';
 					$querydata['conditions'][$settings['final'].' <=']='final';
-					print_r($querydata['conditions']);
+					//print_r($querydata['conditions']);
 				}
 			endforeach;
 			

@@ -1,5 +1,4 @@
 	<div id="menu">
-		<div class="ind">
 			<script type="text/javascript">    
             $(function(){
                 $('.fg-button').hover(
@@ -11,7 +10,7 @@
             <?php 
             foreach(Configure::read('Menu') as $var => $settings):
                 if($settings['tipo']=='boton'){
-                    echo '<a class="fg-button ui-widget ui-state-default ui-corner-all" href="'.$settings['url'].'/idioma:'.Configure::read('Config.language').'">'.$settings['texto'].'</a>';
+                    echo '<a class="fg-button ui-widget ui-state-default" href="'.$settings['url'].'/idioma:'.Configure::read('Config.language').'">'.$settings['texto'].'</a>';
                 }elseif(array_key_exists('menu'.$var,$this->viewVars)){
                     foreach ($this->viewVars['menu'.$var] as $item):
                         if(!empty($item['children'])){
@@ -37,11 +36,10 @@
                             <?php
 							
 						}else{
-							echo '<a class="fg-button ui-widget ui-state-default ui-corner-all" href="/'.strtolower(Inflector::pluralize($var)).'/'.$settings['accion'].'/'.$item[$var]['id'].'/idioma:'.Configure::read('Config.language').'">'.$item[$var][$settings['textField']].'</a>';
+							echo '<a class="fg-button ui-widget ui-state-default" href="/'.strtolower(Inflector::pluralize($var)).'/'.$settings['accion'].'/'.$item[$var]['id'].'/idioma:'.Configure::read('Config.language').'">'.$item[$var][$settings['textField']].'</a>';
 						}
                     endforeach;
                 }
             endforeach;
             ?>
-		</div><!-- ind -->
 	</div><!-- menu -->

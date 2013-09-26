@@ -129,9 +129,9 @@ Ext.onReady(function() {
 					,inputValue:1
 				},{
 					hidden:true
-					,fieldLabel:'Ofertas'
+					,fieldLabel:'Promociones'
 					,xtype:'checkbox'
-					,name:'Pagina.oferta'
+					,name:'Pagina.promocion'
 					,inputValue:1
 				},{
 					hidden:true
@@ -318,7 +318,7 @@ Ext.onReady(function() {
 				},{
 					xtype: "textarea"
 					,name:'Paginasopcional.etiquetas'
-					,fieldLabel: 'Etiquetas :'
+					,fieldLabel: 'Etiquetas'
 					,allowBlank: true
 					,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
 					,anchor: '100%'
@@ -1502,12 +1502,12 @@ Ext.onReady(function() {
 				adjuntoMenuContextual.showAt(event.getXY());
 			});
 			
-			var ofertaEditor = new Ext.ux.grid.RowEditor({
+			var promocionEditor = new Ext.ux.grid.RowEditor({
 				listeners: {
                     afteredit: {
                         fn:function(roweditor, changes, record, rowIndex ){
 							Ext.Ajax.request({
-								url   : !record.data.id ? '<?php echo $html->url('/paginasofertas/agregar/') ?>'+viewPort.getComponent('center').activeTab.newId : '<?php echo $html->url('/paginasofertas/modificar/') ?>'
+								url   : !record.data.id ? '<?php echo $html->url('/paginaspromociones/agregar/') ?>'+viewPort.getComponent('center').activeTab.newId : '<?php echo $html->url('/paginaspromociones/modificar/') ?>'
 								,method: 'POST'
 								,params: record.data
 								,success: function(respuesta,request) {
@@ -1520,14 +1520,14 @@ Ext.onReady(function() {
 											window.location = obj.redirect;
 										}
 										if (obj.hasOwnProperty('data')){
-											if(!ofertaEditor.record.data.id){
-												ofertaEditor.record.data.id=obj.data.newId;
-												ofertaEditor.record.id=obj.data.newId;
+											if(!promocionEditor.record.data.id){
+												promocionEditor.record.data.id=obj.data.newId;
+												promocionEditor.record.id=obj.data.newId;
 											}
 											editarAccion('generales');
 										}
-										ofertaEditor.grid.getStore().commitChanges();
-										ofertaEditor.grid.getView().refresh();
+										promocionEditor.grid.getStore().commitChanges();
+										promocionEditor.grid.getView().refresh();
 									}else{
 										request.failure();
 									}
@@ -1548,24 +1548,24 @@ Ext.onReady(function() {
 										Ext.Msg.alert('Errors!', 'El servidor tuvo una respuesta nula');
 									}
 									if(!record.data.id){
-										ofertaEditor.grid.getStore().removeAt(rowIndex);
+										promocionEditor.grid.getStore().removeAt(rowIndex);
 									}else{
-										ofertaEditor.grid.getStore().rejectChanges()
+										promocionEditor.grid.getStore().rejectChanges()
 									}
-									ofertaEditor.grid.getView().refresh();
+									promocionEditor.grid.getView().refresh();
 								}
 							});
                         }
                     }
                 }
 			});
-			var ofertaStore=new Ext.data.JsonStore({
+			var promocionStore=new Ext.data.JsonStore({
 				autoLoad: false
 				,proxy: new Ext.data.HttpProxy({
 					url: 'dummy'
 					,method: 'POST'
 				})
-				,root: 'ofertas'
+				,root: 'promociones'
 				,fields: [{
 					name: 'id'
 				},{
@@ -1595,16 +1595,16 @@ Ext.onReady(function() {
 				,listeners:{
 					'beforeload': function(store, options) {
 						if (!options.params.start&&!options.params.limit){
-							if(ofertaPanel.paginatorStart&&ofertaPanel.paginatorLimit){
-								options.params.start=ofertaPanel.paginatorStart;
-								options.params.limit=ofertaPanel.paginatorLimit;
+							if(promocionPanel.paginatorStart&&promocionPanel.paginatorLimit){
+								options.params.start=promocionPanel.paginatorStart;
+								options.params.limit=promocionPanel.paginatorLimit;
 							}else{
 								options.params.start=0;
 								options.params.limit=<?php echo Configure::read('Default.paginatorSize');?>;
 							}
 						}
-						ofertaPanel.paginatorStart=options.params.start;
-						ofertaPanel.paginatorLimit=options.params.limit;
+						promocionPanel.paginatorStart=options.params.start;
+						promocionPanel.paginatorLimit=options.params.limit;
 						options.params.page = Math.floor(options.params.start / options.params.limit)+1;
 						options.params.pagina_id = viewPort.getComponent('center').activeTab.newId;
 						options.params.idioma = viewPort.getComponent('center').activeTab.currentIdioma;
@@ -1613,8 +1613,8 @@ Ext.onReady(function() {
 				}
 			})
 			
-			var ofertaGrid = new Ext.grid.GridPanel({
-				store: ofertaStore
+			var promocionGrid = new Ext.grid.GridPanel({
+				store: promocionStore
 				,loadMask: {msg:'Cargando Datos...'} 
 				,columns: [new Ext.grid.RowNumberer()
 				,{
@@ -1629,7 +1629,7 @@ Ext.onReady(function() {
 					,editor: {
 						allowBlank:false
 						,blankText:'Ingrese el título'
-						,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasofertas/validar/') ?>'})]
+						,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginaspromociones/validar/') ?>'})]
 					}
 					,sortable:true
 					,filter:true
@@ -1714,8 +1714,8 @@ Ext.onReady(function() {
 						}
 						,listeners:{
 							'editorcreated':function(){
-								ofertaEditor.verifyLayout.defer(100,ofertaEditor);
-								this.onResize(ofertaGrid.getColumnModel().getColumnWidth(4),200)
+								promocionEditor.verifyLayout.defer(100,promocionEditor);
+								this.onResize(promocionGrid.getColumnModel().getColumnWidth(4),200)
 							}
 						}
 					}
@@ -1754,8 +1754,8 @@ Ext.onReady(function() {
 						}
 						,listeners:{
 							'editorcreated':function(){
-								ofertaEditor.verifyLayout.defer(100,ofertaEditor);
-								this.onResize(ofertaGrid.getColumnModel().getColumnWidth(5),200)
+								promocionEditor.verifyLayout.defer(100,promocionEditor);
+								this.onResize(promocionGrid.getColumnModel().getColumnWidth(5),200)
 							}
 						}
 					}
@@ -1768,28 +1768,28 @@ Ext.onReady(function() {
 					,editor: {
 						allowBlank:false
 						,blankText:'Ingrese el precio'
-						,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasofertas/validar/') ?>'})]
+						,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginaspromociones/validar/') ?>'})]
 					}
 					,sortable:true
 					,filter:true
 				}]
-				,plugins: [ofertaEditor,new Ext.ux.grid.FilterRow()]
+				,plugins: [promocionEditor,new Ext.ux.grid.FilterRow()]
 				,stripeRows: true
 				,autoExpandColumn: 'notas'
 				,bbar: new Ext.PagingToolbar({
 					pageSize: <?php echo Configure::read('Default.paginatorSize');?>
 					,displayInfo: true
 					,filter:true
-					,store: ofertaStore
-					,displayMsg: 'Mostrando ofertas {0} - {1} de {2}'
-					,emptyMsg: "No hay ofertas para mostrar"
+					,store: promocionStore
+					,displayMsg: 'Mostrando promociones {0} - {1} de {2}'
+					,emptyMsg: "No hay promociones para mostrar"
 				})
 				,tbar: [{
 					ref: '../agregarBtn'
 					,iconCls: 'x-boton-agregar'
-					,text: 'Agregar oferta'
+					,text: 'Agregar promoción'
 					,handler: function(){
-						var Oferta = Ext.data.Record.create([
+						var Promocion = Ext.data.Record.create([
 						{
 							name: 'pagina_id'
 							,type: 'string'
@@ -1814,7 +1814,7 @@ Ext.onReady(function() {
 							name: 'precio'
 							,type: 'string'
 						}]);
-						var newRecord = new Oferta({
+						var newRecord = new Promocion({
 							pagina_id:viewPort.getComponent('center').activeTab.newId
 							,title: ''
 							,inicio: ''
@@ -1823,31 +1823,31 @@ Ext.onReady(function() {
 							,condiciones: ''
 							,precio: ''
 						});
-						ofertaEditor.stopEditing();
-						ofertaGrid.getStore().insert(0, newRecord);
-						ofertaGrid.getView().refresh();
-						ofertaGrid.getSelectionModel().selectRow(0);
-						ofertaEditor.startEditing(0);
-						ofertaEditor.agregando=true;
+						promocionEditor.stopEditing();
+						promocionGrid.getStore().insert(0, newRecord);
+						promocionGrid.getView().refresh();
+						promocionGrid.getSelectionModel().selectRow(0);
+						promocionEditor.startEditing(0);
+						promocionEditor.agregando=true;
 					}
 				},{
 					ref: '../modificarBtn'
-					,text: 'Modificar oferta'
+					,text: 'Modificar promoción'
 					,iconCls: 'x-boton-modificar'
 					,disabled: true
 					,handler: function(){
-						ofertaEditor.startEditing(ofertaGrid.getSelectionModel().getSelections()[0]);
+						promocionEditor.startEditing(promocionGrid.getSelectionModel().getSelections()[0]);
 					}
 				},{
 					ref: '../removeBtn'
 					,iconCls: 'x-boton-borrar'
-					,text: 'Borrar oferta'
+					,text: 'Borrar promoción'
 					,disabled: true
 					,handler: function(){
-						ofertaEditor.stopEditing();
-						Ext.MessageBox.confirm('Confirme', 'Esta seguro que desea borrar la oferta?',function(btn) {
+						promocionEditor.stopEditing();
+						Ext.MessageBox.confirm('Confirme', 'Esta seguro que desea borrar la promoción?',function(btn) {
 							if (btn == 'yes') {
-								var selectedRows = ofertaGrid.getSelectionModel().getSelections();
+								var selectedRows = promocionGrid.getSelectionModel().getSelections();
 								var str = [];
 								for(var i = 0, row; row = selectedRows[i]; i++){
 									str.push('row'+i+':'+ selectedRows[i].id);
@@ -1856,7 +1856,7 @@ Ext.onReady(function() {
 								var string = '{'+str.join(',')+'}';
 								var rowIds = eval('('+string+')');
 								Ext.Ajax.request({
-									url   : '<?php echo $html->url('/paginasofertas/borrar') ?>'
+									url   : '<?php echo $html->url('/paginaspromociones/borrar') ?>'
 									,method: 'POST'
 									,params: rowIds
 									,success: function(respuesta,request) {
@@ -1869,7 +1869,7 @@ Ext.onReady(function() {
 												window.location = obj.redirect;
 											}
 											for(var i = 0, row; row = selectedRows[i]; i++){
-												ofertaEditor.grid.getStore().remove(row);
+												promocionEditor.grid.getStore().remove(row);
 											}
 											editarAccion('generales');
 										}else{
@@ -1898,29 +1898,29 @@ Ext.onReady(function() {
 					}
 				}]
 			});
-			ofertaGrid.getSelectionModel().on('selectionchange', function(sm){
-        		ofertaGrid.modificarBtn.setDisabled(sm.getCount() < 1);
-				ofertaGrid.removeBtn.setDisabled(sm.getCount() < 1);
+			promocionGrid.getSelectionModel().on('selectionchange', function(sm){
+        		promocionGrid.modificarBtn.setDisabled(sm.getCount() < 1);
+				promocionGrid.removeBtn.setDisabled(sm.getCount() < 1);
    			});
 			
-			var ofertaMenuContextual = new Ext.menu.Menu({
+			var promocionMenuContextual = new Ext.menu.Menu({
 				items: [{
-					text: 'Modificar oferta'
-					,handler:ofertaGrid.modificarBtn.handler
+					text: 'Modificar promoción'
+					,handler:promocionGrid.modificarBtn.handler
 					,iconCls: 'x-menu-item-modificar'
 				},
 				'-'
 				,{
-					text: 'Borrar oferta'
-					,handler:ofertaGrid.removeBtn.handler
+					text: 'Borrar promoción'
+					,handler:promocionGrid.removeBtn.handler
 					,iconCls: 'x-menu-item-borrar'
 				}]
 			});
 			
-			ofertaGrid.on('rowcontextmenu', function (grid,rowIndex,event) {
+			promocionGrid.on('rowcontextmenu', function (grid,rowIndex,event) {
 				grid.getSelectionModel().selectRow(rowIndex);
 				event.stopEvent();
-				ofertaMenuContextual.showAt(event.getXY());
+				promocionMenuContextual.showAt(event.getXY());
 			});
 			
 			var contactoForm = new Ext.FormPanel({ 
@@ -2045,10 +2045,10 @@ Ext.onReady(function() {
 				,layout:'fit'
 				,defaults:{autoScroll:true}
 			});
-			var ofertaPanel = new Ext.Panel({
-				title: 'Ofertas'
+			var promocionPanel = new Ext.Panel({
+				title: 'Promociones'
 				,hidden:true
-				,items:[ofertaGrid]
+				,items:[promocionGrid]
 				,layout:'fit'
 				,defaults:{autoScroll:true}
 			});
@@ -2060,7 +2060,7 @@ Ext.onReady(function() {
 				,defaults:{autoScroll:true}
 			});
 			var dependientesPanel = new Ext.Panel({
-				items:[textoPanel,imagenPanel,videoPanel,adjuntoPanel,ofertaPanel,contactoPanel]
+				items:[textoPanel,imagenPanel,videoPanel,adjuntoPanel,promocionPanel,contactoPanel]
 				,defaults:{autoScroll:true}
 				,region	:'center'
 				,layout:'accordion'
@@ -2185,7 +2185,7 @@ Ext.onReady(function() {
 								generalForm.getForm().findField('Pagina.imagen').setValue(obj.data.Pagina.imagen);
 								generalForm.getForm().findField('Pagina.video').setValue(obj.data.Pagina.video);
 								generalForm.getForm().findField('Pagina.adjunto').setValue(obj.data.Pagina.adjunto);
-								generalForm.getForm().findField('Pagina.oferta').setValue(obj.data.Pagina.oferta);
+								generalForm.getForm().findField('Pagina.promocion').setValue(obj.data.Pagina.promocion);
 								generalForm.getForm().findField('Pagina.contacto').setValue(obj.data.Pagina.contacto);
 								
 								generalGridDatos(generalForm.getForm());//llenamos el grid
@@ -2321,17 +2321,17 @@ Ext.onReady(function() {
 								}
 							}
 							
-							if (in_array('oferta',parcial)||in_array('todo',parcial)){
-								ofertaGrid.getStore().proxy.setUrl('<?php echo $html->url('/paginasofertas/listar') ?>',true);
-								ofertaGrid.getStore().load();
+							if (in_array('promocion',parcial)||in_array('todo',parcial)){
+								promocionGrid.getStore().proxy.setUrl('<?php echo $html->url('/paginaspromociones/listar') ?>',true);
+								promocionGrid.getStore().load();
 								if(viewPort.getComponent('center').activeTab.currentIdioma != '<?php echo Configure::read('Empresa.language');?>'){
-									ofertaGrid.getColumnModel().config[4].editor.allowBlank=true;
-									ofertaGrid.getColumnModel().config[5].editor.allowBlank=true;
-									ofertaGrid.agregarBtn.disable();
+									promocionGrid.getColumnModel().config[4].editor.allowBlank=true;
+									promocionGrid.getColumnModel().config[5].editor.allowBlank=true;
+									promocionGrid.agregarBtn.disable();
 								}else{
-									ofertaGrid.getColumnModel().config[4].editor.allowBlank=false;
-									ofertaGrid.getColumnModel().config[5].editor.allowBlank=false;
-									ofertaGrid.agregarBtn.enable();
+									promocionGrid.getColumnModel().config[4].editor.allowBlank=false;
+									promocionGrid.getColumnModel().config[5].editor.allowBlank=false;
+									promocionGrid.agregarBtn.enable();
 								}
 							}
 							
@@ -2364,11 +2364,11 @@ Ext.onReady(function() {
 								}else if(obj.data.Pagina.adjunto==0){
 									adjuntoPanel.hide();
 								}
-								if(obj.data.Pagina.oferta==1){
+								if(obj.data.Pagina.promocion==1){
 									
-									ofertaPanel.show();
-								}else if(obj.data.Pagina.oferta==0){
-									ofertaPanel.hide();
+									promocionPanel.show();
+								}else if(obj.data.Pagina.promocion==0){
+									promocionPanel.hide();
 								}
 							}
 							agregarEditar.doLayout();

@@ -44,6 +44,7 @@ class AppModel extends Model{
 			if(isset($results->responseStatus)&&$results->responseStatus==200){
 				return stripslashes(strtr($results->responseData->translatedText, $transliterate));
 			}else{
+				print_r($results);
 				return $string;	
 			}
 		}else{
