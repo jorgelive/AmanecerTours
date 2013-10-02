@@ -295,12 +295,12 @@
  *
  */
 	Cache::config('default', array('engine' => 'File'));
-	Configure::write('Empresa.nombre','AndeanWays');
+	Configure::write('Empresa.nombre','Amanecer Tours');
 	Configure::write('Empresa.language','es-es');
-	Configure::write('Empresa.languageList',array('es-es'=>'Español','en-us'=>'English'));
+	Configure::write('Empresa.languageList',array('es-es'=>'Español','en-us'=>'English','de-de'=>'Deutsch'));
 	Configure::write('Empresa.resumenSize',270);
-	Configure::write('Default.email','reservas@andeanways.com');
-	Configure::write('Default.cco','cco@andeanways.com');
+	Configure::write('Default.email','ventas@amanecertours.com');
+	Configure::write('Default.cco','cco@amanecertours.com');
 	Configure::write('Default.tags','tag1,tag2');
 	
 	Configure::write('Default.paginatorSize',30);
