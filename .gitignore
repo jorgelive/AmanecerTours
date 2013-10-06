@@ -1,3 +1,4 @@
-app/config/*
-app/webroot/js/tiny_mce/plugins/imanager/scripts/phpThumb/cache/*
-app/tmp/*
+/app/config
+/app/webroot/js/tiny_mce/plugins/imanager/scripts/phpThumb/cache
+/app/tmp
+/.idea
