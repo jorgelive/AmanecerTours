@@ -1,6 +1,6 @@
 <?php
-class Paginaspromocion extends AppModel {
-	var $name = 'Paginaspromocion';
+class Paginasmultiple extends AppModel {
+	var $name = 'Paginasmultiple';
 	var $belongsTo = 'Pagina'; 
 	var $actsAs = array(
 		'Acl'=>array(
@@ -10,8 +10,8 @@ class Paginaspromocion extends AppModel {
 			)
 		)
 		,'i18n' => array(
-			'fields' => array('title','notas','condiciones')
-			,'display' => 'notas'
+			'fields' => array('title','contenido','resumen')
+			,'display' => 'title'
 		)
 	);
 	var $validate = array(
@@ -29,55 +29,55 @@ class Paginaspromocion extends AppModel {
             ),
             'numeric' => array(
                 'rule' => 'numeric'
-                ,'message' => 'El identificador de página debe ser un valor numérico'
+                ,'message' => 'El identificador de página debe debe ser un valor numérico'
             )
 		)
 		,'title' => array(
 			'empty' => array(
                 'rule' => 'notEmpty'
                 ,'required' => true
-                ,'message' => 'Ingrese el título de la promoción'
+                ,'message' => 'Ingrese título del texto múltiple'
 				,'last' => true
             )
             ,'maxlength' => array(
-                'rule' => array('maxLength', 50)
-                ,'message' => 'El título de la promoción debe tener como máximo 50 caracteres'
+                'rule' => array('maxLength', 40)
+                ,'message' => 'El título debe tener como máximo 40 caracteres'
             )
             ,'minlength' => array(
-                'rule' => array('minLength', 10)
-                ,'message' => 'El título de la promoción debe tener como mínimo 10 caracteres'
+                'rule' => array('minLength', 4)
+                ,'message' => 'El título debe tener como mínimo 4 caracteres'
             )
 		)
-		,'notas' => array(
+		,'contenido' => array(
 			'empty' => array(
                 'rule' => 'notEmpty'
                 ,'required' => true
-                ,'message' => 'Ingrese las notas de la promoción'
+                ,'message' => 'Ingrese las el contenido'
+				,'last' => true
+            )
+            ,'maxlength' => array(
+                'rule' => array('maxLength', 10000)
+                ,'message' => 'El contenido debe tener como máximo 10000 caracteres'
+            )
+            ,'minlength' => array(
+                'rule' => array('minLength', 20)
+                ,'message' => 'El contenido debe tener como mínimo 20 caracteres'
+            )
+		)
+		,'resumen' => array(
+			'empty' => array(
+                'rule' => 'notEmpty'
+                ,'required' => true
+                ,'message' => 'Ingrese las el contenido'
 				,'last' => true
             )
             ,'maxlength' => array(
                 'rule' => array('maxLength', 500)
-                ,'message' => 'Las notas deben tener como máximo 500 caracteres'
+                ,'message' => 'El resumen debe tener como máximo 500 caracteres'
             )
             ,'minlength' => array(
                 'rule' => array('minLength', 20)
-                ,'message' => 'Las notas deben debe tener como mínimo 20 caracteres'
-            )
-		)
-		,'condiciones' => array(
-			'empty' => array(
-                'rule' => 'notEmpty'
-                ,'required' => true
-                ,'message' => 'Ingrese las condiciones de la promoción'
-				,'last' => true
-            )
-            ,'maxlength' => array(
-                'rule' => array('maxLength', 500)
-                ,'message' => 'Las condiciones deben tener como máximo 500 caracteres'
-            )
-            ,'minlength' => array(
-                'rule' => array('minLength', 20)
-                ,'message' => 'Las condiciones deben tener como mínimo 20 caracteres'
+                ,'message' => 'El resumen debe tener como mínimo 20 caracteres'
             )
 		)
 	);
@@ -93,9 +93,9 @@ class Paginaspromocion extends AppModel {
 		if (!$this->id && empty($this->data)) {
 			return NULL;
 		}
-		if(array_key_exists('pagina_id', $this->data['Paginaspromocion'])){
-			if (isset($this->data['Paginaspromocion']['pagina_id'])){
-				return $this->data['Paginaspromocion']['pagina_id'];
+		if(array_key_exists('pagina_id', $this->data['Paginasmultiple'])){
+			if (isset($this->data['Paginasmultiple']['pagina_id'])){
+				return $this->data['Paginasmultiple']['pagina_id'];
 			}else{
 				return NULL;
 			}

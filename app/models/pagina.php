@@ -29,7 +29,11 @@ class Pagina extends AppModel {
         )
     ); 
 	var $hasMany = array(
-        'Paginasimagen' => array(
+		'Paginasmultiple' => array(
+            'className' => 'Paginasmultiple'
+            ,'dependent' => true
+        )
+        ,'Paginasimagen' => array(
             'className' => 'Paginasimagen'
             ,'dependent' => true
         )

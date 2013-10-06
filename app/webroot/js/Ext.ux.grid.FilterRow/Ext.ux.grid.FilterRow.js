@@ -25,7 +25,7 @@ Ext.ux.grid.FilterRow = Ext.extend(Ext.util.Observable, {
 		});
 		this.applyTemplate();
 		grid.addClass('filter-row-grid');
-		grid.on("load", this.renderFields, this);
+		grid.on("afterrender", this.renderFields, this);
 		grid.getView().on("refresh", this.renderFields, this);
 		grid.on("staterestore", this.onColumnChange, this);
 		grid.on("resize", this.resizeAllFilterFields, this);

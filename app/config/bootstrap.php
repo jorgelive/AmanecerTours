@@ -50,14 +50,14 @@
  */
 Inflector::rules('singular', array(
 	'rules' => array('/([r|d|j|n|l|m|y|z])es$/i' => '\1', '/as$/i' => 'a', '/([ti])a$/i' => '\1a'),
-	'irregular' => array('aclusers'=>'acluser','aclgroups'=>'aclgroup'),
+	'irregular' => array('aclusers'=>'acluser','aclgroups'=>'aclgroup','paginasmultiples'=>'paginasmultiple','multiples'=>'multiple'),
 	'uninflected' => array()
 	)
 );
 
 Inflector::rules('plural', array(
 	'rules' => array('/([r|d|j|n|l|m|y|z])$/i' => '\1es','/a$/i' => '\1as'),
-	'irregular' => array('acluser'=>'aclusers','aclgroup'=>'aclgroups'),
+	'irregular' => array('acluser'=>'aclusers','aclgroup'=>'aclgroups','paginasmultiple'=>'paginasmultiples','multiple'=>'multiples'),
 	'uninflected' => array()
 	)
 );

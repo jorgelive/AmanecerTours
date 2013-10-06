@@ -14590,3 +14590,8 @@
 2013-09-25 19:06:14 Notice: Notice (8): Undefined index: id in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginas_controller.php, line 227]
 2013-09-29 19:15:18 Notice: Notice (8): Undefined variable: tipo in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginas_controller.php, line 559]
 2013-09-29 19:19:32 Notice: Notice (8): Undefined index: Paginascontacto in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginas_controller.php, line 559]
+2013-10-05 23:01:44 Notice: Notice (8): Undefined index: multiple in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginasmultiples_controller.php, line 39]
+2013-10-05 23:09:46 Notice: Notice (8): Undefined index: multiple in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginasmultiples_controller.php, line 39]
+2013-10-05 23:15:15 Notice: Notice (8): Undefined variable: promocion in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginasmultiples_controller.php, line 41]
+2013-10-05 23:15:15 Notice: Notice (8): Undefined variable: promocion in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginasmultiples_controller.php, line 42]
+2013-10-05 23:16:18 Notice: Notice (8): Undefined index: resumen in [/Volumes/Archivo/Desarrollo/Web/AmanecerTours/app/controllers/paginasmultiples_controller.php, line 42]

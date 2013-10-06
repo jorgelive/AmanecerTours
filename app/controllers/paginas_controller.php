@@ -82,7 +82,7 @@ class PaginasController extends AppController {
 				$pagina = $this->__comprobarPublicacion($pagina,true);
 				$pagina = $this->__comprobarContactos($pagina);
 				$pagina = $this->__comprobarPromocion($pagina);
-				$pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+				$pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','multiple'=>'Paginasmultiple','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
 				$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 				$pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
 				$pagina = $this->__comprobarIdFoto($pagina);
@@ -548,7 +548,7 @@ class PaginasController extends AppController {
 		Configure::write('debug', 0);
 		$tipos=Configure::read('Default.tipos');
 		if (isset($this->params['form']['id'])){
-			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional','Paginasimagen'),'hasMany'=>array('Paginaspromocion')));
+			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional'),'hasMany'=>array('Paginaspromocion','Paginasimagen','Paginasmultiple')));
 			$pagina=$this->Pagina->findById($this->params['form']['id']);
 			$i=0;
 			foreach($tipos as $key => $nombre):
@@ -583,7 +583,7 @@ class PaginasController extends AppController {
 	
 	function agregar() {
 		Configure::write('debug', 0);
-		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
+		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.multiple','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
 		if (!empty($this->data)) {
 			if (isset($this->data['Pagina']['parent_id'])&&$this->data['Pagina']['parent_id']=='root'){
 				$this->data['Pagina']['parent_id']=NULL;
