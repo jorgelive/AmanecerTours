@@ -41,7 +41,7 @@
 											window.location = obj.redirect;
 										}
 									}else{
-										Ext.Msg.alert('Errors!', 'El servidor tuvo una respuesta nula');
+										Ext.Msg.alert('Error!', 'El servidor tuvo una respuesta nula');
 									}
 									if(!record.data.id){
 										multipleEditor.grid.getStore().removeAt(rowIndex);

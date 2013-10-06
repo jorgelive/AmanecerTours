@@ -282,39 +282,17 @@ class I18nBehavior extends ModelBehavior {
 	function __cacheTraduccion(&$model,$modelAlias,$id,$fieldName){
 		$varName=Configure::read('Config.language').'_'.$modelAlias.'_'.$id.'_'.$fieldName;
 		$valor = Cache::read($varName);
-		if ($valor !== false) {
+		if ($valor === 'falsse') {
 			return $valor;
 		}else{
 			$locale=I18n::getInstance()->l10n->__l10nCatalog[Configure::read('Empresa.language')]['locale'];
 			$registro[$id]=Set::extract('0.'.$modelAlias, $model->query('SELECT * from '.strtolower(Inflector::pluralize($modelAlias)).' AS '.$modelAlias.' WHERE id="'.$id.'"'));
 			$traducir=$registro[$id][$fieldName.'_'.$locale];
-			$longitud=strlen($traducir);
-			if($longitud>5000){
-				$arrayTexto = explode(' ',$traducir);
-				$traducirArray=array();
-				$parte=0;
-				foreach ($arrayTexto as $contador=>$palabra):
-					if(!isset($traducirArray[$parte])){
-						$traducirArray[$parte]='';
-					}
-					$traducirArray[$parte] .= ' '.$arrayTexto[$contador];
-					if(strlen($traducirArray[$parte])>4970){
-						$parte++;
-					}
-				endforeach;
-				
-				foreach ($traducirArray as $key => $traducirParte):
-					$valor[$key] = $model->__googleLangApi($traducirParte,substr(Configure::read('Config.language'), 0, 2));
-				endforeach;
-				$valor = implode (' ',$valor);
-			}else{
-				$valor = $model->__googleLangApi($traducir,substr(Configure::read('Config.language'), 0, 2));
-			}
-			Cache::write($varName, $valor);
-			return $valor;
+
+			return $traducir;
 		}
 	}
-	 
+
 	function beforeSave(&$model) {
 		if(Configure::read('Empresa.language')!=Configure::read('Config.language')){
 			foreach($model->data as $modelo => $datos):

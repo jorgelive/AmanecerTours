@@ -215,7 +215,7 @@
 											window.location = obj.redirect;
 										}
 									}else{
-										Ext.Msg.alert('Errors!', 'El servidor tuvo una respuesta nula');
+										Ext.Msg.alert('Error!', 'El servidor tuvo una respuesta nula');
 									}
 								}else if(respuesta.failureType == 'connect'){ 
 									Ext.Msg.alert('Error!', 'El servidor tiene un error : ' + respuesta.response.responseText); 

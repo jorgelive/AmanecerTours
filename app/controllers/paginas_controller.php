@@ -180,10 +180,13 @@ class PaginasController extends AppController {
 			}else{
 				$caso='modifydata';
 				$data=$pagina;
-				unset($pagina);//redefinimos la página
-				$pagina=$this->Pagina->findById($data['Pagina']['id']);
-				$pagina=Set::merge($pagina,$data);//actualizamos los valores
-			}
+
+				if(isset($data['Pagina']['id'])){
+                    unset($pagina);
+                    $pagina=$this->Pagina->findById($data['Pagina']['id']);
+                    $pagina=Set::merge($pagina,$data);//actualizamos los valores
+                }
+    		}
 			$existe=false;
 			foreach($pagina['Pagina'] as $key => $valor):
 				if(in_array($key,$tipos)&&!empty($valor)&&!empty($pagina['Paginas'.$key])){

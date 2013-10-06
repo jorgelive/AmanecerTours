@@ -188,11 +188,12 @@
 								videoGrid.getColumnModel().config[2].editor.getStore().proxy.setUrl('<?php echo $html->url('/paginasvideos/listarfuentes') ?>',true);
 								videoGrid.getColumnModel().config[2].editor.getStore().load();
 								videoGrid.getColumnModel().config[2].editor.getStore().on('load',function(){
-									videoGrid.getColumnModel().config[2].renderer=Ext.util.Format.comboRenderer(videoGrid.getColumnModel().config[2].editor);
-									videoGrid.getStore().proxy.setUrl('<?php echo $html->url('/paginasvideos/listar') ?>',true);
-									
-									videoGrid.getStore().load();
+
+							        //videoGrid.getStore().load();
 								})
+                                    videoGrid.getColumnModel().config[2].renderer=Ext.util.Format.comboRenderer(videoGrid.getColumnModel().config[2].editor);
+                                    videoGrid.getStore().proxy.setUrl('<?php echo $html->url('/paginasvideos/listar') ?>',true);
+                                    videoGrid.getStore().load();
 								//los videos se cargan en el listener del combo
 								if(viewPort.getComponent('center').activeTab.currentIdioma != '<?php echo Configure::read('Empresa.language');?>'){
 									videoGrid.getColumnModel().config[3].editor.allowBlank=true;
@@ -288,7 +289,7 @@
 								window.location = obj.redirect;
 							}
 						}else{
-							Ext.Msg.alert('Errors!', 'El servidor tuvo una respuesta nula');
+							Ext.Msg.alert('Error!', 'El servidor tuvo una respuesta nula');
 						}
 					}
 				});

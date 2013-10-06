@@ -4,6 +4,8 @@
 .x-tool-es-es-over {background-position:-15px 0;}
 .x-tool-en-us {background-image:url(../img/comun/x-tool-en-us.gif);}
 .x-tool-en-us-over {background-position:-15px 0;}
+.x-tool-de-de {background-image:url(../img/comun/x-tool-de-de.gif);}
+.x-tool-de-de-over {background-position:-15px 0;}
 .x-menu-item-agregar {background-image:url(../img/comun/x-menu-item-agregar.png);}
 .x-menu-item-modificar {background-image:url(../img/comun/x-menu-item-modificar.png);}
 .x-menu-item-permisos {background-image:url(../img/comun/x-menu-item-permisos.png);}
@@ -35,4 +37,4 @@
 #loading-div{display: block; height: 100%; text-align: center; width: 100%;}
 #loading-div #center{margin:120px auto; display: block; text-align: center;}
 #loading-div #center .loading-indicator{width:100px; margin:0 auto;}
-.x-form-check-wrap{text-align: center;}
+.x-small-editor .x-form-field {margin:0 0 0 6px;}

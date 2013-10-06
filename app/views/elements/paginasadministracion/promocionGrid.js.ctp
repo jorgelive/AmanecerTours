@@ -41,7 +41,7 @@
 											window.location = obj.redirect;
 										}
 									}else{
-										Ext.Msg.alert('Errors!', 'El servidor tuvo una respuesta nula');
+										Ext.Msg.alert('Error!', 'El servidor tuvo una respuesta nula');
 									}
 									if(!record.data.id){
 										promocionEditor.grid.getStore().removeAt(rowIndex);
@@ -263,8 +263,7 @@
 					,width: 40
 					,editor: {
 						allowBlank:true
-						//,blankText:'Ingrese el precio'
-						//,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginaspromociones/validar/') ?>'})]
+						,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginaspromociones/validar/') ?>'})]
 					}
 					,sortable:true
 					,filter:true
@@ -385,7 +384,7 @@
 												window.location = obj.redirect;
 											}
 										}else{
-											Ext.Msg.alert('Errors!', 'El servidor tuvo una respuesta nula');
+											Ext.Msg.alert('Error!', 'El servidor tuvo una respuesta nula');
 										}
 									}
 								});

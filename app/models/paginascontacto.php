@@ -3,7 +3,10 @@ class Paginascontacto extends AppModel {
 	var $name = 'Paginascontacto';
 	var $belongsTo = 'Pagina'; 
 	var $actsAs = array(
-		'i18n'
+        'i18n' => array(
+            'fields' => array('texto')
+            ,'display' => 'texto'
+        )
 		,'Acl'=>array(
 			'type'=>'controlled'
 			,'mode'=>array('belongsto'=>'Pagina')
@@ -26,6 +29,26 @@ class Paginascontacto extends AppModel {
                 ,'message' => 'El identificador de página debe ser un valor numérico'
             )
 		)
+        ,'texto' => array(
+            'empty' => array(
+                'rule' => 'notEmpty'
+            ,'required' => true
+            ,'on' => 'create'
+            ,'message' => 'Ingrese el texto del formulario'
+            ,'last' => true
+            )
+        ,'minlength' => array(
+                'required' => true
+            ,'rule' => array('minLength', 25)
+            ,'on' => 'create'
+            ,'message' => 'El texto debe tener como mínimo 25 caracteres'
+            )
+        ,'maxlength' => array(
+                'required' => true
+            ,'rule' => array('maxLength', 12000)
+            ,'message' => 'El texto debe tener como máximo 12000 caracteres'
+            )
+        )
         ,'destinatario' => array(
             'empty' => array(
                 'rule' => 'notEmpty'
