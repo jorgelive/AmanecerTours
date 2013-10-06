@@ -1,4 +1,3 @@
-// JavaScript Document
     var barra = new Ext.Toolbar({
     	itemId:'barraProvisional'
     	,items: [new Ext.Toolbar.Fill(),{

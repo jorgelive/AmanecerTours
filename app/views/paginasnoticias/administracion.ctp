@@ -2,7 +2,7 @@
 <?php echo $this->element('extBlankImage');?>
 Ext.onReady(function() {
 	Ext.QuickTips.init();
-	<?php echo $this->element('extBarra');?>
+	<?php echo $this->element('extBarra.js');?>
 	var noticiaEditor = new Ext.ux.grid.RowEditor({
 		permisos:true
 		,listeners: {

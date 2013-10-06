@@ -2,7 +2,7 @@
 <?php echo $this->element('extBlankImage');?>
 Ext.onReady(function() {
 	Ext.QuickTips.init();
-	<?php echo $this->element('extBarra');?>
+	<?php echo $this->element('extBarra.js');?>
 	var treeHandler = function(button,event) {
 		var selected=tree.getSelectionModel().getSelectedNode();
 		if (button.id=='agregarUsuario'||(button.id=='editar'&&selected.leaf===true)){
