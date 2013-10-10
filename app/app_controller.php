@@ -5,7 +5,7 @@ class AppController extends  Controller{
 	function beforeFilter() {
 		$this->Auth->userModel = 'Acluser';
 		$this->Auth->loginAction = array('controller'=>'aclusers','action'=>'login');
-		
+
 		if(isset($this->params['form']['idioma'])){
 			Configure::write('Config.language',$this->params['form']['idioma']);
 		}
@@ -13,8 +13,9 @@ class AppController extends  Controller{
 			Configure::write('Config.language',$this->params['named']['idioma']);
 		}
 		Configure::write('Default.tipos',array(
-			'texto'=>__('descripcion',true)
+			//'texto'=>__('descripcion',true)
 			//,'imagen'=>__('imagenes',true)
+            'multiple' => __('Textos multiples',true)
 			,'video'=>__('videos',true)
 			,'adjunto'=>__('adjuntos',true)
 			,'contacto'=>__('Formulario de Contacto',true)
@@ -23,9 +24,9 @@ class AppController extends  Controller{
 		//Configure::write('Menu.2',array('tipo'=>'tree','controller'=>'Paginaspaquetes','texto'=>'Paquetes'));
 		Configure::write('Menu.Pagina',array('tipo'=>'extractTree','textField'=>'title','accion'=>'detalle'));
 		Configure::write('Menu.Testimonio',array('tipo'=>'boton','texto'=>__('testimonios',true),'url'=>'/paginastestimonios/index'));
-		
+
 	}
-	
+
 	function __menu(){
 		$opcionales=$this->Pagina->Paginasopcional->find('all',array('recursive'=>-1));
 		$newOpcionales=array();
@@ -51,13 +52,13 @@ class AppController extends  Controller{
 			$menuPagina[$key]['children']=$children;
 		endforeach;
 		if(!empty($menuPagina)){
-			return $menuPagina;	
+			return $menuPagina;
 		}
 	}
-	
+
 	function __paginacion($params=array(),$defaultConditions=array(),$model=NULL){
 		if(empty($model)){
-			$model=$this->modelNames[0];	
+			$model=$this->modelNames[0];
 		}
 		if (isset($params['filtro'])||!empty($defaultConditions)){
 			if(isset($params['filtro'])){
@@ -71,11 +72,11 @@ class AppController extends  Controller{
 						$params['filtro'][$i]->valor='%'.$params['filtro'][$i]->valor.'%';
 					}
 					$result[$model]['conditions'][$i][implode('.',$campo).$params['filtro'][$i]->operador]=$params['filtro'][$i]->valor;
-					
-					
+
+
 				}
 			}else{
-				$i=0;	
+				$i=0;
 			}
 			if(!empty($defaultConditions)){
 				foreach($defaultConditions as $key=>$valor):
@@ -105,7 +106,7 @@ class AppController extends  Controller{
 		}
 		return $result;
 	}
-	
+
 	function __paramstodata($params=NULL,$campos=NULL,$model=NULL){
 		if (!empty($params)){
 			if ($campos!=NULL){
@@ -131,13 +132,13 @@ class AppController extends  Controller{
 				}
 			endforeach;
 			return $data;
-		}	
+		}
 	}
-	
+
 	function __valuesFromSchema($normkey=array(),$value=NULL){
 		if(isset($normkey[1])){
 			if(array_key_exists($normkey[1],$this->{$normkey[0]}->_schema)){
-			
+
 				if($this->{$normkey[0]}->_schema[$normkey[1]]['type']=='boolean'||$this->{$normkey[0]}->_schema[$normkey[1]]['type']=='integer'){
 					if($value==NULL||$value=='false'){$value=0;}
 					elseif($value=='true'){$value=1;}
@@ -151,16 +152,16 @@ class AppController extends  Controller{
 			return false;
 		}
 	}
-	
+
 	function __normalizedata($key=NULL,$conModelo=true,$model=NULL){
 		if(empty($key)){
-			return false;	
+			return false;
 		}
 		if(is_integer(strpos($key,'.'))){
 			$delimiter='.';
 		}elseif(is_integer(strpos($key,'_'))){
 			$delimiter='_';
-			
+
 		}
 		if($model==NULL){$model=$this->modelNames[0];}
 		$lenguaje='_'.I18n::getInstance()->l10n->__l10nCatalog[Configure::read('Empresa.language')]['locale'];
@@ -195,7 +196,7 @@ class AppController extends  Controller{
 			}
 		}
 	}
-	
+
 	function __robotizeDate($value){
 		if(empty($value)){
 			return '0000-00-00';
@@ -208,7 +209,7 @@ class AppController extends  Controller{
 			}
 		}
 	}
-	
+
 	function __reverseDate($value,$Ymd=false){
 		$partes=explode('-',$value);
 		if($Ymd===true){
@@ -221,7 +222,7 @@ class AppController extends  Controller{
 		$value=implode('-',$partes);
 		return $value;
 	}
-	
+
 	function __validarCampo($parametros=NULL){
 		if ($parametros){
 			$campos=explode('.',$parametros);
@@ -250,20 +251,20 @@ class AppController extends  Controller{
 			$this->{$modelo}->set($this->data);
 			$this->{$modelo}->validates();
 			if(isset($this->{$modelo}->validationErrors{$field})){
-				$result['success']=true;	
+				$result['success']=true;
 				$result['valid']=false;
 				$result['reason']=$this->{$modelo}->validationErrors{$field};
 			}else{
-				$result['success']=true;	
+				$result['success']=true;
 				$result['valid']=true;
 			}
 		}else{
-			$result['success']=true;	
+			$result['success']=true;
 			$result['valid']=false;
 		}
 		return $result;
 	}
-	
+
 	function __getTitulo($modelo){
 		$recursos[0]=$this->Recurso->find('first',array('conditions'=>array('model'=>$modelo)));
 		if($recursos[0]['Recurso']['parent_id']!=NULL){
@@ -274,7 +275,7 @@ class AppController extends  Controller{
 		endforeach;
 		return implode(' - ',$titulo);
 	}
-	
+
 	function __implodeWithKey($data,$separadorInterno = '=',$separadorExterno='&') {
 		$result = '';
 		foreach ($data as $key => $value) {
@@ -282,12 +283,12 @@ class AppController extends  Controller{
 		}
 		return substr($result, strlen($separadorExterno));
 	}
-	
+
 	function __urlVariable($key=NULL,$data=NULL){
 		if(empty($key)||empty($data)){return false;}
 		return $key.'='.preg_replace('#(\'|")#','',$data);
 	}
-	
+
 	function __thumbImages($data=NULL,$imageContainers=NULL,$replace=false){
 		if(empty($data)||empty($imageContainers)){
 			return false;
@@ -296,7 +297,7 @@ class AppController extends  Controller{
 			$imageContainers=array($imageContainers);
 		}
 		if(!array_key_exists(0, $data)){
-			$data=array($data); 	
+			$data=array($data);
 			$extractAtFinish=TRUE;
 		}
 		foreach ($data as $numero => $dummy):
@@ -307,7 +308,7 @@ class AppController extends  Controller{
 					$datacontainer[0]=$this->modelNames[0];
 				}
 				if(isset($data{$numero}{$dataContainer[0]}{$dataContainer[1]})){
-					preg_match_all('/<img[^>]+>/i',$data{$numero}{$dataContainer[0]}{$dataContainer[1]}, $imagenes); 
+					preg_match_all('/<img[^>]+>/i',$data{$numero}{$dataContainer[0]}{$dataContainer[1]}, $imagenes);
 					if(!empty($imagenes[0])){
 						foreach ($imagenes[0] as $numeroImagen=>$imagen):
 							preg_match_all('/(alt|title|src|width|height|style|class|id)=([\'|"][^(\'|")]*[\'|"])/i',$imagen, $parsedImagenes[$imagen]);
@@ -315,16 +316,16 @@ class AppController extends  Controller{
 						endforeach;
 						$imagenes=array();
 						$imagen=array();
-						
+
 						foreach ($parsedImagenes as $completeTag=>$parsedImagen):
 							$combinedTags=array();
-							
+
 							$combinedTags=array_combine($parsedImagen[1],$parsedImagen[2]);
 							if (in_array('src',$parsedImagen[1])){
-								
+
 								$rutaCompleta=str_replace(array('"','\''),array('',''),$combinedTags['src']);
 								$rutaCompleta=substr_replace($rutaCompleta, WWW_ROOT, 0, 1);
-								
+
 								if(file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
 									$data{$numero}{$dataContainer[0]}[$dataContainer[1].'_imagenes']{$parsedImagen['id']}=getimagesize($rutaCompleta);
 									$data{$numero}{$dataContainer[0]}[$dataContainer[1].'_imagenes']{$parsedImagen['id']}['url']=str_replace(array('"','\''),array('',''),$combinedTags['src']);
@@ -350,28 +351,28 @@ class AppController extends  Controller{
 								unset ($imagen['src']);
 								$imageTag.=$this->__implodeWithKey($imagen,'=',' ');
 								$imageTag.=' />';
-								$data{$numero}{$dataContainer[0]}{$dataContainer[1]} = str_replace($key, $imageTag, $data{$numero}{$dataContainer[0]}{$dataContainer[1]}); 
+								$data{$numero}{$dataContainer[0]}{$dataContainer[1]} = str_replace($key, $imageTag, $data{$numero}{$dataContainer[0]}{$dataContainer[1]});
 							endforeach;
 						}
 					}
 				}
 			endforeach;
-		endforeach;	
+		endforeach;
 		if(isset($extractAtFinish)&&$extractAtFinish===TRUE){
-			$data=$data[0];	
+			$data=$data[0];
 		}
 		return $data;
 	}
-	
+
 	function __comprobarPublicacion($data=NULL,$borrar=false){
 		if(empty($data)){
 			return false;
 		}
 		if(!array_key_exists(0, $data)){
-			$data=array($data); 	
+			$data=array($data);
 			$extractAtFinish=TRUE;
 		}
-		
+
 		foreach ($data as $numero => $dummy):
 			if(isset($data{$numero}['Paginasopcional'])){
 				$data{$numero}['Pagina']['publicado']=$this->__fechaEnRango($data{$numero}['Pagina']['publicado'],$data{$numero}['Paginasopcional']['publicado_inicio'],$data{$numero}['Paginasopcional']['publicado_final']);
@@ -381,20 +382,20 @@ class AppController extends  Controller{
 			if($borrar!=false&&$data{$numero}['Pagina']['publicado']!='si'){
 				unset($data{$numero});
 			}
-		endforeach;	
-		
+		endforeach;
+
 		if(isset($extractAtFinish)&&$extractAtFinish===TRUE){
-			$data=$data[0];	
+			$data=$data[0];
 		}
 		return $data;
 	}
-	
+
 	function __fechaEnRango($valorCP=NULL,$inicio=NULL,$final=NULL,$consultada=false){
 		if ($valorCP!==NULL&&empty($valorCP)){return 'no';}
 		if($inicio=='0000-00-00'){$inicio=NULL;}elseif(!empty($inicio)){$inicio=strtotime($inicio);}
 		if($final=='0000-00-00'){$final=NULL;}elseif(!empty($final)){$final=strtotime($final);}
 		if(!empty($consultada)){$consultada=strtotime($consultada);}else{$consultada=time();}
-		
+
 		if(empty($inicio)&&empty($final)){
 			if(empty($valorCP)){
 				return true;
@@ -440,13 +441,13 @@ class AppController extends  Controller{
 			return 'si';
 		}
 	}
-	
+
 	function __resumen($data=NULL,$resumen=NULL,$length=NULL){
 		if(empty($data)){
 			return false;
 		}
 		if(!array_key_exists(0, $data)){
-			$data=array($data); 	
+			$data=array($data);
 			$extractAtFinish=TRUE;
 		}
 		foreach ($data as $numero => $dummy):
@@ -455,7 +456,7 @@ class AppController extends  Controller{
 					$origen=key($resumen);
 					$destino=current($resumen);
 					$resumenOrigen=explode('.',$origen);
-					$resumenDestino=explode('.',$destino);	
+					$resumenDestino=explode('.',$destino);
 				}else{
 					$resumenOrigen=explode('.',$resumen);
 					$resumenDestino=explode('.',$resumen.'_resumen');
@@ -464,13 +465,13 @@ class AppController extends  Controller{
 					$data{$numero}{$resumenDestino[0]}{$resumenDestino[1]}=$this->__hacerResumen($data{$numero}{$resumenOrigen[0]}{$resumenOrigen[1]},$length);
 				}
 			}
-		endforeach;	
+		endforeach;
 		if(isset($extractAtFinish)&&$extractAtFinish===TRUE){
-			$data=$data[0];	
+			$data=$data[0];
 		}
 		return $data;
 	}
-	
+
 	function __hacerResumen($data,$length=NULL){
 		if(!is_numeric($length)){
 			$length=Configure::read('Empresa.resumenSize');
@@ -493,7 +494,7 @@ class AppController extends  Controller{
 		//$resumen = trim(preg_replace(array('@(&nbsp;)*@i','@( )+@i'),array('',' '),$resumen));
 		return ($resumen);
 	}
-	
+
 	function __closetags ($html){
 		preg_match_all ('#<([a-z]+)( .*)?(?!/)>#iU',$html,$result);
 		$openedtags = $result[1];
@@ -513,9 +514,9 @@ class AppController extends  Controller{
 		}
 		return $html;
 	}
-	
+
 	function __checkAcl($map=array(),$exAjax=array()){
-		
+
 		if(!is_array($exAjax)){$extAjax=array($exAjax);}
 		if(isset($this->Auth->allowedActions)&&!empty($this->Auth->allowedActions)&&in_array($this->action,$this->Auth->allowedActions)){
 			$autorizacion='autorizado';
@@ -565,12 +566,12 @@ class AppController extends  Controller{
 					$model=$this->modelNames[0];
 					$foreign_key=NULL;
 				}
-				
-				
+
+
 				if(!isset($datos['cmd'])){
 					if($foreign_key==NULL){
 						if($this->Acl->check($user,$model.'::Auto',strtr($this->action, $map))){
-							
+
 							$autorizacion='autorizado';
 						}
 					}else{
@@ -579,7 +580,7 @@ class AppController extends  Controller{
 						}
 					}
 				}elseif((isset($datos['cmd'])&&$datos['cmd']=='validateField')||!isset($datos['id'])||!isset($datos['parent_id'])||!isset($datos['caller'])){
-					$autorizacion='autorizado';	
+					$autorizacion='autorizado';
 				}else{
 					$autorizacion='denegado';
 				}
@@ -603,7 +604,7 @@ class AppController extends  Controller{
 			}
 		}
 	}
-	
+
 	function __paramstodatavalidation($params=NULL,$model=NULL){
 		if (isset($params)){
 			foreach ($params as $key => $value):
@@ -611,7 +612,7 @@ class AppController extends  Controller{
 				$data{$normkey}=$value;
 			endforeach;
 			return $data;
-		}	
+		}
 	}
 }
 ?>

@@ -72,7 +72,7 @@ class PaginasController extends AppController {
 	}
 	
 	function detalle($id=NULL){
-		Configure::write('debug', 0);
+		//Configure::write('debug', 2);
 		$this->layout='paginadetalle';
 		$this->set('menuPagina',$this->__menu());
 		
@@ -551,7 +551,7 @@ class PaginasController extends AppController {
 		Configure::write('debug', 0);
 		$tipos=Configure::read('Default.tipos');
 		if (isset($this->params['form']['id'])){
-			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional'),'hasMany'=>array('Paginaspromocion','Paginasimagen','Paginasmultiple')));
+			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional'),'hasMany'=>array('Paginaspromocion','Paginasimagen')));
 			$pagina=$this->Pagina->findById($this->params['form']['id']);
 			$i=0;
 			foreach($tipos as $key => $nombre):
@@ -564,7 +564,7 @@ class PaginasController extends AppController {
 							!empty($pagina['Paginas'.$key])&&!array_key_exists('id',$pagina['Paginas'.$key])
 						)||(
 							!empty($pagina['Paginas'.$key])&&isset($pagina['Paginas'.$key]['id'])&&!empty($pagina['Paginas'.$key]['id'])
-						)||$key=='contacto'
+						)||$key=='contacto' //todo: hacer un behavior para default values
 					)
 				){
 					$result['Tipos'][$i]['id']=$key;
