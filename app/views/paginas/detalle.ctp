@@ -80,29 +80,35 @@
 
             <?php
             $tipos=Configure::read('Default.tipos');
+            $nroPredeterminado = 0;
+            $tabPredeterminado = array();
             foreach($pagina['Pagina'] as $key => $valor):
                 if($key=='multiple'&&$valor=='si'){
-                   foreach ($pagina['Paginasmultiple'] as $subkey => $subvalor):
-                        $tabs[$key.$subkey]=$pagina['Paginasmultiple']{$subkey};
-                       echo $key;
+                    $tabPredeterminado['multiple']=$nroPredeterminado;
+                    foreach ($pagina['Paginasmultiple'] as $subkey => $subvalor):
+                       $tabs[$key.$subkey]=$pagina['Paginasmultiple']{$subkey};
+                       $nroPredeterminado++;
                    endforeach;
-                }elseif(in_array($key,array('video','adjunto'))&&$valor=='si'){
+                }elseif(in_array($key,array('video','adjunto','contacto'))&&$valor=='si'){
                     $tabs[$key]=$pagina['Paginas'.$key];
+                    $tabPredeterminado{$key}=$nroPredeterminado;
+                    $nroPredeterminado++;
                 }
             endforeach;
+            if(isset($tabs)&&!empty($tabs)){
+
             ?>
+
             <div id="tabs">
                 <ul>
                     <?php
                     foreach ($tabs as $key => $tab):
-
                         if(substr($key, 0, 8)=="multiple") {
-                            ?>
+                        ?>
                             <li><a href="#tab-<?php echo $key;?>"><?php echo $tab['title'];?></a></li>
                         <?php
                         }else{
                         ?>
-
                             <li><a href="#tab-<?php echo $key;?>"><?php echo $tipos{$key};?></a></li>
                         <?php
                         }
@@ -111,12 +117,16 @@
                 </ul>
 
                 <?php
+                //print_r($tabs);
                 foreach ($tabs as $key => $tab):
                     ?>
                     <div id="tab-<?php echo $key;?>">
                         <?php
                         if(substr($key, 0, 8)=="multiple") {
-                            echo $tab['contenido'];
+                            ?>
+                            <div class="mceContentBody"><?php echo $tab['contenido'];?></div>
+                            <div class="clear"></div>
+                            <?php
                         }elseif($key=='video'){
                             ?>
                             <ul id="<?php echo $key.'-'.$pagina['Pagina']['id'];?>">
@@ -164,21 +174,13 @@
                 ?>
             </div><!-- tabs  -->
             <script>
-                <?php
-                if($pagina['Pagina']['predeterminado']=='multiple'){
-                    $predeterminado=0;
-                }elseif($pagina['Pagina']['predeterminado']=='imagen'){
-                    $predeterminado=1;
-                }elseif($pagina['Pagina']['predeterminado']=='video'){
-                    $predeterminado=2;
-                }elseif($pagina['Pagina']['predeterminado']=='adjunto'){
-                    $predeterminado=3;
-                }
-                ?>
                 $(function() {
-                    $("#tabs").tabs();//.tabs("select",<?php echo $predeterminado;?> );
+                    $("#tabs").tabs().tabs("option", "active", <?php echo $tabPredeterminado{$pagina['Pagina']['predeterminado']};?> );
                 });
             </script>
+            <?php
+            }
+            ?>
             &nbsp;
         </div><!--col_1 -->
         <div class="column col_2">

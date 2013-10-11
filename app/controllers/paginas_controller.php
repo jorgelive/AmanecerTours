@@ -83,9 +83,9 @@ class PaginasController extends AppController {
 				$pagina = $this->__comprobarContactos($pagina);
 				$pagina = $this->__comprobarPromocion($pagina);
 				$pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','multiple'=>'Paginasmultiple','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
-				$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+				$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
 				$pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
-				$pagina = $this->__comprobarIdFoto($pagina);
+                $pagina = $this->__comprobarImagenPath($pagina);
 				$items=$this->Pagina->find('all',array('conditions'=>array('parent_id'=>$id)));
 				
 				if(!empty($items)){
@@ -93,9 +93,9 @@ class PaginasController extends AppController {
 					$items = $this->__comprobarContactos($items);
 					$items = $this->__comprobarPromocion($items);
 					$items = $this->__comprobarDependientes($items,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
-					$items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+					$items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
 					$items = $this->__thumbImages($items,'Paginastexto.contenido',true);
-					$items = $this->__comprobarIdFoto($items);
+                    $items = $this->__comprobarImagenPath($pagina);
 					$pagina['items']=$items;
 					
 				}
@@ -253,47 +253,78 @@ class PaginasController extends AppController {
 			return array();	
 		}
 	}
+
+    function __comprobarImagenPath($data=NULL){
+        if(empty($data)){
+            return false;
+        }
+        if(!array_key_exists(0, $data)){
+            $data=array($data);
+            $extractAtFinish=TRUE;
+        }
+
+        foreach ($data as $numero => $dummy):
+            $existe=false;
+
+
+
+            if(isset($data{$numero}['Paginasopcional']['imagenpath'])&&!empty($data{$numero}['Paginasopcional']['imagenpath'])){
+                $imagenPath=$data{$numero}['Paginasopcional']['imagenpath'];
+
+                if (isset($data{$numero}['Paginastexto']['contenido_imagenes'])){
+                    foreach ($data{$numero}['Paginastexto']['contenido_imagenes'] as $imagenData):
+                        if ($imagenData['url']===$imagenPath){
+                            $rutaCompleta=substr_replace($imagenData['url'], WWW_ROOT, 0, 1);
+                            if(file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
+                                $existe=true;
+                            }
+                            break;
+                        }
+
+                    endforeach;
+
+                }
+
+                if($existe==false&&isset($data{$numero}['Paginasimagen'])&&!empty($data{$numero}['Paginasimagen'])){
+                    foreach ($data{$numero}['Paginasimagen'] as $imagenData):
+                        if ($imagenData['imagen']['path']===$imagenPath){
+                            $rutaCompleta=substr_replace($imagenData['url'], WWW_ROOT, 0, 1);
+                            if(file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
+                                $existe=true;
+                            }
+                            break;
+                        }
+
+                    endforeach;
+                }
+            }
+            if($existe===false){
+                if(isset($data{$numero}['Paginastexto']['contenido_imagenes'][0]['url'])){
+                    $rutaCompleta=substr_replace($data{$numero}['Paginastexto']['contenido_imagenes'][0]['url'], WWW_ROOT, 0, 1);
+                    if(strpos($rutaCompleta,APP)===0&&file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
+                        $data{$numero}['Paginasopcional']['imagenpath']=$data{$numero}['Paginastexto']['contenido_imagenes'][0]['url'];
+                        $existe=true;
+                    }
+                }elseif(isset($data{$numero}['Paginasimagen'][0])){
+                    $rutaCompleta=substr_replace($data{$numero}['Paginasimagen'][0]['imagen']['path'], WWW_ROOT, 0, 1);
+                    if(strpos($rutaCompleta,APP)===0&&file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
+                        $data{$numero}['Paginasopcional']['imagenpath']=$data{$numero}['Paginasimagen'][0]['imagen']['path'];
+                        $existe=true;
+                    }
+                }
+            }
+            if($existe===false){
+                unset($data{$numero}['Paginasopcional']['imagenpath']);
+            }
+
+        endforeach;
+        if(isset($extractAtFinish)&&$extractAtFinish===TRUE){
+            $data=$data[0];
+        }
+        return $data;
+    }
 	
-	function __comprobarIdFoto($data=NULL){
-		if(empty($data)){
-			return false;
-		}
-		if(!array_key_exists(0, $data)){
-			$data=array($data); 	
-			$extractAtFinish=TRUE;
-		}
-		
-		foreach ($data as $numero => $dummy):
-			$existe=false;
-			if(isset($data{$numero}['Paginasopcional']['idfoto'])){
-				$idfoto=$data{$numero}['Paginasopcional']['idfoto'];
-				if(isset($data{$numero}['Paginastexto']['contenido_imagenes']{$idfoto}['url'])){
-					$rutaCompleta=substr_replace($data{$numero}['Paginastexto']['contenido_imagenes']{$idfoto}['url'], WWW_ROOT, 0, 1);
-					if(file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
-						$existe=true;
-					}
-				}
-			}
-			if($existe===false){
-				if(isset($data{$numero}['Paginastexto']['contenido_imagenes'][0]['url'])){
-					$rutaCompleta=substr_replace($data{$numero}['Paginastexto']['contenido_imagenes'][0]['url'], WWW_ROOT, 0, 1);
-					if(strpos($rutaCompleta,APP)===0&&file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
-						$data{$numero}['Paginasopcional']['idfoto']=0;
-						$existe=true;
-					}
-				}
-			}
-			if($existe===false){
-				unset($data{$numero}['Paginasopcional']['idfoto']);
-			}
-			
-		endforeach;	
-		if(isset($extractAtFinish)&&$extractAtFinish===TRUE){
-			$data=$data[0];	
-		}
-		return $data;
-	}
-	
+
 	
 	function __comprobarContactos($data=NULL){
 		if(empty($data)){
@@ -389,7 +420,7 @@ class PaginasController extends AppController {
 	}
 	
 	function administracion($id=NULL){
-		Configure::write('debug', 2);
+		Configure::write('debug', 0);
 		$this->set('title_for_layout',$this->__getTitulo($this->modelNames[0]));
 		if($id!=NULL){
 			$parents = $this->Pagina->getpath($id);
@@ -520,7 +551,7 @@ class PaginasController extends AppController {
 		if (isset($result)){$this->set('result', $result);}else{$this->set('result', '');}
 		$this->render('/elements/ajax');
 	}
-	
+
 	function validar() {
 		Configure::write('debug', 0);
 		if (isset($this->params['form']['field'])){
@@ -538,7 +569,7 @@ class PaginasController extends AppController {
 			if(isset($pagina['Paginastexto']['contenido'])){
 				preg_match_all('@src=[\'"]?([^\'" >]+)[\'" >]@',$pagina['Paginastexto']['contenido'],$imagenes);
 				foreach($imagenes[1] as $key=>$imagen):
-					$result['Imagen'][$key]['id']=$key;
+					$result['Imagen'][$key]['id']=$imagen;  //era $key
 					$result['Imagen'][$key]['name']=$imagen;
 				endforeach;
 			}

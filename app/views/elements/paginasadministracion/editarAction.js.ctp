@@ -92,7 +92,7 @@
 									if(obj.data.Paginasopcional.publicado_final!='0000-00-00'){
 										opcionalForm.getForm().findField('Paginasopcional.publicado_final').setValue(obj.data.Paginasopcional.publicado_final);
 									}
-									opcionalForm.getForm().findField('Paginasopcional.idfoto').setValue(obj.data.Paginasopcional.idfoto);
+									opcionalForm.getForm().findField('Paginasopcional.imagenpath').setValue(obj.data.Paginasopcional.imagenpath);
 									opcionalForm.getForm().findField('Paginasopcional.etiquetas').setValue(obj.data.Paginasopcional.etiquetas);
 									opcionalForm.getForm().findField('Paginasopcional.urlfija').setValue(obj.data.Paginasopcional.urlfija);
 									opcionalForm.getForm().url='<?php echo $html->url('/paginasopcionales/modificar/') ?>';
@@ -103,14 +103,14 @@
 									opcionalForm.getForm().findField('Paginasopcional.id').setValue('');
 									opcionalForm.getForm().findField('Paginasopcional.publicado_inicio').setValue('');
 									opcionalForm.getForm().findField('Paginasopcional.publicado_final').setValue('');
-									opcionalForm.getForm().findField('Paginasopcional.idfoto').setValue('');
+									opcionalForm.getForm().findField('Paginasopcional.imagenpath').setValue('');
 									opcionalForm.getForm().findField('Paginasopcional.etiquetas').setValue('');
 									opcionalForm.getForm().findField('Paginasopcional.urlfija').setValue('');
 									
 									
 								}
-								opcionalForm.getForm().findField('Paginasopcional.idfoto').getStore().proxy.setUrl('<?php echo $html->url('/paginas/listadofotos') ?>',true);
-								opcionalForm.getForm().findField('Paginasopcional.idfoto').getStore().load({params:{id:obj.data.Pagina.id}});
+								opcionalForm.getForm().findField('Paginasopcional.imagenpath').getStore().proxy.setUrl('<?php echo $html->url('/paginas/listadofotos') ?>',true);
+								opcionalForm.getForm().findField('Paginasopcional.imagenpath').getStore().load({params:{id:obj.data.Pagina.id}});
 							}
 							
 							if (in_array('texto',parcial)||in_array('todo',parcial)){

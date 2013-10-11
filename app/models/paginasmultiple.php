@@ -65,19 +65,9 @@ class Paginasmultiple extends AppModel {
             )
 		)
 		,'resumen' => array(
-			'empty' => array(
-                'rule' => 'notEmpty'
-                ,'required' => true
-                ,'message' => 'Ingrese las el contenido'
-				,'last' => true
-            )
-            ,'maxlength' => array(
-                'rule' => array('maxLength', 500)
-                ,'message' => 'El resumen debe tener como máximo 500 caracteres'
-            )
-            ,'minlength' => array(
-                'rule' => array('minLength', 20)
-                ,'message' => 'El resumen debe tener como mínimo 20 caracteres'
+            'maxlength' => array(
+                'rule' => array('maxLength', 250)
+                ,'message' => 'El resumen debe tener como máximo 250 caracteres'
             )
 		)
 	);

@@ -32,20 +32,10 @@ class Paginasopcional extends AppModel {
                 ,'message' => 'El identificador de página debe ser un valor numérico'
             )
 		)
-		,'idfoto' => array(
-			'empty' => array(
-                'rule' => 'notEmpty'
-                ,'required' => true
-                ,'message' => 'Ingrese identificador de la foto'
-				,'last' => true
-            )
-            ,'maxlength' => array(
-                'rule' => array('maxLength', 2)
-                ,'message' => 'El identificador de la imágen debe tener como máximo 2 caracteres'
-            )
-            ,'maxlength' => array(
-                'rule' => 'numeric'
-                ,'message' => 'El identificador de la imágen debe ser un valor numérico'
+		,'imagenpath' => array(
+            'maxlength' => array(
+                'rule' => array('maxLength', 198)
+                ,'message' => 'la ruta de la imágen debe tener como máximo 198 caracteres'
             )
 		)
 		,'etiquetas' => array(

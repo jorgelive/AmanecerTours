@@ -130,7 +130,7 @@
 						,tagMatters: true
 						,blankText:'Ingrese el contenido'
 						,minLength : 20
-						,maxLength : 500
+						,maxLength : 9980
 						,iHeight:200
 						,iWidth:200
 						,msgTarget: 'under'
@@ -166,11 +166,9 @@
 					,editor: {
 						allowBlank:false
 						,xtype: 'tinymce'
-						,allowBlank: false
+						,allowBlank: true
 						,tagMatters: true
-						,blankText:'Ingrese el resumen'
-						,minLength : 20
-						,maxLength : 500
+						,maxLength : 250
 						,iHeight:200
 						,iWidth:230
 						,msgTarget: 'under'

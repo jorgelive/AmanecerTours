@@ -54,9 +54,9 @@
 					}]
 				},{
 					xtype: 'combo'
-					,name: 'Paginasopcional.idfoto'
+					,name: 'Paginasopcional.imagenpath'
 					,fieldLabel: 'Imagen a mostrar'
-					,hiddenName: 'Paginasopcional.idfoto'
+					,hiddenName: 'Paginasopcional.imagenpath'
 					,anchor: '100%'
 					,store: new Ext.data.JsonStore({
 						autoLoad: false
