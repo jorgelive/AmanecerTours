@@ -66,3 +66,5 @@ ul { list-style:none;}
 
 /*cake-sql-log*/
 .cake-sql-log {color:#d3d3d3;}
+
+.ui-widget-content{border: none;}

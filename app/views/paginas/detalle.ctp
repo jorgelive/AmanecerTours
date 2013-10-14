@@ -71,7 +71,7 @@
             <?php
             if($pagina['Pagina']['texto']='si'){
                 ?>
-                <div class="mceContentBody"><?php echo $pagina['Paginastexto']['contenido'];?></div>
+                <div class="mceContentBody ui-widget-content"><?php echo $pagina['Paginastexto']['contenido'];?></div>
                 <div class="clear"></div>
                 <?php
                 unset($pagina['Paginastexto']);
@@ -89,7 +89,7 @@
                        $tabs[$key.$subkey]=$pagina['Paginasmultiple']{$subkey};
                        $nroPredeterminado++;
                    endforeach;
-                }elseif(in_array($key,array('video','adjunto','contacto'))&&$valor=='si'){
+                }elseif(in_array($key,array('video','adjunto','contacto'))&&($valor=='si'||$valor==1)){
                     $tabs[$key]=$pagina['Paginas'.$key];
                     $tabPredeterminado{$key}=$nroPredeterminado;
                     $nroPredeterminado++;
@@ -98,6 +98,7 @@
             if(isset($tabs)&&!empty($tabs)){
 
             ?>
+
 
             <div id="tabs">
                 <ul>

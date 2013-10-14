@@ -62,8 +62,8 @@ class Pagina extends AppModel {
 				,'last' => true
             )
             ,'maxlength' => array(
-                'rule' => array('maxLength', 30)
-                ,'message' => 'El título debe tener como máximo 30 caracteres'
+                'rule' => array('maxLength', 60)
+                ,'message' => 'El título debe tener como máximo 60 caracteres'
             )
             ,'minlength' => array(
                 'rule' => array('minLength', 4)

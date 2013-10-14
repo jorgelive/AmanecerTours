@@ -56,8 +56,8 @@ class Paginasmultiple extends AppModel {
 				,'last' => true
             )
             ,'maxlength' => array(
-                'rule' => array('maxLength', 10000)
-                ,'message' => 'El contenido debe tener como máximo 10000 caracteres'
+                'rule' => array('maxLength', 20000)
+                ,'message' => 'El contenido debe tener como máximo 20000 caracteres'
             )
             ,'minlength' => array(
                 'rule' => array('minLength', 20)

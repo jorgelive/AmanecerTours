@@ -96,7 +96,7 @@ class PaginasController extends AppController {
 					$pagina['items']=$items;
 					
 				}
-				if(isset($pagina['Pagina'])&&!empty($pagina['Pagina'])&&$pagina['Pagina']['publicado']=='si'&&!empty($pagina['Pagina']['predeterminado'])){
+				if(isset($pagina['Pagina'])&&!empty($pagina['Pagina'])&&$pagina['Pagina']['publicado']=='si'){
 					//detalle
 					$this->set('pagina',$pagina);
 					$this->set('title_for_layout',$pagina['Pagina']['title']);

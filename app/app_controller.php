@@ -23,7 +23,7 @@ class AppController extends  Controller{
 		Configure::write('Menu.Inicio',array('tipo'=>'boton','texto'=>__('inicio',true),'url'=>'/paginas/index'));
 		//Configure::write('Menu.2',array('tipo'=>'tree','controller'=>'Paginaspaquetes','texto'=>'Paquetes'));
 		Configure::write('Menu.Pagina',array('tipo'=>'extractTree','textField'=>'title','accion'=>'detalle'));
-		Configure::write('Menu.Testimonio',array('tipo'=>'boton','texto'=>__('testimonios',true),'url'=>'/paginastestimonios/index'));
+		//Configure::write('Menu.Testimonio',array('tipo'=>'boton','texto'=>__('testimonios',true),'url'=>'/paginastestimonios/index'));
 
 	}
 

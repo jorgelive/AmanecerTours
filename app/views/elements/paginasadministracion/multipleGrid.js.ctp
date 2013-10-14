@@ -130,7 +130,7 @@
 						,tagMatters: true
 						,blankText:'Ingrese el contenido'
 						,minLength : 20
-						,maxLength : 9980
+						,maxLength : 20000
 						,iHeight:200
 						,iWidth:200
 						,msgTarget: 'under'
