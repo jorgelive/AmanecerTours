@@ -28,7 +28,7 @@ class PaginasController extends AppController {
 	}
 	
 	function index(){
-		Configure::write('debug',0);
+		//Configure::write('debug',2);
 		$this->layout='paginaindex';
 		$this->set('title_for_layout',__('pagina de inicio',true).' - '.Configure::read('Empresa.nombre'));
 
@@ -39,8 +39,7 @@ class PaginasController extends AppController {
 		$mostrarInicios=$this->__comprobarPublicacion($mostrarInicios,true);
 		$mostrarInicios=$this->__resumen($mostrarInicios,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 		$mostrarInicios=$this->__thumbImages($mostrarInicios,'Paginastexto.contenido',false);
-		$mostrarInicios=$this->__comprobarIdFoto($mostrarInicios);
-		$mostrarInicios=$this->__comprobarContactos($mostrarInicios);
+		$mostrarInicios=$this->__comprobarImagenPath($mostrarInicios);
 		$mostrarInicios=$this->__comprobarDependientes($mostrarInicios,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
 		$this->set('mostrarInicios',$mostrarInicios);
 		
@@ -51,8 +50,7 @@ class PaginasController extends AppController {
 		$promociones=$this->__comprobarPromocion($promociones,true);
 		$promociones=$this->__resumen($promociones,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 		$promociones=$this->__thumbImages($promociones,'Paginastexto.contenido',false);
-		$promociones=$this->__comprobarIdFoto($promociones);
-		$promociones = $this->__comprobarContactos($promociones);
+		$promociones=$this->__comprobarImagenPath($promociones);
 		$promociones = $this->__comprobarDependientes($promociones,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
 		$this->set('promociones',$promociones);
 		
@@ -72,15 +70,15 @@ class PaginasController extends AppController {
 	}
 	
 	function detalle($id=NULL){
-		//Configure::write('debug', 2);
 		$this->layout='paginadetalle';
 		$this->set('menuPagina',$this->__menu());
+
 		
 		if(!empty($id)){
 			$pagina = $this->Pagina->findById($id);
+            //print_r($pagina);
 			if (!empty($pagina)){
 				$pagina = $this->__comprobarPublicacion($pagina,true);
-				$pagina = $this->__comprobarContactos($pagina);
 				$pagina = $this->__comprobarPromocion($pagina);
 				$pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','multiple'=>'Paginasmultiple','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
 				$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
@@ -90,7 +88,6 @@ class PaginasController extends AppController {
 				
 				if(!empty($items)){
 					$items = $this->__comprobarPublicacion($items,true);
-					$items = $this->__comprobarContactos($items);
 					$items = $this->__comprobarPromocion($items);
 					$items = $this->__comprobarDependientes($items,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
 					$items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
@@ -224,16 +221,29 @@ class PaginasController extends AppController {
 			if($existe===false){
 				$data['Pagina']['predeterminado']='';
 			}
-
-			if(isset($data['Pagina']['id'])&&isset($data['Pagina']['predeterminado'])&&empty($data['Pagina']['predeterminado'])){
-				$children=$this->Pagina->find('first',array('conditions'=>array('parent_id'=>$data['Pagina']['id'])));
+			if(
+                (
+                    isset($pagina['Paginastexto'])
+                    &&isset($pagina['Paginastexto']['contenido'])
+                    &&!empty($pagina['Paginastexto']['contenido'])
+                )
+                ||
+                (
+                    isset($data['Pagina']['id'])
+                    &&isset($data['Pagina']['predeterminado'])
+                    &&!empty($data['Pagina']['predeterminado'])
+                )
+            ){
+                //todo: algo para invertir el condicional
+            }elseif(isset($data['Pagina']['id'])){
+                $children=$this->Pagina->find('first',array('conditions'=>array('parent_id'=>$data['Pagina']['id'])));
 				if(empty($children)){
 					$data['Pagina']['publicado']=0;
 				}
 				$data['Pagina']['mostrarinicio']=0;
 				$data['Pagina']['promocion']=0;
-				$data['Pagina']['contacto']=0;
 			}
+
 			if($caso=='modifydata'){
 				return $data;
 			}else{
@@ -265,9 +275,6 @@ class PaginasController extends AppController {
 
         foreach ($data as $numero => $dummy):
             $existe=false;
-
-
-
             if(isset($data{$numero}['Paginasopcional']['imagenpath'])&&!empty($data{$numero}['Paginasopcional']['imagenpath'])){
                 $imagenPath=$data{$numero}['Paginasopcional']['imagenpath'];
 
@@ -323,45 +330,6 @@ class PaginasController extends AppController {
         }
         return $data;
     }
-	
-
-	
-	function __comprobarContactos($data=NULL){
-		if(empty($data)){
-			return false;
-		}
-		if(!array_key_exists(0, $data)){
-			$data=array($data); 	
-			$extractAtFinish=TRUE;
-		}
-		foreach ($data as $numero => $dummy):
-			if(isset($data{$numero}['Pagina']['contacto'])){
-				if($data{$numero}['Pagina']['contacto']==1){
-					$data{$numero}['Pagina']['contacto']='si';
-					if(isset($data{$numero}['Paginascontacto'])&&!empty($data{$numero}['Paginascontacto'])){
-						if(empty($data{$numero}['Paginascontacto']['destinatario'])){
-							$data{$numero}['Paginascontacto']['destinatario']=Configure::read('Default.email');
-						}
-						if(empty($data{$numero}['Paginascontacto']['cco'])){
-							$data{$numero}['Paginascontacto']['cco']=Configure::read('Default.cco');
-						}
-					}else{
-						$data{$numero}['Paginascontacto']['destinatario']=Configure::read('Default.email');
-						$data{$numero}['Paginascontacto']['cco']=Configure::read('Default.cco');
-					}
-					$data{$numero}['Paginascontacto']['destinatario']=base64_encode($data{$numero}['Paginascontacto']['destinatario']);
-					$data{$numero}['Paginascontacto']['cco']=base64_encode($data{$numero}['Paginascontacto']['cco']);
-				}else{
-					$data{$numero}['Pagina']['contacto']='no';
-					$data{$numero}['Paginascontacto']=array();
-				}
-			}
-		endforeach;	
-		if(isset($extractAtFinish)&&$extractAtFinish===TRUE){
-			$data=$data[0];	
-		}
-		return $data;
-	}
 	
 	function __comprobarDependientes($data=NULL,$campos=array()){
 		if(empty($data)||empty($campos)){
@@ -586,16 +554,14 @@ class PaginasController extends AppController {
 			$pagina=$this->Pagina->findById($this->params['form']['id']);
 			$i=0;
 			foreach($tipos as $key => $nombre):
-				echo '/*';
-					print_r($pagina['Paginas'.$key]);
-				echo '*/';
 				if(
-					!empty($pagina['Pagina']{$key})&&(
-						(
-							!empty($pagina['Paginas'.$key])&&!array_key_exists('id',$pagina['Paginas'.$key])
-						)||(
-							!empty($pagina['Paginas'.$key])&&isset($pagina['Paginas'.$key]['id'])&&!empty($pagina['Paginas'.$key]['id'])
-						)||$key=='contacto' //todo: hacer un behavior para default values
+					!empty($pagina['Pagina']{$key})
+                    &&
+                    (
+						(!empty($pagina['Paginas'.$key])&&!array_key_exists('id',$pagina['Paginas'.$key]))
+                        ||
+                        (!empty($pagina['Paginas'.$key])&&isset($pagina['Paginas'.$key]['id'])&&!empty($pagina['Paginas'.$key]['id'])
+						)
 					)
 				){
 					$result['Tipos'][$i]['id']=$key;
@@ -603,7 +569,6 @@ class PaginasController extends AppController {
 					$i++;
 				}
 			endforeach;
-
 		}
 		if (isset($result)){
 			$this->set('result', $result);
@@ -660,7 +625,7 @@ class PaginasController extends AppController {
 	}
 	
 	function modificar() {
-		Configure::write('debug', 0);
+		Configure::write('debug', 2);
 		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
 		if (!empty($this->data)) {
 			$pagina=$this->Pagina->findById($this->data['Pagina']['id']);

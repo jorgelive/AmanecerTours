@@ -9,6 +9,15 @@ class Paginascontacto extends AppModel {
 			'type'=>'controlled'
 			,'mode'=>array('belongsto'=>'Pagina')
 		)
+        ,'Modresult'=>array(
+            'defaultvalue'=>array(
+                'campos'=>array(
+                    'destinatario'=>'ventas@amanecertours.com'
+                    ,'cco'=>'cco@amanecertours.com'
+                )
+                ,'booldependiente'=>'Pagina.contacto'
+            )
+        )
 	);
 	var $validate = array(
 		'pagina_id' => array(

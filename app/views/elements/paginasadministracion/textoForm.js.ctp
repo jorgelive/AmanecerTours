@@ -43,7 +43,7 @@
 					,tagMatters: true
 					,blankText:'Ingrese contenido'
 					,minLength : 0
-					,maxLengthText : 'El tamaño máximo es 300 caracteres'
+					,maxLengthText : 'El tamaño máximo es 350 caracteres'
 					,maxLength : 300
 					,iHeight:150
 					,iWidth:680

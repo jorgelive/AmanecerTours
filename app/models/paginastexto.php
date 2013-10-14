@@ -54,9 +54,9 @@ class Paginastexto extends AppModel {
 		)
 		,'resumen' => array(
 			'maxlength' => array(
-                'rule' => array('maxLength', 300)
+                'rule' => array('maxLength', 350)
                 ,'required' => true
-                ,'message' => 'El resumen debe tener como máximo 300 caracteres '
+                ,'message' => 'El resumen debe tener como máximo 350 caracteres '
             )
 		)
 	);

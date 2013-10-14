@@ -191,7 +191,7 @@ class FileBehavior extends ModelBehavior {
 		extract($this->settings[$model->name]);
 		$tempData = array();
 		foreach ($fields as $key=>$value) {
-			$field = ife(is_numeric($key), $value, $key);
+			$field = is_numeric($key)? $value : $key;
 			if (isset($model->data[$model->name][$field])) {
 				if ($this->__isUploadFile($model->data[$model->name][$field])){
 					if($value['type']=='imagen'){
@@ -218,7 +218,7 @@ class FileBehavior extends ModelBehavior {
 	function beforeSave(&$model) {
 		extract($this->settings[$model->name]);
 		foreach ($fields as $key=>$value) {
-			$field = ife(is_numeric($key), $value, $key);
+			$field = is_numeric($key) ? $value : $key;
 			if (isset($model->data[$model->name]['borrar_'.$field])) {
 				@ignore_user_abort(true);
 				if($model->data[$model->name]['borrar_'.$field]==1){
@@ -351,7 +351,7 @@ class FileBehavior extends ModelBehavior {
 			$ext=strtr($value[1],$this->contentsMaping);
 			$fileName=$value[0].'_'.$field.'.'.$ext;
 			$result['path']=$folderName.$fileName;
-			$result['icon']=$baseDir.DS.IMAGES_URL.'Filebehavior/'.$ext.'.png';
+			$result['icon']=$this->baseDir.DS.IMAGES_URL.'Filebehavior/'.$ext.'.png';
 			if($fields[$field]['type']=='imagen'){
 				if(isset($fields[$field]['thumbnail'])){
 					$thumb=$fields[$field]['thumbnail'];
@@ -422,7 +422,7 @@ class FileBehavior extends ModelBehavior {
 		}else{
 			$tipo=FILES_URL;
 		}
-		return  $baseDir.DS.$tipo.Inflector::camelize($modelName).DS.$record[$model->primaryKey].DS;
+		return  $this->baseDir.DS.$tipo.Inflector::camelize($modelName).DS.$record[$model->primaryKey].DS;
 	}
 	
 	function __getFullFolder(&$model, $field) {
@@ -432,7 +432,7 @@ class FileBehavior extends ModelBehavior {
 		}else{
 			$tipo=FILES_URL;
 		}
-		return  WWW_ROOT.$tipo.$baseDir.DS.Inflector::camelize($model->name).DS.$model->id.DS;	
+		return  WWW_ROOT.$tipo.$this->baseDir.DS.Inflector::camelize($model->name).DS.$model->id.DS;
 	}
 	
 	function __getPrefix($fieldParams) {

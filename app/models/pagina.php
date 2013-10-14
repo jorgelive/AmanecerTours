@@ -13,6 +13,7 @@ class Pagina extends AppModel {
 			,'display' => 'title'
 		)
 		,'Video'
+        ,'Modresult'
 	);
 	var $hasOne = array(
         'Paginasopcional' => array(

@@ -8,11 +8,11 @@ class VideoBehavior extends ModelBehavior {
 		if (!isset($settings['fields'])) $settings['fields']=array();
 		$fields=array();
 		foreach($settings['fields'] as $key=>$value) {
-			$field=ife(is_numeric($key),$value,$key);
+			$field=is_numeric($key) ? $value : $key;
 			if(!$model->hasField($field)) {
 				trigger_error('El campo "'.$field.'" no existe en el modelo "'.$model->name.'".', E_USER_WARNING);
 			}
-			$conf=ife(is_numeric($key),array(),$value);
+			$conf=is_numeric($key) ? array() : $value;
 			$fields[$field]=$conf;
 		}
 		$settings['fields']=$fields;
