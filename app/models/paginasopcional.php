@@ -38,6 +38,16 @@ class Paginasopcional extends AppModel {
                 ,'message' => 'la ruta de la imágen debe tener como máximo 198 caracteres'
             )
 		)
+        ,'duracion' => array(
+            'maxlength' => array(
+                'rule' => array('maxLength', 2)
+                ,'message' => 'El identificador de página debe tener como máximo 2 caracteres'
+            )
+            ,'numeric' => array(
+                'rule' => 'numeric'
+                ,'message' => 'El identificador de página debe ser un valor numérico'
+            )
+		)
 		,'etiquetas' => array(
 			'maxlength' => array(
                 'rule' => array('maxLength', 300)

@@ -10,7 +10,7 @@ class Paginasmultiple extends AppModel {
 			)
 		)
 		,'i18n' => array(
-			'fields' => array('title','contenido','resumen')
+			'fields' => array('title','contenido')
 			,'display' => 'title'
 		)
 	);
@@ -64,12 +64,22 @@ class Paginasmultiple extends AppModel {
                 ,'message' => 'El contenido debe tener como mínimo 20 caracteres'
             )
 		)
-		,'resumen' => array(
-            'maxlength' => array(
-                'rule' => array('maxLength', 250)
-                ,'message' => 'El resumen debe tener como máximo 250 caracteres'
+        ,'orden' => array(
+            'empty' => array(
+                'rule' => 'notEmpty'
+            ,'required' => true
+            ,'message' => 'Ingrese el numero de orden del texto'
+            ,'last' => true
             )
-		)
+        ,'maxlength' => array(
+                'rule' => array('maxLength', 2)
+            ,'message' => 'El identificador de página debe tener como máximo 2 caracteres'
+            )
+        ,'numeric' => array(
+                'rule' => 'numeric'
+            ,'message' => 'El identificador de página debe ser un valor numérico'
+            )
+        )
 	);
 	
 	function alias(){

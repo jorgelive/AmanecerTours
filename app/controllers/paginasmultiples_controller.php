@@ -39,7 +39,7 @@ class PaginasmultiplesController extends AppController{
 					$result['multiples'][$key]['title']=$multiple['Paginasmultiple']['title'];
 					$result['multiples'][$key]['pagina_id']=$multiple['Paginasmultiple']['pagina_id'];
 					$result['multiples'][$key]['contenido']=$multiple['Paginasmultiple']['contenido'];
-					$result['multiples'][$key]['resumen']=$multiple['Paginasmultiple']['resumen'];
+					$result['multiples'][$key]['orden']=$multiple['Paginasmultiple']['orden'];
 					$result['multiples'][$key]['idioma']=Configure::read('Config.language');
 				endforeach;
 			}else{
@@ -67,7 +67,7 @@ class PaginasmultiplesController extends AppController{
 						$result['message'] = 'El texto múltiple fue agregado';
 					}else{
 						$result['success'] = false;
-						$result['errors'] = 'Hubo un error al guardar el archivo multiple';
+						$result['errors'] = 'Hubo un error al guardar el texto multiple';
 					}
 				}else{
 					$result['success'] = false;

@@ -75,7 +75,15 @@
 					,emptyText: 'Seleccione foto a mostrar'
 					,selectOnFocus:true
 					,allowBlank: true
-				},{ 
+				},{
+                    xtype:'textfield'
+                    ,fieldLabel:'Duración'
+                    ,name:'Paginasopcional.duracion'
+                    ,anchor: '50%'
+                    ,allowBlank:true
+                    ,emptyText:'Sólo para excursiones'
+                    ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
+                },{
 					xtype:'textfield'
 					,fieldLabel:'Dirección fija'
 					,name:'Paginasopcional.urlfija'

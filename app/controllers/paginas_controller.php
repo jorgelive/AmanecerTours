@@ -29,7 +29,7 @@ class PaginasController extends AppController {
 	
 	function index(){
 		//Configure::write('debug',2);
-		$this->layout='paginaindex';
+		$this->layout='pagina';
 		$this->set('title_for_layout',__('pagina de inicio',true).' - '.Configure::read('Empresa.nombre'));
 
 		$this->set('menuPagina',$this->__menu());
@@ -70,7 +70,7 @@ class PaginasController extends AppController {
 	}
 	
 	function detalle($id=NULL){
-		$this->layout='paginadetalle';
+		$this->layout='pagina';
 		$this->set('menuPagina',$this->__menu());
 
 		

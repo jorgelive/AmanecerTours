@@ -33,6 +33,7 @@ class Pagina extends AppModel {
 		'Paginasmultiple' => array(
             'className' => 'Paginasmultiple'
             ,'dependent' => true
+            ,'order' => 'Paginasmultiple.orden ASC',
         )
         ,'Paginasimagen' => array(
             'className' => 'Paginasimagen'

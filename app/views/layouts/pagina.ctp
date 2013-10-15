@@ -21,9 +21,11 @@
 <body>
     <div id="main">
     <?php
-    echo $content_for_layout;
-    echo $this->element('footer');
-    echo $this->element('sql_dump');
+        echo $this->element('header');
+        echo $this->element('flashheader');
+        echo $content_for_layout;
+        echo $this->element('footer');
+        echo $this->element('sql_dump');
     ?>
     </div>
 </body>

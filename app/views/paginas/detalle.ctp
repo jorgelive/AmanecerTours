@@ -1,52 +1,3 @@
-<div id="header">
-    <div class="column col_1">
-        <img class="logo" src="/img/comun/logo.png" width="265" height="89" />
-    </div><!-- col_1 -->
-    <div class="column col_2">
-        <div class="row_1">
-
-
-        </div><!-- row_1  -->
-        <div class="row_2">
-            <?php
-            echo $this->element('menu');
-            ?>
-        </div><!-- row_2  -->
-    </div><!-- col_2 -->
-    <div class="clear"></div>
-</div><!-- header  -->
-
-<div id="flashHeader"></div>
-<script type="text/javascript">
-    $(document).ready(function(){
-        var stageH = 400/1900*$('#flashHeader').width();
-        $('#logo').css({'top':stageH-10})
-        $('#flashHeader').height(stageH);
-        $('#flashHeader').flash({
-            swf: '/flash/preview.swf?t=' + Date.parse(new Date())
-            ,width: '100%'
-            ,height: '100%'
-            ,flashvars: {
-                pathToFiles: ""
-                ,xmlPath: "/paginascabeceras/listarxml"
-            }
-            ,params: {
-                bgcolor: "#ffffff"
-                ,menu: "false"
-                ,scale: 'noScale'
-                ,wmode: "opaque"
-                ,allowfullscreen: "true"
-                ,allowScriptAccess: "always"
-            }
-            ,expressInstaller: '/flash/expressInstall.swf'
-        });
-    });
-    $(window).resize(function(){
-        var stageH = 400/1900*$('#flashHeader').width();
-        $('#logo').css({'top':stageH-10})
-        $('#flashHeader').height(stageH);
-    });
-</script>
 <div id="content">
     <div class="row_1">
         <div class="column col_1">
@@ -64,19 +15,43 @@
     <div class="row_2">
         <div class="column col_1">
 
-
-            <a><?php echo $pagina['Pagina']['title'];?></a>
-
-
-            <?php
-            if($pagina['Pagina']['texto']='si'){
-                ?>
-                <div class="mceContentBody ui-widget-content"><?php echo $pagina['Paginastexto']['contenido'];?></div>
-                <div class="clear"></div>
+            <div class="textRow">
                 <?php
-                unset($pagina['Paginastexto']);
-            }
-            ?>
+                $textColWidth=100;
+                if(isset($pagina['Paginasopcional'])&&!empty($pagina['Paginasopcional']['duracion'])){
+                    $textColWidth=90;
+                ?>
+                <div style="width:10%"class="duracionCol column">
+
+                    <div class="duracion">
+                        <div class="duracionNumero"><?php echo $pagina['Paginasopcional']['duracion'];?></div>
+                        <div class="duracionDias"><?php echo __('dias');?></div>
+                        <div class="clear">&nbsp;</div>
+                    </div>
+                    <div class="clear"></div>
+
+                </div>
+                <?php
+                }
+                ?>
+                <div style="width:<?php echo $textColWidth; ?>%" class="textCol column">
+
+                    <h1><?php echo $pagina['Pagina']['title'];?></h1>
+
+
+                    <?php
+                    if($pagina['Pagina']['texto']='si'){
+                        ?>
+                        <div class="mceContentBody texto"><?php echo $pagina['Paginastexto']['contenido'];?></div>
+                        <div class="clear"></div>
+                        <?php
+                        unset($pagina['Paginastexto']);
+                    }
+                    ?>
+                </div>
+
+            </div>
+            <div class="clear"></div>
 
             <?php
             $tipos=Configure::read('Default.tipos');

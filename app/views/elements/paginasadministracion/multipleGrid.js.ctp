@@ -69,14 +69,14 @@
 				},{
 					name: 'contenido'
 				},{
-					name: 'resumen'
+					name: 'orden'
 				},{
 					name: 'idioma'
 				}]
 				,remoteSort:true
 				,sortInfo: {
-					field: 'title'
-					,direction: 'DESC'
+					field: 'orden'
+					,direction: 'ASC'
 				}
 				,listeners:{
 					'beforeload': function(store, options) {
@@ -160,44 +160,17 @@
 					,sortable:true
 					,filter:true
 				},{
-					header: "Resumen"
-					,dataIndex: 'resumen'
-					,width: 230
-					,editor: {
-						allowBlank:false
-						,xtype: 'tinymce'
-						,allowBlank: true
-						,tagMatters: true
-						,maxLength : 250
-						,iHeight:200
-						,iWidth:230
-						,msgTarget: 'under'
-						,labelSeparator: ''
-						,tinymceSettings: {
-							theme: "advanced"
-							,plugins: "paste,nonbreaking,insertdatetime"
-							,theme_advanced_resizing : true
-							,theme_advanced_buttons1: "bold,italic,underline,|,cut,copy,paste,pasteword"
-							,theme_advanced_buttons2: "insertdate,inserttime,|,bullist,numlist,|,cleanup,code"
-							,theme_advanced_buttons3:""
-							,theme_advanced_toolbar_location: "bottom"
-							,theme_advanced_toolbar_align: "left"
-							,theme_advanced_statusbar : false
-							,extended_valid_elements: "a[name],hr[class|width|size|noshade]"
-							,content_css: "/css/tinyMCE_content.css"
-							,accessibility_focus: false
-							,accessibility_warnings : false
-						}
-						,listeners:{
-							'editorcreated':function(){
-								multipleEditor.verifyLayout.defer(100,multipleEditor);
-								this.onResize(multipleGrid.getColumnModel().getColumnWidth(5),200)
-							}
-						}
-					}
-					,sortable:true
-					,filter:true
-				}]
+                    header: "Orden"
+                    ,dataIndex: 'orden'
+                    ,width: 60
+                    ,editor: {
+                        allowBlank:false
+                        ,blankText:'Ingrese el el orden del texto'
+                        ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasmultiples/validar/') ?>'})]
+                    }
+                    ,sortable:true
+                    ,filter:true
+                }]
 				,plugins: [multipleEditor,new Ext.ux.grid.FilterRow()]
 				,stripeRows: true
 				,autoExpandColumn: 'contenido'

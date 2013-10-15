@@ -1,0 +1,17 @@
+/*content*/
+#content .row_1 {width:100%}
+#content .row_1 .col_1{width:75%;}
+#content .row_1 .col_2{width:25%;}
+
+
+
+#content .row_2 .col_1 {width:75%;}
+#content .row_2 .col_1 .textRow {}
+#content .row_2 .col_1 .textRow .duracionCol{}
+#content .row_2 .col_1 .textRow .duracionCol .duracion{color:#fff; text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444; background: no-repeat top center url(../img/comun/bg-dias.png);}
+#content .row_2 .col_1 .textRow .duracionCol .duracion .duracionNumero{font-size: 2.5em; line-height: 1em; margin: 0 auto; width: 80%; text-align: center; }
+#content .row_2 .col_1 .textRow .duracionCol .duracion .duracionDias{font-size: 1.3em; margin: 0 auto; width: 80%; text-align: center;}
+#content .row_2 .col_1 .textRow .textCol{}
+#content .row_2 .col_1 .textRow .textCol .texto{margin:10px 0;}
+
+#content .row_2 .col_2{width:25%;}
