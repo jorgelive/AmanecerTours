@@ -27,93 +27,89 @@ class PaginasController extends AppController {
 		);
 	}
 	
-	function index(){
-		//Configure::write('debug',2);
-		$this->layout='pagina';
-		$this->set('title_for_layout',__('pagina de inicio',true).' - '.Configure::read('Empresa.nombre'));
+	function index($id=NULL){
 
-		$this->set('menuPagina',$this->__menu());
-		
-		//mostrar en inicio
-		$mostrarInicios=$this->Pagina->find('all',array('conditions'=>array('Pagina.publicado'=>1,'Pagina.mostrarinicio'=>1),'order' => 'Pagina.lft ASC'));
-		$mostrarInicios=$this->__comprobarPublicacion($mostrarInicios,true);
-		$mostrarInicios=$this->__resumen($mostrarInicios,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
-		$mostrarInicios=$this->__thumbImages($mostrarInicios,'Paginastexto.contenido',false);
-		$mostrarInicios=$this->__comprobarImagenPath($mostrarInicios);
-		$mostrarInicios=$this->__comprobarDependientes($mostrarInicios,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
-		$this->set('mostrarInicios',$mostrarInicios);
-		
-		//promocion
-		$this->Pagina->unBindModel(array('hasOne' => array('Paginascontacto'),'hasMany' => array('Paginasimagen','Paginasvideo','Paginasadjunto')));
-		$promociones=$this->Pagina->find('all',array('conditions'=>array('Pagina.promocion'=>1),'order' => 'Pagina.lft ASC'));
-		$promociones=$this->__comprobarPublicacion($promociones,true);
-		$promociones=$this->__comprobarPromocion($promociones,true);
-		$promociones=$this->__resumen($promociones,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
-		$promociones=$this->__thumbImages($promociones,'Paginastexto.contenido',false);
-		$promociones=$this->__comprobarImagenPath($promociones);
-		$promociones = $this->__comprobarDependientes($promociones,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
-		$this->set('promociones',$promociones);
-		
-		//enlaces
-		$enlaces=$this->Paginasenlace->find('all',array('order'=>'Paginasenlace.lft ASC'));
-		$this->set('enlaces',$enlaces);
-		
-		//noticias
-		$noticias=$this->Paginasnoticia->find('all',array('order'=>'Paginasnoticia.fecha DESC'));
-		$noticias=$this->__resumen($noticias,'Paginasnoticia.contenido',400);
-		$this->set('noticias',$noticias);
-		
-		//testimonios
-		$testimonios=$this->Paginastestimonio->find('all',array('order'=>'Paginastestimonio.fecha DESC'));
-		$testimonios=$this->__resumen($testimonios,'Paginastestimonio.contenido');
-		$this->set('testimonios',$testimonios);
-	}
-	
-	function detalle($id=NULL){
-		$this->layout='pagina';
+
+        $this->layout='pagina';
 		$this->set('menuPagina',$this->__menu());
 
-		
-		if(!empty($id)){
-			$pagina = $this->Pagina->findById($id);
-            //print_r($pagina);
-			if (!empty($pagina)){
-				$pagina = $this->__comprobarPublicacion($pagina,true);
-				$pagina = $this->__comprobarPromocion($pagina);
-				$pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','multiple'=>'Paginasmultiple','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
-				$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
-				$pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
-                $pagina = $this->__comprobarImagenPath($pagina);
-				$items=$this->Pagina->find('all',array('conditions'=>array('parent_id'=>$id)));
-				
-				if(!empty($items)){
-					$items = $this->__comprobarPublicacion($items,true);
-					$items = $this->__comprobarPromocion($items);
-					$items = $this->__comprobarDependientes($items,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
-					$items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
-					$items = $this->__thumbImages($items,'Paginastexto.contenido',true);
-                    $items = $this->__comprobarImagenPath($pagina);
-					$pagina['items']=$items;
-					
-				}
-				if(isset($pagina['Pagina'])&&!empty($pagina['Pagina'])&&$pagina['Pagina']['publicado']=='si'){
-					//detalle
-					$this->set('pagina',$pagina);
-					$this->set('title_for_layout',$pagina['Pagina']['title']);
-					
-					//enlaces
-					$enlaces=$this->Paginasenlace->find('all',array('order'=>'Paginasenlace.lft ASC'));
-					$this->set('enlaces',$enlaces);
-				}else{
-					$this->redirect(array('controller'=>'paginas','action'=>'index'));
-				}
-				
-			}else{
-				$this->redirect(array('controller'=>'paginas','action'=>'index'));
-			}
-		}else{
-			$this->redirect(array('controller'=>'paginas','action'=>'index'));
-		}
+        $start=$this->Pagina->find('first',array('conditions' => array('Pagina.publicado' => 1),'recursive'=>-1,'order'=>array('Pagina.lft ASC')));
+
+		if(empty($id)||(isset($id)&&$id==$start['Pagina']['id'])){
+            $id=$start['Pagina']['id'];
+            $isStart=true;
+        }
+        $pagina = $this->Pagina->findById($id);
+        if (!empty($pagina)){
+            $pagina = $this->__comprobarPublicacion($pagina,true);
+            $pagina = $this->__comprobarPromocion($pagina);
+            $pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','multiple'=>'Paginasmultiple','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+            $pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
+            $pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
+            $pagina = $this->__comprobarImagenPath($pagina);
+            $items=$this->Pagina->find('all',array('conditions'=>array('parent_id'=>$id)));
+
+            if(!empty($items)){
+                $items = $this->__comprobarPublicacion($items,true);
+                $items = $this->__comprobarPromocion($items);
+                $items = $this->__comprobarDependientes($items,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                $items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
+                $items = $this->__thumbImages($items,'Paginastexto.contenido',true);
+                $items = $this->__comprobarImagenPath($pagina);
+                $pagina['items']=$items;
+
+            }
+            if(isset($pagina['Pagina'])&&!empty($pagina['Pagina'])&&$pagina['Pagina']['publicado']=='si'){
+                //detalle
+                $this->set('pagina',$pagina);
+                $this->set('title_for_layout',$pagina['Pagina']['title']);
+
+                //enlaces
+                $enlaces=$this->Paginasenlace->find('all',array('order'=>'Paginasenlace.lft ASC'));
+                $this->set('enlaces',$enlaces);
+
+                if(isset($isStart)){
+                    //mostrar en inicio
+                    $mostrarInicios=$this->Pagina->find('all',array('conditions'=>array('Pagina.publicado'=>1,'Pagina.mostrarinicio'=>1),'order' => 'Pagina.lft ASC'));
+                    $mostrarInicios=$this->__comprobarPublicacion($mostrarInicios,true);
+                    $mostrarInicios=$this->__resumen($mostrarInicios,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+                    $mostrarInicios=$this->__thumbImages($mostrarInicios,'Paginastexto.contenido',false);
+                    $mostrarInicios=$this->__comprobarImagenPath($mostrarInicios);
+                    $mostrarInicios=$this->__comprobarDependientes($mostrarInicios,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                    $this->set('mostrarInicios',$mostrarInicios);
+
+                    //promocion
+                    $this->Pagina->unBindModel(array('hasOne' => array('Paginascontacto'),'hasMany' => array('Paginasimagen','Paginasvideo','Paginasadjunto')));
+                    $promociones=$this->Pagina->find('all',array('conditions'=>array('Pagina.promocion'=>1),'order' => 'Pagina.lft ASC'));
+                    $promociones=$this->__comprobarPublicacion($promociones,true);
+                    $promociones=$this->__comprobarPromocion($promociones,true);
+                    $promociones=$this->__resumen($promociones,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+                    $promociones=$this->__thumbImages($promociones,'Paginastexto.contenido',false);
+                    $promociones=$this->__comprobarImagenPath($promociones);
+                    $promociones = $this->__comprobarDependientes($promociones,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                    $this->set('promociones',$promociones);
+
+                    //noticias
+                    $noticias=$this->Paginasnoticia->find('all',array('order'=>'Paginasnoticia.fecha DESC'));
+                    $noticias=$this->__resumen($noticias,'Paginasnoticia.contenido',400);
+                    $this->set('noticias',$noticias);
+
+                    //testimonios
+                    $testimonios=$this->Paginastestimonio->find('all',array('order'=>'Paginastestimonio.fecha DESC'));
+                    $testimonios=$this->__resumen($testimonios,'Paginastestimonio.contenido');
+                    $this->set('testimonios',$testimonios);
+
+                }
+
+
+            }else{
+                $this->redirect(array('controller'=>'paginas','action'=>'index'));
+            }
+
+        }else{
+            $this->redirect(array('controller'=>'paginas','action'=>'index'));
+        }
+
 	}
 	
 	function __comprobarPromocion($data,$borrar=false){
