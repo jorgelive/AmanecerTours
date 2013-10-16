@@ -61,6 +61,9 @@ class PaginasController extends AppController {
             }
             if(isset($pagina['Pagina'])&&!empty($pagina['Pagina'])&&$pagina['Pagina']['publicado']=='si'){
                 //detalle
+                if(isset($isStart)){
+                    $pagina['Pagina']['isStart']=true;
+                }
                 $this->set('pagina',$pagina);
                 $this->set('title_for_layout',$pagina['Pagina']['title']);
 
@@ -69,6 +72,7 @@ class PaginasController extends AppController {
                 $this->set('enlaces',$enlaces);
 
                 if(isset($isStart)){
+
                     //mostrar en inicio
                     $mostrarInicios=$this->Pagina->find('all',array('conditions'=>array('Pagina.publicado'=>1,'Pagina.mostrarinicio'=>1),'order' => 'Pagina.lft ASC'));
                     $mostrarInicios=$this->__comprobarPublicacion($mostrarInicios,true);
