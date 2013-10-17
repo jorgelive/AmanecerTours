@@ -80,6 +80,7 @@ class PaginasController extends AppController {
                     $mostrarInicios=$this->__thumbImages($mostrarInicios,'Paginastexto.contenido',false);
                     $mostrarInicios=$this->__comprobarImagenPath($mostrarInicios);
                     $mostrarInicios=$this->__comprobarDependientes($mostrarInicios,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                    //print_r($mostrarInicios);
                     $this->set('mostrarInicios',$mostrarInicios);
 
                     //promocion
@@ -306,6 +307,11 @@ class PaginasController extends AppController {
                 }
             }
             if($existe===false){
+                if(!isset($data{$numero}['Paginasopcional']['id'])){
+                    $data{$numero}['Paginasopcional']['id']=1;
+                    $data{$numero}['Paginasopcional']['pagina_id']=$data{$numero}['Pagina']['id'];
+
+                }
                 if(isset($data{$numero}['Paginastexto']['contenido_imagenes'][0]['url'])){
                     $rutaCompleta=substr_replace($data{$numero}['Paginastexto']['contenido_imagenes'][0]['url'], WWW_ROOT, 0, 1);
                     if(strpos($rutaCompleta,APP)===0&&file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
@@ -321,7 +327,7 @@ class PaginasController extends AppController {
                 }
             }
             if($existe===false){
-                unset($data{$numero}['Paginasopcional']['imagenpath']);
+                $data{$numero}['Paginasopcional']['imagenpath']=Configure::read('Default.imgNotAvailable');
             }
 
         endforeach;
@@ -347,8 +353,7 @@ class PaginasController extends AppController {
 							$data{$numero}['Pagina']{$campo}='si';
 						}elseif(isset($data{$numero}{$tabla}['id'])&&!empty($data{$numero}{$tabla}['id'])){
 							$data{$numero}['Pagina']{$campo}='si';
-							
-						}else{
+    				}else{
 							$data{$numero}['Pagina']{$campo}='no';
 						}
 					}else{
@@ -388,7 +393,6 @@ class PaginasController extends AppController {
 	}
 	
 	function administracion($id=NULL){
-		Configure::write('debug', 0);
 		$this->set('title_for_layout',$this->__getTitulo($this->modelNames[0]));
 		if($id!=NULL){
 			$parents = $this->Pagina->getpath($id);
@@ -398,7 +402,6 @@ class PaginasController extends AppController {
 	}
 	
 	function getnodes() {
-		Configure::write('debug', 0);
 		if (isset($this->params['form']['node'])){
 			if ($this->params['form']['node']=='root'){$this->params['form']['node']=NULL;}
 			$opcionales=$this->Pagina->Paginasopcional->find('all',array('recursive'=>-1));
@@ -452,7 +455,6 @@ class PaginasController extends AppController {
 	}
 	
 	function reorder() {
-		Configure::write('debug', 0);
 		if (isset($this->params['form']['node'])&&isset($this->params['form']['delta'])){
 			$node = intval($this->params['form']['node']);
 			$delta = intval($this->params['form']['delta']);
@@ -484,7 +486,6 @@ class PaginasController extends AppController {
 	}
 	
 	function reparent(){
-		Configure::write('debug', 0);
 		if (isset($this->params['form']['node'])&&isset($this->params['form']['parent'])&&isset($this->params['form']['position'])){
 			$node = intval($this->params['form']['node']);
 			$parent = intval($this->params['form']['parent']);
@@ -521,7 +522,6 @@ class PaginasController extends AppController {
 	}
 
 	function validar() {
-		Configure::write('debug', 0);
 		if (isset($this->params['form']['field'])){
 			$result=$this->__validarCampo($this->params['form']['field']);
 		}
@@ -530,7 +530,6 @@ class PaginasController extends AppController {
     }
 	
 	function listadofotos() {
-		Configure::write('debug', 0);
 		if (isset($this->params['form']['id'])){
 			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional','Paginascontacto'),'hasMany'=>array('Paginasimagen','Paginasvideo','Paginasadjunto','Paginaspromocion')));
 			$pagina=$this->Pagina->findById($this->params['form']['id']);
@@ -547,7 +546,6 @@ class PaginasController extends AppController {
     }
 	
 	function listadotipos() {
-		Configure::write('debug', 0);
 		$tipos=Configure::read('Default.tipos');
 		if (isset($this->params['form']['id'])){
 			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional'),'hasMany'=>array('Paginaspromocion','Paginasimagen')));
@@ -625,7 +623,6 @@ class PaginasController extends AppController {
 	}
 	
 	function modificar() {
-		Configure::write('debug', 2);
 		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
 		if (!empty($this->data)) {
 			$pagina=$this->Pagina->findById($this->data['Pagina']['id']);
@@ -658,7 +655,6 @@ class PaginasController extends AppController {
 	}
 	
 	function borrar() {
-		Configure::write('debug', 0);
 		if (isset($this->params['form']['id'])){
 			$pagina = $this->Pagina->findById($this->params['form']['id']);
 			if (empty($pagina)) {

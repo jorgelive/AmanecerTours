@@ -35,7 +35,7 @@ ul { list-style:none;}
 
 /*header*/
 #header {}
-#header .col_1 {width:350px;}
+#header .col_1 {width:320px;}
 #header .col_1 .logo {margin:20px 5px 15px 5px;}
 #header .col_1 h1{}
 
@@ -43,9 +43,6 @@ ul { list-style:none;}
 #header .col_2 .row_1{height: 60px; margin-top: 20px;}
 #header .col_2 .row_2{}
 #header .col_2 .row_2 #menu {width:100%; height:50px;}
-
-
-
 
 /*flash header*/
 #flashHeader {margin-bottom:20px;}
@@ -64,6 +61,6 @@ ul { list-style:none;}
 #footer .col_2 {width:8%}
 
 /*cake-sql-log*/
-.cake-sql-log {color:#d3d3d3;}
+.cake-sql-log {color:#939393;}
 
 .ui-widget-content{border: none;}
