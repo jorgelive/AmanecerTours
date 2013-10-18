@@ -34,18 +34,18 @@ ul { list-style:none;}
 #flash_header {width:100%;}
 
 /*header*/
-#header {}
-#header .col_1 {width:320px;}
-#header .col_1 .logo {margin:20px 5px 15px 5px;}
-#header .col_1 h1{}
+div#main div#header {}
+div#main div#header div.col_1 {width:320px;}
+div#main div#header div.col_1 div.logo {margin:20px 5px 15px 5px;}
+div#main div#header div.col_1 h1{}
 
-#header .col_2 {}
-#header .col_2 .row_1{height: 60px; margin-top: 20px;}
-#header .col_2 .row_2{}
-#header .col_2 .row_2 #menu {width:100%; height:50px;}
+div#main div#header div.col_2 {}
+div#main div#header div.col_2 div.row_1{height: 60px; margin-top: 20px;}
+div#main div#header div.col_2 div.row_2{}
+div#main div#header div.col_2 div.row_2 div#menu {width:100%; height:50px;}
 
 /*flash header*/
-#flashHeader {margin-bottom:20px;}
+div#main div#flashHeader {margin-bottom:20px;}
 
 #flashMessage{margin:60px 0 0 1%; padding:7px .5% 7px .5%; width:45%; float: right;}
 
@@ -56,11 +56,14 @@ ul { list-style:none;}
 
 
 /*footer*/
-#footer { background:#243A56; color:#fff; height:125px; text-align:center; padding: 15px; line-height:1.25em;}
-#footer .col_1 {width:91%}
-#footer .col_2 {width:8%}
+div#main div#footer { background:#243A56; color:#fff; height:125px; text-align:center; padding: 15px; line-height:1.25em;}
+div#main div#footer .col_1 {width:91%}
+div#main div#footer .col_2 {width:8%}
 
 /*cake-sql-log*/
 .cake-sql-log {color:#939393;}
 
 .ui-widget-content{border: none;}
+
+/*
+div#main div#content div.row_2 div.column div#tabs.ui-tabs ul.ui-tabs-nav li.ui-state-default a#ui-id-3.ui-tabs-anchor*/

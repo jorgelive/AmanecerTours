@@ -164,6 +164,27 @@
             &nbsp;
         </div><!--col_1 -->
         <div class="column col_2">
+            <?php
+            if(!empty($mostrarRelateds)&&!isset($pagina['Pagina']['isStart'])){
+                foreach($mostrarRelateds as $mostrarRelated):
+                    ?>
+                    <a class="divVinculo" href="/paginas/index/<?php echo $mostrarRelated['Pagina']['id'].'/idioma:'.Configure::read('Config.language') ;?>">
+                        <div class="padding ui-widget-content ui-corner-all p-<?php echo $mostrarRelated['Pagina']['predeterminado'];?>">
+                    
+                            <?php
+                            $height='70';
+                            $width='70';
+                            $crop='C';
+                            ?>
+                            <img src="/thumbs/index/?src=<?php echo $mostrarRelated['Paginasopcional']['imagenpath'];?>&h=<?php echo $height;?>&w=<?php echo $width;?>&zc=<?php echo $crop;?>" />
+                            <p><?php echo $mostrarRelated['Pagina']['title'];?></p>
+                        </div>
+                    </a>
+                <?php
+                endforeach;
+            }
+            ?>
+            &nbsp;
 
         </div><!--col_2 -->
         <div class="clear"></div>
@@ -171,7 +192,7 @@
     <div class="row_3">
         <div class="column col_1">
             <?php
-            if(!empty($mostrarInicios)){
+            if(!empty($mostrarInicios)&&isset($pagina['Pagina']['isStart'])){
                 foreach($mostrarInicios as $mostrarinicio):
                     ?>
                     <a class="divVinculo" href="/paginas/index/<?php echo $mostrarinicio['Pagina']['id'].'/idioma:'.Configure::read('Config.language') ;?>">
@@ -187,9 +208,7 @@
                                     <img src="/thumbs/index/?src=<?php echo $mostrarinicio['Paginasopcional']['imagenpath'];?>&h=<?php echo $height;?>&w=<?php echo $width;?>&zc=<?php echo $crop;?>" />
                                 <?php
                                 echo substr_replace($mostrarinicio['Paginastexto']['resumen'],'...',-4,0);
-                                ?>
 
-                            <?php
                             }else{
                                 if($mostrarinicio['Pagina']['predeterminado']=='video'){
                                     for($i=0;$i<4;$i++){

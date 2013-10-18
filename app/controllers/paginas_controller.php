@@ -71,6 +71,31 @@ class PaginasController extends AppController {
                 $enlaces=$this->Paginasenlace->find('all',array('order'=>'Paginasenlace.lft ASC'));
                 $this->set('enlaces',$enlaces);
 
+                //mostrar en inicio
+                $mostrarRelateds=$this->Pagina->find(
+                    'all'
+                    ,array(
+                        'conditions' => array(
+                            'Pagina.publicado' => 1
+                            ,'or' => array(
+                                'and' =>array(
+                                    array('Pagina.parent_id' => $pagina['Pagina']['parent_id'])
+                                    ,array("not"=> array('Pagina.parent_id' => null))
+                                )
+                                ,array('Pagina.parent_id' => $pagina['Pagina']['id'])
+                            )
+                        )
+                        ,'order' => 'Pagina.lft ASC'
+                    )
+                );
+                $mostrarRelateds=$this->__comprobarPublicacion($mostrarRelateds,true);
+                $mostrarRelateds=$this->__resumen($mostrarRelateds,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+                $mostrarRelateds=$this->__thumbImages($mostrarRelateds,'Paginastexto.contenido',false);
+                $mostrarRelateds=$this->__comprobarImagenPath($mostrarRelateds);
+                $mostrarRelateds=$this->__comprobarDependientes($mostrarRelateds,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                //print_r($mostrarInicios);
+                $this->set('mostrarRelateds',$mostrarRelateds);
+
                 if(isset($isStart)){
 
                     //mostrar en inicio
