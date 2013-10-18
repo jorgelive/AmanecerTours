@@ -169,7 +169,7 @@
                 foreach($mostrarRelateds as $mostrarRelated):
                     ?>
                     <a class="divVinculo" href="/paginas/index/<?php echo $mostrarRelated['Pagina']['id'].'/idioma:'.Configure::read('Config.language') ;?>">
-                        <div class="padding ui-widget-content ui-corner-all p-<?php echo $mostrarRelated['Pagina']['predeterminado'];?>">
+                        <div class="padding ui-widget-content ui-corner-all related">
                     
                             <?php
                             $height='70';
@@ -177,7 +177,8 @@
                             $crop='C';
                             ?>
                             <img src="/thumbs/index/?src=<?php echo $mostrarRelated['Paginasopcional']['imagenpath'];?>&h=<?php echo $height;?>&w=<?php echo $width;?>&zc=<?php echo $crop;?>" />
-                            <p><?php echo $mostrarRelated['Pagina']['title'];?></p>
+                            <span class="texto"><?php echo $mostrarRelated['Pagina']['title'];?></span>
+                            <div class="clear"></div>
                         </div>
                     </a>
                 <?php

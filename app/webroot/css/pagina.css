@@ -1,11 +1,12 @@
 /*content*/
-div#main div#content div.row_1 {width:100%}
-div#main div#content div.row_1 div.col_1{width:75%;}
-div#main div#content div.row_1 div.col_2{width:25%;}
+
+div#main div#content div.col_1{width:75%;}
+div#main div#content div.col_2{width:23%; margin-left:2%;}
 
 
+div#main div#content div.row_1,div#main div#content div.row_2, div#main div#content div.row_3{width:100%}
 
-div#main div#content div.row_2 div.col_1 {width:75%;}
+div#main div#content div.row_2 div.col_1 {}
 div#main div#content div.row_2 div.col_1 .textRow {}
 div#main div#content div.row_2 div.col_1 .textRow .duracionCol{}
 div#main div#content div.row_2 div.col_1 .textRow .duracionCol .duracion{color:#fff; text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444; background: no-repeat top center url(../img/comun/bg-dias.png);}
@@ -14,4 +15,6 @@ div#main div#content div.row_2 div.col_1 .textRow .duracionCol .duracion .duraci
 div#main div#content div.row_2 div.col_1 .textRow .textCol{}
 div#main div#content div.row_2 div.col_1 .textRow .textCol .texto{margin:10px 0;}
 
-div#main div#content div.row_2 div.col_2{width:25%;}
+div#main div#content div.row_2 div.col_2{}
+div#main div#content div.row_2 div.column a.divVinculo div.related{margin-bottom: 10px;}
+div#main div#content div.row_2 div.column a.divVinculo div.related span.texto{display:block; float:right; width: 130px;}
