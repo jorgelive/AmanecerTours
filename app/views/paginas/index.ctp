@@ -209,6 +209,28 @@
                     endforeach;
                 }
                 ?>
+                <?php
+                if(isset($pagina['Pagina']['imagen'])&&$pagina['Pagina']['imagen']=='si'&&!empty($pagina['Paginasimagen'])){
+                    ?>
+                    <div class="imagenes">
+                    <?php
+                    foreach($pagina['Paginasimagen'] as $imagen):
+                        $height='150';
+                        $width='220';
+                        $crop='C';
+                        ?>
+
+                            <div class="item">
+                                <img src="/thumbs/index/?src=<?php echo $imagen['imagen']['path'];?>&h=<?php echo $height;?>&w=<?php echo $width;?>&zc=<?php echo $crop;?>" />
+                                <div class="clear"></div>
+                            </div>
+                        <?php
+                    endforeach;
+                    ?>
+                    </div>
+                    <?php
+                }
+                ?>
                 &nbsp;
 
             </div><!--col_2 -->
@@ -315,7 +337,7 @@
                                     $active = $('.rotatorPaging a.active').next();
                                     if ( $active.length === 0) {$active = $('.rotatorPaging a:first');}
                                     rotate();
-                                }, 70000000); // este es el valor que define la velocidad (7 segundos)
+                                }, 7000); // este es el valor que define la velocidad (7 segundos)
                             };
                             rotateSwitch();
                             $(".rotatorContent a").hover(function() {clearInterval(play);}, function() {rotateSwitch();});

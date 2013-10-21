@@ -224,7 +224,7 @@ class FileBehavior extends ModelBehavior {
 				if($model->data[$model->name]['borrar_'.$field]==1){
 					$model->data[$model->name][$field]='';
 					$folderPath=$this->__getFullFolder($model, $field);
-					uses ('folder'); 
+					uses ('folder');
 					$folder = &new Folder($path = $folderPath, $create = false);
 					if ($folder!==false) {
 						@$folder->delete($folder->pwd());

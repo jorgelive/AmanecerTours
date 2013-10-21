@@ -1,7 +1,7 @@
 <div id="flashHeader"></div>
 <script type="text/javascript">
     $(document).ready(function(){
-        var stageH = 400/1900*$('#flashHeader').width();
+        var stageH = 400/1440*$('#flashHeader').width();
         $('#logo').css({'top':stageH-10})
         $('#flashHeader').height(stageH);
         $('#flashHeader').flash({
@@ -24,7 +24,7 @@
         });
     });
     $(window).resize(function(){
-        var stageH = 400/1900*$('#flashHeader').width();
+        var stageH = 400/1440*$('#flashHeader').width();
         $('#logo').css({'top':stageH-10})
         $('#flashHeader').height(stageH);
     });

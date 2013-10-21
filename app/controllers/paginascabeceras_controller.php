@@ -102,6 +102,8 @@ class PaginascabecerasController extends AppController {
 			if(Configure::read('Empresa.language')!=Configure::read('Config.language')){
 				$this->Paginascabecera->unbindValidation('remove', array('imagen','title','texto'), false);
 			}
+            unset($this->data['Paginascabecera']['imagen']);
+            $this->Paginascabecera->unbindValidation('remove', array('imagen'), false);
 			$this->Paginascabecera->set($this->data);
 			if ($this->Paginascabecera->validates()){
 				if ($this->Paginascabecera->save($this->data)){

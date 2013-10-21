@@ -28,7 +28,7 @@ div#flashHeader{width:100%;}
 /*header*/
 div#header {}
 div#header div.col_1 {width:320px;}
-div#header div.col_1 div.logo {margin:20px 5px 15px 5px;}
+div#header div.col_1 img.logo {margin:20px 5px 15px 5px;}
 div#header div.col_1 h1{}
 
 div#header div.col_2 {}
@@ -89,12 +89,15 @@ div#content div.row_2 div.col_2{}
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content{color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content:hover{border-color: #e6a003; background: #142031;}
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content span.texto{display:block; float:right; width: 130px;}
+div#content div.row_2 div.col_2 div.imagenes{}
+div#content div.row_2 div.col_2 div.imagenes div.item{margin-bottom:10px;}
+div#content div.row_2 div.col_2 div.imagenes div.item img{border-radius: 10px;}
 
 div#content div.row_3 div.col_1 div.rotatorView {position: relative; margin: 10px 0 10px 0;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow { overflow: hidden; position: relative;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent { left: 0; position: absolute; top: 0; }
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem { border-width:7px; border-color: #e6a003; float: left; overflow: hidden;}
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div{color:#fff; position:relative; bottom:190px;left:0px; height:90px; padding:10px;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div{color:#fff; position:relative; bottom:200px;left:0px; height:90px; padding:10px;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.back {opacity: 0.5; bottom:90px; background: #000;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div h2 {padding:0 0 10px 0;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div p.resumen {}
