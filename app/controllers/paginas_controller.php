@@ -43,7 +43,7 @@ class PaginasController extends AppController {
         if (!empty($pagina)){
             $pagina = $this->__comprobarPublicacion($pagina,true);
             $pagina = $this->__comprobarPromocion($pagina);
-            $pagina = $this->__comprobarDependientes($pagina,array('texto'=>'Paginastexto','multiple'=>'Paginasmultiple','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+            $pagina = $this->__comprobarDependientes($pagina,array('multiple'=>'Paginasmultiple','contacto'=>'Paginascontacto','texto'=>'Paginastexto','multiple'=>'Paginasmultiple','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
             $pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
             $pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
             $pagina = $this->__comprobarImagenPath($pagina);
@@ -52,7 +52,7 @@ class PaginasController extends AppController {
             if(!empty($items)){
                 $items = $this->__comprobarPublicacion($items,true);
                 $items = $this->__comprobarPromocion($items);
-                $items = $this->__comprobarDependientes($items,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                $items = $this->__comprobarDependientes($items,array('multiple'=>'Paginasmultiple','contacto'=>'Paginascontacto','texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
                 $items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
                 $items = $this->__thumbImages($items,'Paginastexto.contenido',true);
                 $items = $this->__comprobarImagenPath($pagina);
@@ -92,7 +92,7 @@ class PaginasController extends AppController {
                 $mostrarRelateds=$this->__resumen($mostrarRelateds,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
                 $mostrarRelateds=$this->__thumbImages($mostrarRelateds,'Paginastexto.contenido',false);
                 $mostrarRelateds=$this->__comprobarImagenPath($mostrarRelateds);
-                $mostrarRelateds=$this->__comprobarDependientes($mostrarRelateds,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                $mostrarRelateds=$this->__comprobarDependientes($mostrarRelateds,array('multiple'=>'Paginasmultiple','contacto'=>'Paginascontacto','texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
                 //print_r($mostrarInicios);
                 $this->set('mostrarRelateds',$mostrarRelateds);
 
@@ -104,7 +104,7 @@ class PaginasController extends AppController {
                     $mostrarInicios=$this->__resumen($mostrarInicios,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
                     $mostrarInicios=$this->__thumbImages($mostrarInicios,'Paginastexto.contenido',false);
                     $mostrarInicios=$this->__comprobarImagenPath($mostrarInicios);
-                    $mostrarInicios=$this->__comprobarDependientes($mostrarInicios,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                    $mostrarInicios=$this->__comprobarDependientes($mostrarInicios,array('multiple'=>'Paginasmultiple','contacto'=>'Paginascontacto','texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
                     //print_r($mostrarInicios);
                     $this->set('mostrarInicios',$mostrarInicios);
 
@@ -116,7 +116,7 @@ class PaginasController extends AppController {
                     $promociones=$this->__resumen($promociones,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
                     $promociones=$this->__thumbImages($promociones,'Paginastexto.contenido',false);
                     $promociones=$this->__comprobarImagenPath($promociones);
-                    $promociones = $this->__comprobarDependientes($promociones,array('texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
+                    $promociones = $this->__comprobarDependientes($promociones,array('multiple'=>'Paginasmultiple','contacto'=>'Paginascontacto','texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
                     $this->set('promociones',$promociones);
 
                     //noticias
@@ -170,7 +170,6 @@ class PaginasController extends AppController {
 	}
 	
 	function paginainfo() {
-		Configure::write('debug', 0);
 		if (isset($this->params['form']['id'])){
 			$pagina = $this->Pagina->findById($this->params['form']['id']);
 			$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
@@ -315,7 +314,6 @@ class PaginasController extends AppController {
                         }
 
                     endforeach;
-
                 }
 
                 if($existe==false&&isset($data{$numero}['Paginasimagen'])&&!empty($data{$numero}['Paginasimagen'])){

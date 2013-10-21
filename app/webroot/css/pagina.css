@@ -1,20 +1,107 @@
+* { margin:0; padding:0;}
+body { font-size:75%; line-height:1em; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#243A56;font-size:75%;}
+h1 { font-size:130%;}
+h2 { font-size:120%;}
+h3 { font-size:110%;}
+h4 { font-size:110%;}
+h5 { font-size:90%;}
+img {border:0; text-align:left;}
+ul { list-style:none;}
+
+/*==========================================*/
+.aright {text-align:right}
+.aleft {text-align:left}
+.column {float:left;}
+.clear {clear:both;}
+.w100 {width:100%}
+.hidden {position:absolute; top:0; left:-9999px; width:1px; height:1px; overflow:hidden; }
+.padding {padding:5px;}
+
+
+/*globales*/
+div#main, div#header, div#flash_header, div#content, div#footer {margin:0 auto; text-align:left;}
+div#start, div#nostart {width:100%; min-width:966px; max-width:1440px;}
+div#header, div#content, div#footer {width:966px;}
+div#flashHeader{width:100%;}
+
+
+/*header*/
+div#header {}
+div#header div.col_1 {width:320px;}
+div#header div.col_1 div.logo {margin:20px 5px 15px 5px;}
+div#header div.col_1 h1{}
+
+div#header div.col_2 {}
+div#header div.col_2 div.row_1{height: 60px; margin-top: 20px;}
+div#header div.col_2 div.row_2{}
+div#header div.col_2 div.row_2 div#menu {width:100%; height:50px;}
+
+/*flash header*/
+div#main div#flashHeader {margin-bottom:20px;}
+
+#flashMessage{margin:60px 0 0 1%; padding:7px .5% 7px .5%; width:45%; float: right;}
+
+
+/*footer*/
+div#footer { color:#fff; text-align:center;}
+div#footer .row_1 {height:125px;background: center top no-repeat url('../img/comun/bgAdorno.png') }
+div#footer .row_2 {height:30px; background:#696B81;}
+div#footer .row_3 {height:125px; background:#243A56;}
+
+/*cake-sql-log*/
+.cake-sql-log {color:#696B81;}
+
+.ui-tabs{border: none;}
+
+
 /*content*/
 
-div#main div#content div.col_1{width:75%;}
-div#main div#content div.col_2{width:23%; margin-left:2%;}
+#content {word-wrap: break-word;line-height:1.25em;}
+#content a:hover {text-decoration:none}
+#content a span.link,a.link {text-decoration:underline !important; color:#4C4B93 !important; background:url(../img/comun/marker_link.gif) no-repeat 0 5px !important; padding-left:18px}
+#content a:hover span.link,a.link:hover {text-decoration:none !important; background:url(../img/comun/marker_link.gif) no-repeat 4px 5px!important}
 
 
-div#main div#content div.row_1,div#main div#content div.row_2, div#main div#content div.row_3{width:100%}
+div#nostart div#content div.col_1{width:75%;}
+div#nostart div#content div.col_2{width:23%; margin-left:2%;}
 
-div#main div#content div.row_2 div.col_1 {}
-div#main div#content div.row_2 div.col_1 .textRow {}
-div#main div#content div.row_2 div.col_1 .textRow .duracionCol{}
-div#main div#content div.row_2 div.col_1 .textRow .duracionCol .duracion{color:#fff; text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444; background: no-repeat top center url(../img/comun/bg-dias.png);}
-div#main div#content div.row_2 div.col_1 .textRow .duracionCol .duracion .duracionNumero{font-size: 2.5em; line-height: 1em; margin: 0 auto; width: 80%; text-align: center; }
-div#main div#content div.row_2 div.col_1 .textRow .duracionCol .duracion .duracionDias{font-size: 1.3em; margin: 0 auto; width: 80%; text-align: center;}
-div#main div#content div.row_2 div.col_1 .textRow .textCol{}
-div#main div#content div.row_2 div.col_1 .textRow .textCol .texto{margin:10px 0;}
+div#start div#content div.col_1{width:100%;}
+div#start div#content div.col_2{display: none;}
 
-div#main div#content div.row_2 div.col_2{}
-div#main div#content div.row_2 div.column a.divVinculo div.related{margin-bottom: 10px;}
-div#main div#content div.row_2 div.column a.divVinculo div.related span.texto{display:block; float:right; width: 130px;}
+div#content div.row_1,div#main div#content div.row_2, div#main div#content div.row_3{margin-top:10px;}
+
+div#content div.row_2 div.col_1 {}
+div#content div.row_2 div.col_1 div.textRow {}
+div#content div.row_2 div.col_1 div.textRow .duracionCol{}
+div#content div.row_2 div.col_1 div.textRow .duracionCol .duracion{color:#fff; text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444; background: no-repeat top center url(../img/comun/bg-dias.png);}
+div#content div.row_2 div.col_1 div.textRow .duracionCol .duracion .duracionNumero{font-size: 2.5em; line-height: 1em; margin: 0 auto; width: 80%; text-align: center; }
+div#content div.row_2 div.col_1 div.textRow .duracionCol .duracion .duracionDias{font-size: 1.3em; margin: 0 auto; width: 80%; text-align: center;}
+div#content div.row_2 div.col_1 div.textRow .textCol{}
+div#content div.row_2 div.col_1 div.textRow .textCol .texto{margin:0; }
+div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm{}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text{}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text label{font-weight:bold; display:block; margin: 5px 2% 0 2%;}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text input, div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text textarea{width:96%; margin: 0 2% 0 2%;}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .error-message{color:#cd0a0a; margin: 0 2% 0 2%;}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .submit{float:right; margin-top:10px;}
+
+div#content div.row_2 div.col_2{}
+div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content{color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
+div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content:hover{border-color: #e6a003; background: #142031;}
+div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content span.texto{display:block; float:right; width: 130px;}
+
+div#content div.row_3 div.col_1 div.rotatorView {position: relative; margin: 10px 0 10px 0;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow { overflow: hidden; position: relative;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent { left: 0; position: absolute; top: 0; }
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem { border-width:7px; border-color: #e6a003; float: left; overflow: hidden;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div{color:#fff; position:relative; bottom:190px;left:0px; height:90px; padding:10px;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.back {opacity: 0.5; bottom:90px; background: #000;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div h2 {padding:0 0 10px 0;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div p.resumen {}
+
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging {width:280px; top: 10px; display: none; position: absolute; right: 10px;z-index: 100;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content{ float:right; color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content:hover{border-color: #e6a003; background: #142031;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content span.texto{display:block; float:right; width: 180px; padding: 5px;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.active div.ui-widget-content {border-left-width: 12px; border-color: #e6a003;}
+

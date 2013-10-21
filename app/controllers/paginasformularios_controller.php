@@ -5,7 +5,6 @@ class PaginasformulariosController extends AppController {
 	var $components = array('RequestHandler','Email');
 	
 	function form(){
-		Configure::write('debug', 0);
 		if (!empty($this->data)) {
 			$this->Paginasformulario->set($this->data);
 			if ($this->Paginasformulario->validates()) {

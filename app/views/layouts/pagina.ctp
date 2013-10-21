@@ -7,26 +7,21 @@
     echo $html->charset('UTF-8')."\n";
 	echo $html->css('/js/jquery-ui-1.10.3/amanecer-theme/jquery-ui-1.10.3')."\n";
 	echo $html->css('/js/fg.menu/fg.menu.css')."\n";
-	echo $html->css('website')."\n";
 	echo $html->css($this->layout)."\n";
 	echo $html->css('tinyMCE_content')."\n";
 	echo $javascript->link('Jg.scripts')."\n";
 	echo $javascript->link('jquery-1.9.1')."\n";
 	echo $javascript->link('jquery-ui-1.10.3/jquery-ui-1.10.3.min')."\n";
+    echo $javascript->link('jquery.form')."\n";
 	echo $javascript->link('fg.menu/fg.menu')."\n";
 	echo $javascript->link('swfobject')."\n";
 	echo $javascript->link('jquery.swfobject')."\n";
     ?>
 </head>
 <body>
-    <div id="main">
     <?php
-        echo $this->element('header');
-        echo $this->element('flashheader');
-        echo $content_for_layout;
-        echo $this->element('footer');
-        echo $this->element('sql_dump');
+    echo $content_for_layout;
     ?>
-    </div>
+
 </body>
 </html>
