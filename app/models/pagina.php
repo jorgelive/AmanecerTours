@@ -13,7 +13,9 @@ class Pagina extends AppModel {
 			,'display' => 'title'
 		)
 		,'Video'
-        ,'Modresult'
+        ,'Modresult'=>array(
+            'ancestorfind'=>true
+        )
 	);
 	var $hasOne = array(
         'Paginasopcional' => array(

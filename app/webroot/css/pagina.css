@@ -78,6 +78,7 @@ div#content div.row_2 div.col_1 div.textRow .duracionCol .duracion .duracionNume
 div#content div.row_2 div.col_1 div.textRow .duracionCol .duracion .duracionDias{font-size: 1.3em; margin: 0 auto; width: 80%; text-align: center;}
 div#content div.row_2 div.col_1 div.textRow .textCol{}
 div#content div.row_2 div.col_1 div.textRow .textCol .texto{margin:0; }
+div#content div.row_2 div.col_1  div.textRow div.textCol div.mceContentBody table tbody tr td{padding:5px;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm{}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text{}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text label{font-weight:bold; display:block; margin: 5px 2% 0 2%;}
