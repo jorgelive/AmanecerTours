@@ -42,8 +42,10 @@ class PaginasController extends AppController {
         endforeach;
         $menuPagina=$this->__comprobarPublicacion($menuPagina,true);
         foreach ($menuPagina as $key=>$item):
-            $children=$this->Pagina->children($item['Pagina']['id']);
+            $children=$this->Pagina->find('all',array('conditions' => array('Pagina.parent_id' => $item['Pagina']['id']),'recursive'=>-1,'order'=>array('Pagina.lft ASC')));
             foreach ($children as $childKey=>$childItem):
+                $children[$childKey]['Pagina']['lft']=$childItem['Pagina']['lft']-$item['Pagina']['lft'];
+                $children[$childKey]['Pagina']['rght']=$childItem['Pagina']['rght']-$item['Pagina']['lft'];
                 if(array_key_exists($childItem['Pagina']['id'],$newOpcionales)){
                     $children[$childKey]['Paginasopcional']=$newOpcionales{$childItem['Pagina']['id']};
                 }

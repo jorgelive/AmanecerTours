@@ -35,6 +35,8 @@ div#header div.col_2 {}
 div#header div.col_2 div.row_1{height: 60px; margin-top: 20px;}
 div#header div.col_2 div.row_2{}
 div#header div.col_2 div.row_2 div#menu {width:100%; height:50px;}
+div#header div.col_2 div.row_2 div#menu span.menuBottom{background:none; display: inline-block;height:32px;}
+div#header div.col_2 div.row_2 div#menu span.menuActivo{background:url(../img/comun/menuBottom.png) bottom center no-repeat;}
 
 /*flash header*/
 div#main div#flashHeader {margin-bottom:20px;}

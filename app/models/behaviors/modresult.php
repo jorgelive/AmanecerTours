@@ -98,7 +98,7 @@ class ModresultBehavior extends ModelBehavior {
             {
                 return $padre{$modelName}{'id'};
             }else{
-                $this->_ancestorFind($model,$padre{$modelName}{'parent_id'});
+                $this->_ancestorFind($model,$modelName,$padre{$modelName}{'parent_id'});
             }
         }else{
             return null;

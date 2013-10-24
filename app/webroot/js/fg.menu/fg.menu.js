@@ -16,7 +16,7 @@ $.fn.menu = function(options){
 	var options = options;
 	var m = new Menu(caller, options);	
 	allUIMenus.push(m);
-	$(this).append('<span class="ui-icon ui-icon-triangle-1-s ui-state-default"></span>');
+	$(this).append('<span style="display:block"class="iconContainer"><span class="ui-icon ui-icon-triangle-1-s"></span></span>');
 	$(this).addClass("fg-button fg-button-icon-right ui-widget ui-state-default");
 	$(this).mouseover(function(){
 		$(this).removeClass('ui-state-default').blur();
@@ -26,13 +26,13 @@ $.fn.menu = function(options){
 		$(this).removeClass('ui-state-hover').blur();
 		$(this).addClass('ui-state-default').blur();
 	});
-	$(this).find('.ui-icon').mouseover(function(){
-		$(this).removeClass('ui-state-default').blur();
-		$(this).addClass('ui-state-hover').blur();
+	$(this).find('.iconContainer').mouseover(function(){
+		//$(this).removeClass('ui-state-default').blur();
+		$(this).addClass('ui-state-highlight').blur();
 	});
-	$(this).find('.ui-icon').mouseout(function(){
-		$(this).removeClass('ui-state-hover').blur();
-		$(this).addClass('ui-state-default').blur();
+	$(this).find('.iconContainer').mouseout(function(){
+		$(this).removeClass('ui-state-highlight').blur();
+		//$(this).addClass('ui-state-default').blur();
 	});
 	$(this).find('.ui-icon').click(function(){
 		if (!m.menuOpen) { m.showLoading(); };

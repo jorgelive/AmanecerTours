@@ -3,11 +3,11 @@
 
 /* Styles for jQuery boton menu*/
 .fg-button { margin:0 0 0 0; padding: .4em 1em .4em 1em; text-decoration:none !important; cursor:pointer; position: relative; text-align: center; zoom: 1; }
-.fg-button .ui-icon { position: absolute; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px; }
+.fg-button .iconContainer { position: absolute; top: 50%; margin-top: -8px; left: 50%; margin-left: -8px; }
 .fg-button-icon-left { padding-left: 2.1em; }
 .fg-button-icon-right { padding-right: 2.1em; }
-.fg-button-icon-left .ui-icon { right: auto; left: .2em; margin-left: 0; }
-.fg-button-icon-right .ui-icon { left: auto; right: .2em; margin-left: 0; }
+.fg-button-icon-left .iconContainer { right: auto; left: .2em; margin-left: 0; }
+.fg-button-icon-right .iconContainer { left: auto; right: .2em; margin-left: 0; }
 .fg-button-icon-solo { display:block; width:8px; text-indent: -9999px; } /* solo icon buttons must have block properties for the text-indent to work */	
 .fg-button.ui-state-loading .ui-icon { background: url(spinner_bar.gif) no-repeat 0 0; }
 a.fg-button {float:left;}
