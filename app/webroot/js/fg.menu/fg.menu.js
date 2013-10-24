@@ -75,10 +75,10 @@ function Menu(caller, options){
 			linkToFront: false
 		},
 		showSpeed: 200, // show/hide speed in milliseconds
-		callerOnState: 'ui-state-active', // class to change the appearance of the link/button when the menu is showing
+		callerOnState: 'ui-state-highlight', // class to change the appearance of the link/button when the menu is showing
 		loadingState: 'ui-state-loading', // class added to the link/button while the menu is created
 		linkHover: 'ui-state-hover', // class for menu option hover state
-		arrowHover: 'ui-state-active',
+		arrowHover: 'ui-state-highlight',
 		linkHoverSecondary: 'li-hover', // alternate class, may be used for multi-level menus		
 	// ----- multi-level menu defaults -----
 		crossSpeed: 200, // cross-fade speed for multi-level menus

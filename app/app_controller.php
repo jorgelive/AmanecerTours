@@ -20,41 +20,10 @@ class AppController extends  Controller{
 			,'adjunto'=>__('adjuntos',true)
 			,'contacto'=>__('Formulario de Contacto',true)
 		));
-		//Configure::write('Menu.Inicio',array('tipo'=>'boton','texto'=>__('inicio',true),'url'=>'/paginas/index'));
-		//Configure::write('Menu.2',array('tipo'=>'tree','controller'=>'Paginaspaquetes','texto'=>'Paquetes'));
-		Configure::write('Menu.Pagina',array('tipo'=>'extractTree','textField'=>'title','accion'=>'index'));
-		//Configure::write('Menu.Testimonio',array('tipo'=>'boton','texto'=>__('testimonios',true),'url'=>'/paginastestimonios/index'));
 
 	}
 
-	function __menu(){
-		$opcionales=$this->Pagina->Paginasopcional->find('all',array('recursive'=>-1));
-		$newOpcionales=array();
-		foreach($opcionales as $key => $opcional):
-			$newOpcionales{$opcional['Paginasopcional']['pagina_id']}=$opcional['Paginasopcional'];
-		endforeach;
-		unset($opcionales);
-		$menuPagina=$this->Pagina->children(NULL, true);
-		foreach ($menuPagina as $key=>$item):
-			if(array_key_exists($item['Pagina']['id'],$newOpcionales)){
-				$menuPagina[$key]['Paginasopcional']=$newOpcionales{$item['Pagina']['id']};
-			}
-		endforeach;
-		$menuPagina=$this->__comprobarPublicacion($menuPagina,true);
-		foreach ($menuPagina as $key=>$item):
-			$children=$this->Pagina->children($item['Pagina']['id']);
-			foreach ($children as $childKey=>$childItem):
-				if(array_key_exists($childItem['Pagina']['id'],$newOpcionales)){
-					$children[$childKey]['Paginasopcional']=$newOpcionales{$childItem['Pagina']['id']};
-				}
-			endforeach;
-			$children=$this->__comprobarPublicacion($children);
-			$menuPagina[$key]['children']=$children;
-		endforeach;
-		if(!empty($menuPagina)){
-			return $menuPagina;
-		}
-	}
+
 
 	function __paginacion($params=array(),$defaultConditions=array(),$model=NULL){
 		if(empty($model)){
@@ -134,6 +103,7 @@ class AppController extends  Controller{
 			return $data;
 		}
 	}
+
 
 	function __valuesFromSchema($normkey=array(),$value=NULL){
 		if(isset($normkey[1])){

@@ -1,7 +1,6 @@
-
 <div id="<?php echo (isset($pagina['Pagina']['isStart'])?'start':'nostart');?>">
     <?php
-    echo $this->element('header');
+    echo $this->element('header',$menu);
     echo $this->element('flashheader');
     ?>
     <div id="content">

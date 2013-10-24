@@ -26,6 +26,35 @@ class PaginasController extends AppController {
 			)
 		);
 	}
+
+    function __menu(){
+        $opcionales=$this->Pagina->Paginasopcional->find('all',array('recursive'=>-1));
+        $newOpcionales=array();
+        foreach($opcionales as $key => $opcional):
+            $newOpcionales{$opcional['Paginasopcional']['pagina_id']}=$opcional['Paginasopcional'];
+        endforeach;
+        unset($opcionales);
+        $menuPagina=$this->Pagina->children(NULL, true);
+        foreach ($menuPagina as $key=>$item):
+            if(array_key_exists($item['Pagina']['id'],$newOpcionales)){
+                $menuPagina[$key]['Paginasopcional']=$newOpcionales{$item['Pagina']['id']};
+            }
+        endforeach;
+        $menuPagina=$this->__comprobarPublicacion($menuPagina,true);
+        foreach ($menuPagina as $key=>$item):
+            $children=$this->Pagina->children($item['Pagina']['id']);
+            foreach ($children as $childKey=>$childItem):
+                if(array_key_exists($childItem['Pagina']['id'],$newOpcionales)){
+                    $children[$childKey]['Paginasopcional']=$newOpcionales{$childItem['Pagina']['id']};
+                }
+            endforeach;
+            $children=$this->__comprobarPublicacion($children);
+            $menuPagina[$key]['children']=$children;
+        endforeach;
+        if(!empty($menuPagina)){
+            return $menuPagina;
+        }
+    }
 	
 	function index($id=NULL){
 
@@ -33,14 +62,35 @@ class PaginasController extends AppController {
         $this->layout='pagina';
 		$this->set('menuPagina',$this->__menu());
 
+
+
         $start=$this->Pagina->find('first',array('conditions' => array('Pagina.publicado' => 1),'recursive'=>-1,'order'=>array('Pagina.lft ASC')));
 
 		if(empty($id)||(isset($id)&&$id==$start['Pagina']['id'])){
             $id=$start['Pagina']['id'];
             $isStart=true;
         }
+
         $pagina = $this->Pagina->findById($id);
         if (!empty($pagina)){
+
+            $this->set(
+                'menu',array(
+                    'items'=>array(
+                        array(
+                            'contenido'=>$this->__menu()
+                            ,'settings'=>array(
+                                'tipo'=>'extractTree'
+                                ,'controlador'=>'Paginas'
+                                ,'accion'=>'index'
+                                ,'textField'=>'title'
+                            )
+                        )
+                    )
+                    ,'current'=>array('Paginas'=>$pagina{'Pagina'}{'ancestor'})
+                )
+            );
+
             $pagina = $this->__comprobarPublicacion($pagina,true);
             $pagina = $this->__comprobarPromocion($pagina);
             $pagina = $this->__comprobarDependientes($pagina,array('multiple'=>'Paginasmultiple','contacto'=>'Paginascontacto','texto'=>'Paginastexto','multiple'=>'Paginasmultiple','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
@@ -95,6 +145,7 @@ class PaginasController extends AppController {
                 $mostrarRelateds=$this->__comprobarDependientes($mostrarRelateds,array('multiple'=>'Paginasmultiple','contacto'=>'Paginascontacto','texto'=>'Paginastexto','imagen'=>'Paginasimagen','video'=>'Paginasvideo','adjunto'=>'Paginasadjunto','promocion'=>'Paginaspromocion'));
                 //print_r($mostrarInicios);
                 $this->set('mostrarRelateds',$mostrarRelateds);
+
 
                 if(isset($isStart)){
 
