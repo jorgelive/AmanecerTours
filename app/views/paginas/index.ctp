@@ -59,9 +59,9 @@
                         }
                         ?>
                     </div><!--textCol -->
-
+                    <div class="clear">&nbsp;</div>
                 </div><!--textRow -->
-                <div class="clear"></div>
+
 
                 <?php
                 $tipos=Configure::read('Default.tipos');
@@ -181,7 +181,14 @@
                     </div><!-- tabs  -->
                     <script>
                         $(function() {
+
                             $("#tabs").tabs().tabs("option", "active", <?php echo $tabPredeterminado{$pagina['Pagina']['predeterminado']};?> );
+
+                            var anchoTotal=$("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul").width();
+
+                            var cantidadTab= $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).size();
+
+                            $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).width((anchoTotal-29*cantidadTab)/cantidadTab);
                         });
                     </script>
                 <?php

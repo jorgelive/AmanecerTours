@@ -218,7 +218,7 @@ class PaginascabecerasController extends AppController {
 						$reversed=array_reverse($cabecera['Paginascabecera']['url']);
 						if(is_numeric($reversed[0])){
 							if(isset($cabecera['Paginascabecera']['url'][2])){
-								$result[$key]['link']='/'.$cabecera['Paginascabecera']['url'][0].'/'.$cabecera['Paginascabecera'][1].'/'.$cabecera['Paginascabecera'][2].'/idioma:'.Configure::read('Config.language');
+								$result[$key]['link']='/'.$cabecera['Paginascabecera']['url'][0].'/'.$cabecera['Paginascabecera']['url'][1].'/'.$cabecera['Paginascabecera']['url'][2].'/idioma:'.Configure::read('Config.language');
 							}elseif(isset($cabecera['Paginascabecera']['url'][1])){
 								$result[$key]['link']='/paginas/'.$cabecera['Paginascabecera']['url'][0].'/'.$cabecera['Paginascabecera']['url'][1].'/idioma:'.Configure::read('Config.language');
 							}else{

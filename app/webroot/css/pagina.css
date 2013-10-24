@@ -46,7 +46,7 @@ div#main div#flashHeader {margin-bottom:20px;}
 
 /*footer*/
 div#footer { color:#fff; text-align:center;}
-div#footer .row_1 {height:125px;background: center top no-repeat url('../img/comun/bgAdorno.png') }
+div#footer .row_1 {height:160px;background: center top no-repeat url('../img/comun/bgAdorno.png') }
 div#footer .row_2 {height:30px; background:#696B81;}
 div#footer .row_3 {height:125px; background:#243A56;}
 
@@ -72,6 +72,8 @@ div#start div#content div.col_2{display: none;}
 
 div#content div.row_1,div#main div#content div.row_2, div#main div#content div.row_3{margin-top:10px;}
 
+
+
 div#content div.row_2 div.col_1 {}
 div#content div.row_2 div.col_1 div.textRow {}
 div#content div.row_2 div.col_1 div.textRow .duracionCol{}
@@ -80,7 +82,10 @@ div#content div.row_2 div.col_1 div.textRow .duracionCol .duracion .duracionNume
 div#content div.row_2 div.col_1 div.textRow .duracionCol .duracion .duracionDias{font-size: 1.3em; margin: 0 auto; width: 80%; text-align: center;}
 div#content div.row_2 div.col_1 div.textRow .textCol{}
 div#content div.row_2 div.col_1 div.textRow .textCol .texto{margin:0; }
-div#content div.row_2 div.col_1  div.textRow div.textCol div.mceContentBody table tbody tr td{padding:5px;}
+div#content div.row_2 div.col_1 div.textRow div.textCol div.mceContentBody table tbody tr td{padding:5px;}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav{border: none; background: none;}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a{text-transform: uppercase; text-align: center;}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs div.ui-tabs-panel{background:url(../img/comun/tabTop.png) no-repeat center 5px;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm{}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text{}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text label{font-weight:bold; display:block; margin: 5px 2% 0 2%;}
