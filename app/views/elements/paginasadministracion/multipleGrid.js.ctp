@@ -139,8 +139,8 @@
 							theme: "advanced"
 							,plugins: "paste,nonbreaking,insertdatetime"
 							,theme_advanced_resizing : true
-							,theme_advanced_buttons1: "bold,italic,underline,|,cut,copy,paste,pasteword"
-							,theme_advanced_buttons2: "insertdate,inserttime,|,bullist,numlist,|,cleanup,code"
+							,theme_advanced_buttons1: "bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,|,cut,copy,paste,pasteword"
+							,theme_advanced_buttons2: "insertdate,inserttime,|,bullist,numlist,|,outdent,indent,blockquote,|,cleanup,code,|,forecolor,backcolor"
 							,theme_advanced_buttons3:""
 							,theme_advanced_toolbar_location: "bottom"
 							,theme_advanced_toolbar_align: "left"

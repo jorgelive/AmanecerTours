@@ -84,14 +84,6 @@
                     ,emptyText:'Sólo para excursiones'
                     ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
                 },{
-					xtype:'textfield'
-					,fieldLabel:'Dirección fija'
-					,name:'Paginasopcional.urlfija'
-					,anchor: '100%'
-					,allowBlank:true
-					,emptyText:'Sólo para páginas corporativas'
-					,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
-				},{
 					xtype: "textarea"
 					,name:'Paginasopcional.etiquetas'
 					,fieldLabel: 'Etiquetas'

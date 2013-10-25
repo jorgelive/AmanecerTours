@@ -10,7 +10,7 @@ class Paginasopcional extends AppModel {
 			)
 		)
 		,'i18n' => array(
-			'fields' => array('etiquetas')
+			'fields' => array('etiquetas','duracion')
 			,'display' => 'confidencial'
 		)
 	);
@@ -53,13 +53,6 @@ class Paginasopcional extends AppModel {
                 'rule' => array('maxLength', 300)
                 ,'required' => true
                 ,'message' => 'Las etiquetas deben tener como máximo 300 caracteres '
-            )
-		)
-		,'urlfija' => array(
-			'maxlength' => array(
-                'rule' => array('maxLength', 10)
-                ,'required' => true
-                ,'message' => 'La dirección fija debe tener como máximo 10 caracteres'
             )
 		)
 	);

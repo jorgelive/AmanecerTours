@@ -20,6 +20,8 @@ class AppController extends  Controller{
 			,'adjunto'=>__('adjuntos',true)
 			,'contacto'=>__('Formulario de Contacto',true)
 		));
+        if(isset($this->Auth->user)&&$this->Auth->user('id') == 35)//jorge
+            Configure::write('debug', 2);
 
 	}
 
@@ -332,84 +334,6 @@ class AppController extends  Controller{
 			$data=$data[0];
 		}
 		return $data;
-	}
-
-	function __comprobarPublicacion($data=NULL,$borrar=false){
-		if(empty($data)){
-			return false;
-		}
-		if(!array_key_exists(0, $data)){
-			$data=array($data);
-			$extractAtFinish=TRUE;
-		}
-
-		foreach ($data as $numero => $dummy):
-			if(isset($data{$numero}['Paginasopcional'])){
-				$data{$numero}['Pagina']['publicado']=$this->__fechaEnRango($data{$numero}['Pagina']['publicado'],$data{$numero}['Paginasopcional']['publicado_inicio'],$data{$numero}['Paginasopcional']['publicado_final']);
-			}else{
-				$data{$numero}['Pagina']['publicado']=$this->__fechaEnRango($data{$numero}['Pagina']['publicado']);
-			}
-			if($borrar!=false&&$data{$numero}['Pagina']['publicado']!='si'){
-				unset($data{$numero});
-			}
-		endforeach;
-
-		if(isset($extractAtFinish)&&$extractAtFinish===TRUE){
-			$data=$data[0];
-		}
-		return $data;
-	}
-
-	function __fechaEnRango($valorCP=NULL,$inicio=NULL,$final=NULL,$consultada=false){
-		if ($valorCP!==NULL&&empty($valorCP)){return 'no';}
-		if($inicio=='0000-00-00'){$inicio=NULL;}elseif(!empty($inicio)){$inicio=strtotime($inicio);}
-		if($final=='0000-00-00'){$final=NULL;}elseif(!empty($final)){$final=strtotime($final);}
-		if(!empty($consultada)){$consultada=strtotime($consultada);}else{$consultada=time();}
-
-		if(empty($inicio)&&empty($final)){
-			if(empty($valorCP)){
-				return true;
-			}else{
-				return 'si';
-			}
-		}elseif(empty($inicio)){
-			if($final<=$consultada){
-				if(empty($valorCP)){
-					return false;
-				}else{
-					return 'outdated';
-				}
-			}
-		}elseif(empty($final)){
-			if($inicio>=$consultada){
-				if(empty($valorCP)){
-					return false;
-				}else{
-					return 'soon';
-				}
-			}
-		}else{
-			if($inicio>=$consultada){
-				if(empty($valorCP)){
-					return false;
-				}else{
-					return 'soon';
-				}
-			}else{
-				if($final<=$consultada){
-					if(empty($valorCP)){
-						return false;
-					}else{
-						return 'outdated';
-					}
-				}
-			}
-		}
-		if(empty($valorCP)){
-			return true;
-		}else{
-			return 'si';
-		}
 	}
 
 	function __resumen($data=NULL,$resumen=NULL,$length=NULL){
