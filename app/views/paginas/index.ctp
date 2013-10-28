@@ -1,6 +1,6 @@
 <div id="<?php echo (isset($pagina['Pagina']['isStart'])?'start':'nostart');?>">
     <?php
-    echo $this->element('header',$menu);
+    echo $this->element('header',$menuPrincipal);
     echo $this->element('flashheader');
     ?>
     <div id="content">
@@ -363,7 +363,7 @@
         </div><!--row_3 -->
     </div><!-- content  -->
     <?php
-    echo $this->element('footer');
+    echo $this->element('footer',$menuInferior);
     echo $this->element('sql_dump');
     ?>
 </div><!-- start nostart  -->

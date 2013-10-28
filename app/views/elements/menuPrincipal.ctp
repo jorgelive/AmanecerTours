@@ -11,13 +11,13 @@
         </script>
         <?php
             //print_r($menu['items']);
-            foreach($menu['items'] as $grupo):
+            foreach($menuPrincipal['items'] as $grupo):
                 if($grupo{'settings'}{'tipo'}=='extractTree'){
                     $modelo=Inflector::singularize($grupo{'settings'}{'controlador'});
                     foreach ($grupo['contenido'] as $item):
                         $currentAClass='';
                         $currentSpanClass='';
-                        if(isset($item[$modelo]['ancestor'])&&array_key_exists($grupo{'settings'}{'controlador'},$menu['current'])&&$menu['current']{$grupo{'settings'}{'controlador'}}==$item[$modelo]['ancestor']){
+                        if(isset($item[$modelo]['ancestor'])&&array_key_exists($grupo{'settings'}{'controlador'},$menuPrincipal['current'])&&$menuPrincipal['current']{$grupo{'settings'}{'controlador'}}==$item[$modelo]['ancestor']){
                             $currentAClass='ui-state-active';
                             $currentSpanClass='menuActivo';
                         }

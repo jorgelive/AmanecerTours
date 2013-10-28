@@ -78,8 +78,9 @@ class AppController extends  Controller{
 		return $result;
 	}
 
-	function __paramstodata($params=NULL,$campos=NULL,$model=NULL){
-		if (!empty($params)){
+	function __paramstodata($params=NULL,$campos=NULL,$noComprobar=array()){
+        //todo: alterar schema para estos campos fake
+        if (!empty($params)){
 			if ($campos!=NULL){
 				if (!is_array($campos)){
 					$campos=array($campos);
@@ -94,13 +95,21 @@ class AppController extends  Controller{
 				endforeach;
 			}
 			foreach ($params as $key => $value):
-				$normkey=$this->__normalizedata($key);
-				$normkey=explode('.',$normkey,2);
-				if(isset($normkey[1])){
-					$data{$normkey[0]}{$normkey[1]}=$this->__valuesFromSchema($normkey,$value);
-				}else{
-					$data{$normkey[0]}=$value;
-				}
+                if(!empty($noComprobar)&&in_array($key,$noComprobar)){
+                    $key=explode('_',$key,2);
+                    $data{$key[0]}{$key[1]}=$value;
+                }else{
+                    $normkey=$this->__normalizedata($key);
+                    $normkey=explode('.',$normkey,2);
+
+                    if(isset($normkey[1])){
+                        $data{$normkey[0]}{$normkey[1]}=$this->__valuesFromSchema($normkey,$value);
+                    }else{
+                        $data{$normkey[0]}=$value;
+                    }
+                }
+
+
 			endforeach;
 			return $data;
 		}

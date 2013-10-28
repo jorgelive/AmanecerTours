@@ -27,27 +27,13 @@ class PaginasController extends AppController {
 		);
 	}
 
-    function __menu(){
-        $menuPagina=$this->Pagina->children(NULL, true);
-        foreach ($menuPagina as $key=>$item):
-            $children=$this->Pagina->children($item['Pagina']['id']);
-            foreach ($children as $childKey=>$childItem):
-                $children[$childKey]['Pagina']['lft']=$childItem['Pagina']['lft']-$item['Pagina']['lft'];
-                $children[$childKey]['Pagina']['rght']=$childItem['Pagina']['rght']-$item['Pagina']['lft'];
-            endforeach;
-            $menuPagina[$key]['children']=$children;
 
-        endforeach;
-        if(!empty($menuPagina)){
-            return $menuPagina;
-        }
-    }
-	
 	function index($id=NULL){
 
 
+
+
         $this->layout='pagina';
-		$this->set('menuPagina',$this->__menu());
 
 //echo '<br>'.'accion: inicio'.'<br>';
 
@@ -57,30 +43,44 @@ class PaginasController extends AppController {
             $id=$start['Pagina']['id'];
             $isStart=true;
         }
+
 //echo '<br>'.'accion: pagina'.'<br>';
         $pagina = $this->Pagina->findById($id);
         if (!empty($pagina)){
-//echo '<br>'.'accion: menu'.'<br>';
-            $this->set(
-                'menu',array(
-                    'items'=>array(
-                        array(
-                            'contenido'=>$this->__menu()
-                            ,'settings'=>array(
-                                'tipo'=>'extractTree'
-                                ,'controlador'=>'Paginas'
-                                ,'accion'=>'index'
-                                ,'textField'=>'title'
-                            )
-                        )
-                    )
-                    ,'current'=>array('Paginas'=>$pagina{'Pagina'}{'ancestor'})
-                )
-            );
 
             $pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
             $pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
             $pagina = $this->__comprobarImagenPath($pagina);
+
+
+//echo '<br>'.'accion: menu principal'.'<br>';
+            $menuPagina=$this->Pagina->children(NULL, true);
+            foreach ($menuPagina as $key=>$item):
+                $children=$this->Pagina->children($item['Pagina']['id']);
+                $menuPagina[$key]['children']=$children;
+            endforeach;
+
+            $this->set(
+                'menuPrincipal',array(
+                    'items'=>array(
+                        array(
+                            'contenido'=>$menuPagina
+                        ,'settings'=>array(
+                            'tipo'=>'extractTree'
+                        ,'controlador'=>'Paginas'
+                        ,'accion'=>'index'
+                        ,'textField'=>'title'
+                        )
+                        )
+                    )
+                ,'current'=>array('Paginas'=>$pagina{'Pagina'}{'ancestor'})
+                )
+            );
+
+//echo '<br>'.'accion: menu inferior'.'<br>';
+            $this->Pagina->unBindModel(array('hasMany' => array('Paginaspromocion','Paginasmultiple','Paginasimagen','Paginasvideo','Paginasadjunto'),'hasOne'=>array('Paginastexto','Paginasopcional','Paginascontacto')));
+            $menuInferior=$this->Pagina->find('all', array('conditions'=>array('Pagina.mostrarfooter'=>1),'order'=>'Pagina.lft ASC'));
+            $this->set('menuInferior',$menuInferior);
 
 //echo '<br>'.'accion: items'.'<br>';
             $items=$this->Pagina->find('all',array('conditions'=>array('parent_id'=>$id)));
@@ -105,6 +105,7 @@ class PaginasController extends AppController {
                 $this->set('enlaces',$enlaces);
 //echo '<br>'.'accion: relacionados'.'<br>';
                 //mostrar en inicio
+                $this->Pagina->unBindModel(array('hasMany' => array('Paginaspromocion','Paginasmultiple','Paginasvideo','Paginasadjunto'),'hasOne'=>array('Paginasopcional','Paginascontacto')));
                 $mostrarRelateds=$this->Pagina->find(
                     'all'
                     ,array(
@@ -138,7 +139,7 @@ class PaginasController extends AppController {
 
 //echo '<br>'.'accion: promocion'.'<br>';
                     //promocion
-                    $this->Pagina->unBindModel(array('hasOne' => array('Paginascontacto'),'hasMany' => array('Paginasimagen','Paginasvideo','Paginasadjunto')));
+                    $this->Pagina->unBindModel(array('hasMany' => array('Paginasmultiple','Paginasimagen','Paginasvideo','Paginasadjunto'),'hasOne'=>array('Paginastexto','Paginasopcional','Paginascontacto')));
                     $promociones=$this->Pagina->find('all',array('conditions'=>array('Pagina.promocion'=>1),'order' => 'Pagina.lft ASC'));
                     $promociones=$this->__resumen($promociones,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
                     $promociones=$this->__thumbImages($promociones,'Paginastexto.contenido',false);

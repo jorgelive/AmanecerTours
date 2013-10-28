@@ -98,7 +98,6 @@ class AclusersController extends AppController {
 	} 
 	
 	function validar() {
-		Configure::write('debug', 0);
 		if (isset($this->params['form']['field'])){
 			$result=$this->__validarCampo($this->params['form']['field']);
 		}
@@ -107,8 +106,7 @@ class AclusersController extends AppController {
     }
 	
 	function agregar() {
-		Configure::write('debug', 0);
-		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form']);}
+		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],null,array('Acluser_clear_password','Acluser_confirm_password'));}
 		if (!empty($this->data)){
 			if (isset($this->data['Acluser']['aclgroup_id'])&&count(explode('_',$this->data['Acluser']['aclgroup_id']))==2){
 				$parts=explode('_',$this->data['Acluser']['aclgroup_id']);
@@ -152,17 +150,16 @@ class AclusersController extends AppController {
     }
 	
 	function modificar(){
-		Configure::write('debug', 0);
 		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form']);}
 		$user = $this->Acluser->findById($this->data['Acluser']['id']);
 		if (!empty($user)){
-			if($this->data['Acluser']['clear_password']==NULL&&$this->data['Acluser']['confirm_password']==NULL){
+			if(empty($this->data['Acluser']['clear_password'])&&empty($this->data['Acluser']['confirm_password'])){
 				$this->Acluser->unbindValidation('remove', array('clear_password', 'confirm_password'), false);
 			}
 			if(isset($this->data['Acluser']['aclgroup_id'])){unset($this->data['Acluser']['aclgroup_id']);}
 			$this->Acluser->set($this->data);
 			if ($this->Acluser->validates()){
-				if($this->data['Acluser']['clear_password']!=NULL){
+				if(!empty($this->data['Acluser']['clear_password'])){
 					$this->data['Acluser']['password'] = $this->Auth->password($this->data['Acluser']['clear_password']);
 				}
 				if ($this->Acluser->save($this->data)){

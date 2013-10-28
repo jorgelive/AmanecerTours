@@ -18,7 +18,7 @@
           </div><!-- row_1  -->
         <div class="row_2">
             <?php
-            echo $this->element('menuPrincipal',$menu);
+            echo $this->element('menuPrincipal',$menuPrincipal);
             ?>
         </div><!-- row_2  -->
     </div><!-- col_2 -->
