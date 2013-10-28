@@ -47,7 +47,8 @@ div#main div#flashHeader {margin-bottom:20px;}
 /*footer*/
 div#footer { color:#fff; text-align:center;}
 div#footer .row_1 {height:160px;background: center top no-repeat url('../img/comun/bgAdorno.png') }
-div#footer .row_2 {height:30px; background:#696B81;}
+div#footer .row_2 {padding:12px 5px; background:#696B81;}
+div#footer .row_2 a {color: #fff; text-decoration: none; text-transform: uppercase; }
 div#footer .row_3 {height:125px; background:#243A56;}
 
 /*cake-sql-log*/
