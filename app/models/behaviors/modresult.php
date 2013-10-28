@@ -2,7 +2,7 @@
 
 class ModresultBehavior extends ModelBehavior {
 
-	var $modelNames=array();
+	var $modelos=array();
     var $defaultvalue=array('campos'=>array(),'booldependiente'=>false);
     var $ancestorfind=false;
 

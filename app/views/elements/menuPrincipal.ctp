@@ -25,7 +25,7 @@
                         <span class="menuBottom <?php echo $currentSpanClass;?>">
                         <?php
                         if(!empty($item['children'])){
-                            if(empty($item[$modelo]['predeterminado'])){
+                            if($item[$modelo]['notempty']==0&&$item[$modelo]['vigencia']=='ok'){
                                 echo '<a class="'.$currentAClass.'" id="menu'.$item[$modelo]['id'].'" href="#">'.$item[$modelo][$grupo{'settings'}['textField']].'</a>';
                             }else{
                                 echo '<a class="'.$currentAClass.'" id="menu'.$item[$modelo]['id'].'" href="/'.strtolower($grupo{'settings'}{'controlador'}).'/'.$grupo{'settings'}['accion'].'/'.$item[$modelo]['id'].'/idioma:'.Configure::read('Config.language').'">'.$item[$modelo][$grupo{'settings'}['textField']].'</a>';
@@ -46,7 +46,7 @@
                             </script>
                         <?php
 
-                        }else{
+                        }elseif($item[$modelo]['publicado']==1&&$item[$modelo]['vigencia']=='ok'&&$item[$modelo]['notempty']==1){
                             echo '<a class="'.$currentAClass.' fg-button ui-widget ui-state-default" href="/'.strtolower($grupo{'settings'}{'controlador'}).'/'.$grupo{'settings'}{'accion'}.'/'.$item[$modelo]['id'].'/idioma:'.Configure::read('Config.language').'">'.$item[$modelo][$grupo{'settings'}['textField']].'</a>';
                         }
                         ?>

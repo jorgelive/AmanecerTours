@@ -31,7 +31,7 @@ div#header div.col_1 {width:320px;}
 div#header div.col_1 img.logo {margin:20px 5px 15px 5px;}
 div#header div.col_1 h1{}
 
-div#header div.col_2 {}
+div#header div.col_2 {float: right;}
 div#header div.col_2 div.row_1{height: 60px; margin-top: 20px;}
 div#header div.col_2 div.row_2{}
 div#header div.col_2 div.row_2 div#menu {width:100%; height:50px;}

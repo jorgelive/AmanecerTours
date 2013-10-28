@@ -13,6 +13,15 @@ class Paginaspromocion extends AppModel {
 			'fields' => array('title','notas','condiciones')
 			,'display' => 'notas'
 		)
+        ,'Comprobado'=>array(
+            'comprobarRango'=>array(
+                'rango'=>array(
+                    'inicio'=>'inicio'
+                    ,'fin'=>'final'
+                )
+                ,'modelofields'=>'Paginaspromocion'
+            )
+        )
 	);
 	var $validate = array(
 		'pagina_id' => array(

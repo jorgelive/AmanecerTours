@@ -16,6 +16,19 @@ class Pagina extends AppModel {
         ,'Modresult'=>array(
             'ancestorfind'=>true
         )
+        ,'Comprobado'=>array(
+            'comprobarRango'=>array(
+                'rango'=>array(
+                    'inicio'=>'publicado_inicio'
+                    ,'fin'=>'publicado_final'
+                )
+                ,'modelofields'=>'Paginasopcional'
+            )
+            ,'comprobarDependientes'=>array(
+                'modelos'=>array('Paginastexto','Paginasmultiple','Paginasvideo','Paginascontacto')
+            )
+        )
+
 	);
 	var $hasOne = array(
         'Paginasopcional' => array(
@@ -94,13 +107,13 @@ class Pagina extends AppModel {
         ,'mostrarfooter' => array(
             'empty' => array(
                 'rule' => 'notEmpty'
-            ,'required' => true
-            ,'message' => 'Seleccione si quiere mostrar o no en la el menu inferior'
-            ,'last' => true
+                ,'required' => true
+                ,'message' => 'Seleccione si quiere mostrar o no en la el menu inferior'
+                ,'last' => true
             )
         ,'boolean' => array(
                 'rule' => array('boolean')
-            ,'message' => 'Mostrar en inicio debe ser solo 1 ó 0'
+                ,'message' => 'Mostrar en inicio debe ser solo 1 ó 0'
             )
         )
 		,'texto' => array(
