@@ -6,7 +6,8 @@
     <?php 
     echo $html->charset('UTF-8')."\n";
 	echo $html->css('/js/jquery-ui-1.10.3/amanecer-theme/jquery-ui-1.10.3')."\n";
-	echo $html->css('/js/fg.menu/fg.menu.css')."\n";
+	echo $html->css('/js/fg.menu/fg.menu')."\n";
+    echo $html->css('/js/jquery.colorbox/style/colorbox')."\n";
 	echo $html->css($this->layout)."\n";
 	echo $html->css('tinyMCE_content')."\n";
 	echo $javascript->link('Jg.scripts')."\n";
@@ -16,6 +17,7 @@
 	echo $javascript->link('fg.menu/fg.menu')."\n";
 	echo $javascript->link('swfobject')."\n";
 	echo $javascript->link('jquery.swfobject')."\n";
+    echo $javascript->link('jquery.colorbox/jquery.colorbox')."\n";
     ?>
 </head>
 <body>

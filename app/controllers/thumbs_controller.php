@@ -73,14 +73,14 @@ class ThumbsController extends AppController
 			$phpThumb->ErrorImage('Encabezados ya enviados ('.basename(__FILE__).' line '.__LINE__.')');
 			exit;
 		}
-		header('Last-Modified: '.gmdate('D, d M Y H:i:s', $modified).' GMT');
-		if (@$_SERVER['HTTP_IF_MODIFIED_SINCE'] && ($modified == strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE'])) && @$_SERVER['SERVER_PROTOCOL']) {
+        header('Last-Modified: '.gmdate('D, d M Y H:i:s', $modified).' GMT');
+ 		if (@$_SERVER['HTTP_IF_MODIFIED_SINCE'] && ($modified == strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE'])) && @$_SERVER['SERVER_PROTOCOL']) {
 			header($_SERVER['SERVER_PROTOCOL'].' 304 Not Modified');
 			exit;
 		}elseif(is_file($phpThumb->cache_filename)){
 			if ($cachedImage = getimagesize($phpThumb->cache_filename)) {
 				header('Content-Type: '.$cachedImage['mime']);
-			} elseif (eregi('\.ico$', $phpThumb->cache_filename)) {
+			} elseif (preg_match('#\.ico$#', $phpThumb->cache_filename)) {
 				header('Content-Type: image/x-icon');
 			}
 			readfile($phpThumb->cache_filename);

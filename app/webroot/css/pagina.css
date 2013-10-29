@@ -99,8 +99,8 @@ div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content{color:#fff; m
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content:hover{border-color: #e6a003; background: #142031;}
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content span.texto{display:block; float:right; width: 130px;}
 div#content div.row_2 div.col_2 div.imagenes{}
-div#content div.row_2 div.col_2 div.imagenes div.item{margin-bottom:10px;}
-div#content div.row_2 div.col_2 div.imagenes div.item img{border-radius: 10px;}
+div#content div.row_2 div.col_2 div.imagenes a.item{margin-bottom:10px;}
+div#content div.row_2 div.col_2 div.imagenes a.item img{border-radius: 10px;}
 
 div#content div.row_3 div.col_1 div.rotatorView {position: relative; margin: 10px 0 10px 0;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow { overflow: hidden; position: relative;}

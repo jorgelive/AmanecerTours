@@ -30,9 +30,6 @@ class PaginasController extends AppController {
 
 	function index($id=NULL){
 
-
-
-
         $this->layout='pagina';
 
 //echo '<br>'.'accion: inicio'.'<br>';
@@ -174,9 +171,6 @@ class PaginasController extends AppController {
 	function paginainfo() {
 		if (isset($this->params['form']['id'])){
 			$pagina = $this->Pagina->findById($this->params['form']['id']);
-            echo '/*';
-            print_r($pagina);
-            echo '*/';
 			$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 			if(!empty($pagina)){
 				$pagina = $this->__tiposPublicacionSave($pagina);

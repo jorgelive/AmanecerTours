@@ -50,7 +50,7 @@
 
 
                         <?php
-                        if($pagina['Pagina']['texto']='si'){
+                        if($pagina['Pagina']['texto']=1){
                             ?>
                             <div class="mceContentBody texto"><?php echo $pagina['Paginastexto']['contenido'];?></div>
                             <div class="clear"></div>
@@ -68,13 +68,13 @@
                 $nroPredeterminado = 0;
                 $tabPredeterminado = array();
                 foreach($pagina['Pagina'] as $key => $valor):
-                    if($key=='multiple'&&$valor=='si'){
+                    if($key=='multiple'&&$valor==1){
                         $tabPredeterminado['multiple']=$nroPredeterminado;
                         foreach ($pagina['Paginasmultiple'] as $subkey => $subvalor):
                             $tabs[$key.$subkey]=$pagina['Paginasmultiple']{$subkey};
                             $nroPredeterminado++;
                         endforeach;
-                    }elseif(in_array($key,array('video','adjunto','contacto'))&&($valor=='si'/*||$valor==1*/)){
+                    }elseif(in_array($key,array('video','adjunto','contacto'))&&($valor==1)){
                         $tabs[$key]=$pagina['Paginas'.$key];
                         $tabPredeterminado{$key}=$nroPredeterminado;
                         $nroPredeterminado++;
@@ -183,11 +183,8 @@
                         $(function() {
 
                             $("#tabs").tabs().tabs("option", "active", <?php echo $tabPredeterminado{$pagina['Pagina']['predeterminado']};?> );
-
                             var anchoTotal=$("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul").width();
-
                             var cantidadTab= $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).size();
-
                             $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).width((anchoTotal-29*cantidadTab)/cantidadTab);
                         });
                     </script>
@@ -216,7 +213,7 @@
                 }
                 ?>
                 <?php
-                if(isset($pagina['Pagina']['imagen'])&&$pagina['Pagina']['imagen']=='si'&&!empty($pagina['Paginasimagen'])){
+                if(isset($pagina['Pagina']['imagen'])&&$pagina['Pagina']['imagen']==1&&!empty($pagina['Paginasimagen'])){
                     ?>
                     <div class="imagenes">
                     <?php
@@ -224,21 +221,28 @@
                         $height='150';
                         $width='220';
                         $crop='C';
+                        $zoomWidth="800";
+                        $zoomHeight="600";
                         ?>
 
-                            <div class="item">
+                            <a class="item grupo_<?php echo $pagina['Pagina']['id'];?>" href="/thumbs/index/?src=<?php echo $imagen['imagen']['path'];?>&h=<?php echo $zoomHeight;?>&w=<?php echo $zoomWidth;?>&zc=<?php echo $crop;?>" title="<?php echo $imagen['title'];?>">
                                 <img src="/thumbs/index/?src=<?php echo $imagen['imagen']['path'];?>&h=<?php echo $height;?>&w=<?php echo $width;?>&zc=<?php echo $crop;?>" />
                                 <div class="clear"></div>
-                            </div>
+                            </a>
                         <?php
                     endforeach;
                     ?>
                     </div>
+                    <script>
+                    $(document).ready(function(){
+                        $(".grupo_<?php echo $pagina['Pagina']['id'];?>").colorbox({rel:'grupo_<?php echo $pagina['Pagina']['id'];?>', transition:"fade", photo:true});
+
+                    });
+                    </script>
                     <?php
                 }
                 ?>
                 &nbsp;
-
             </div><!--col_2 -->
             <div class="clear"></div>
         </div><!--row_2 -->
