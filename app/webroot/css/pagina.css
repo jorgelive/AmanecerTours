@@ -49,7 +49,10 @@ div#footer { color:#fff; text-align:center;}
 div#footer .row_1 {height:160px;background: center top no-repeat url('../img/comun/bgAdorno.png') }
 div#footer .row_2 {padding:12px 5px; background:#696B81;}
 div#footer .row_2 a {color: #fff; text-decoration: none; text-transform: uppercase; }
-div#footer .row_3 {height:125px; background:#243A56;}
+div#footer .row_3 {height:105px; background:#243A56;}
+div#footer .row_3 p { margin:7px 0;}
+div#footer .row_3 h2 { margin:15px 0 5px 0;}
+
 
 /*cake-sql-log*/
 .cake-sql-log {color:#696B81;}

@@ -16,12 +16,12 @@ class AppController extends  Controller{
 			//'texto'=>__('descripcion',true)
 			//,'imagen'=>__('imagenes',true)
             'multiple' => __('Textos multiples',true)
-			,'video'=>__('videos',true)
-			,'adjunto'=>__('adjuntos',true)
-			,'contacto'=>__('Formulario de Contacto',true)
+			,'video'=>__('Videos',true)
+			,'adjunto'=>__('Adjuntos',true)
+			,'contacto'=>__('Contacto',true)
 		));
-        if(isset($this->Auth->user)&&$this->Auth->user('id') == 35)//jorge
-            Configure::write('debug', 2);
+        //if(isset($this->Auth->user)&&$this->Auth->user('id') == 35)//jorge
+        //    Configure::write('debug', 2);
 
 	}
 

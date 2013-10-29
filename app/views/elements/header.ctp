@@ -6,6 +6,7 @@
         <div class="row_1">
             <a href="http://mail.amanecertours.com/"><img src="/img/comun/webmail.png" alt="<?php echo __('correo');?>" /></a>
             <a href="/paginas/administracion"><img src="/img/comun/admin.png" alt="<?php echo __('administracion');?>" /></a>
+
             <span>&nbsp;&nbsp;&nbsp;</span>
             <?php
             foreach(Configure::read('Empresa.languageList') as $key => $value):
@@ -15,6 +16,7 @@
             endforeach;
             ?>
             <span>&nbsp;&nbsp;&nbsp;</span>
+            <a href="https://www.facebook.com/pages/Amanecer-tours/1469015949991135"><img src="/img/comun/facebook.png" alt="Facebook" /></a>
           </div><!-- row_1  -->
         <div class="row_2">
             <?php

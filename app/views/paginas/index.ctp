@@ -59,7 +59,7 @@
                         }
                         ?>
                     </div><!--textCol -->
-                    <div class="clear">&nbsp;</div>
+                    <div class="clear"></div>
                 </div><!--textRow -->
 
 
@@ -128,11 +128,7 @@
                                     <div class="clear"></div>
                                     <script type="text/javascript">
                                         jQuery(document).ready(function($) {
-                                            $("#<?php echo $key.'-'.$pagina['Pagina']['id'];?> a[rel^='Video']").prettyPhoto({
-                                                animationSpeed:'slow'
-                                                ,theme:'light_square'
-                                                ,slideshow:2000
-                                            });
+                                            $("#<?php echo $key.'-'.$pagina['Pagina']['id'];?> a[rel^='Video']").colorbox();
                                         });
                                     </script>
                                 <?php

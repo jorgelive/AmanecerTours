@@ -18,7 +18,9 @@
         ?>
      </div>
     <div class="row_3 w100 padding">
-        <?php echo Configure::read('Empresa.nombre');?> &copy; <?php echo date('Y');?>
+        <h2><?php echo Configure::read('Empresa.nombre');?></h2>
+        <p><?php echo Configure::read('Footer.linea1');?></p>
+        <p><?php echo Configure::read('Footer.linea2');?></p>
     </div>
 
     <br class="clear" />
