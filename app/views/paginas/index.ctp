@@ -260,19 +260,31 @@
                                 <?php
                                 foreach($mostrarInicios as $mostrarinicio):
                                     ?>
+
                                     <a href="/paginas/index/<?php echo $mostrarinicio['Pagina']['id'].'/idioma:'.Configure::read('Config.language') ;?>">
                                         <div class="ui-widget-content ui-corner-all rotatorItem" style="width:<?php echo $width-14;?>px;height:<?php echo $height-14;?>px;">
+
                                             <?php
                                             if(isset($mostrarinicio['Paginastexto']['contenido'])&&!empty($mostrarinicio['Paginastexto']['contenido'])){
+                                                if (isset($mostrarinicio['Paginasopcional']['duracion'])&&!empty($mostrarinicio['Paginasopcional']['duracion'])){
+                                                ?>
+                                                    <div class="duracion">
+                                                        <div class="duracionNumero"><?php echo $mostrarinicio['Paginasopcional']['duracion'];?></div>
+                                                        <div class="duracionDias"><?php echo __('dias');?></div>
+                                                        <div class="clear"></div>
+                                                    </div>
+                                                <?php
+                                                }
                                                 ?>
                                                 <img src="/thumbs/index/?src=<?php echo $mostrarinicio['Paginasopcional']['imagenpath'];?>&h=<?php echo $height-14;?>&w=<?php echo $width-14;?>&zc=<?php echo $crop;?>" />
-                                                <div class="back">&nbsp;</div>
-                                                <div class="front">
+                                                <div class="overlay back">&nbsp;</div>
+                                                <div class="overlay front">
                                                     <h2><?php echo $mostrarinicio['Pagina']['title'];?></h2>
                                                     <?php
                                                     echo substr_replace($mostrarinicio['Paginastexto']['resumen'],'...',-4,0);
                                                     ?>
                                                 </div>
+
                                                 <?php
                                             }else{
                                                 if($mostrarinicio['Pagina']['predeterminado']=='video'){

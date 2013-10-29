@@ -97,7 +97,7 @@ div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel 
 div#content div.row_2 div.col_2{}
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content{color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content:hover{border-color: #e6a003; background: #142031;}
-div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content span.texto{display:block; float:right; width: 130px;}
+div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content span.texto{padding-top: 5px; display:block; float:right; width: 130px;}
 div#content div.row_2 div.col_2 div.imagenes{}
 div#content div.row_2 div.col_2 div.imagenes a.item{margin-bottom:10px;}
 div#content div.row_2 div.col_2 div.imagenes a.item img{border-radius: 10px;}
@@ -105,8 +105,11 @@ div#content div.row_2 div.col_2 div.imagenes a.item img{border-radius: 10px;}
 div#content div.row_3 div.col_1 div.rotatorView {position: relative; margin: 10px 0 10px 0;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow { overflow: hidden; position: relative;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent { left: 0; position: absolute; top: 0; }
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem { border-width:7px; border-color: #e6a003; float: left; overflow: hidden;}
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div{color:#fff; position:relative; bottom:200px;left:0px; height:90px; padding:10px 10px 10px 60px;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem { position:relative;border-width:7px; border-color: #e6a003; float: left; overflow: hidden;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.duracion{top: 7px; right:80px; position:absolute; top:0px;color:#fff; border-radius: 0px 0px 5px 5px; text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444; background: #30394F; padding: 5px 10px;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.duracion .duracionNumero{font-size: 2.5em; line-height: 1em; margin: 0 auto; text-align: center; }
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.duracion .duracionDias{font-size: 1.3em; margin: 0 auto; text-align: center;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.overlay {color:#fff; position:relative; bottom:200px;left:0px; height:90px; padding:10px 10px 10px 60px;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.back {opacity: 0.6; bottom:90px; background: url(../img/comun/bgTab.png) no-repeat center left #000;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div h2 {padding-bottom:5px; border-bottom: 2px solid #A6A6A7; margin-bottom: 5px;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div p.resumen {}

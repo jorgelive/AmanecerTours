@@ -111,7 +111,7 @@ class PaginasController extends AppController {
                             ,'or' => array(
                                 'and' =>array(
                                     array('Pagina.parent_id' => $pagina['Pagina']['parent_id'])
-                                    ,array("not"=> array('Pagina.parent_id' => null))
+                                    ,array("not"=> array('Pagina.parent_id' => null,'Pagina.id' => $pagina['Pagina']['id']))
                                 )
                                 ,array('Pagina.parent_id' => $pagina['Pagina']['id'])
                             )
@@ -604,7 +604,7 @@ class PaginasController extends AppController {
 	}
 	
 	function modificar() {
-		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.mostrarfooter','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
+		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.mostrarfooter','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
 		if (!empty($this->data)) {
 			$pagina=$this->Pagina->findById($this->data['Pagina']['id']);
 			if(!empty($pagina)){
