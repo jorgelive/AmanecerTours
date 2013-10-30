@@ -174,6 +174,8 @@ class PaginasController extends AppController {
 			$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 			if(!empty($pagina)){
 				$pagina = $this->__tiposPublicacionSave($pagina);
+                $pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',false);
+                $pagina = $this->__comprobarImagenPath($pagina);
 				$result['success'] = true;
 				$result['data'] = $pagina;
 				
@@ -300,12 +302,11 @@ class PaginasController extends AppController {
             $extractAtFinish=TRUE;
         }
 
-        //print_r($data);
+        $emptyImagen=Configure::read('Default.imgNotAvailable');
         foreach ($data as $numero => $dummy)://todo: encontrar algo mejor
             $existe=false;
-            if(isset($data{$numero}['Paginasopcional']['imagenpath'])&&!empty($data{$numero}['Paginasopcional']['imagenpath'])){
+            if(isset($data{$numero}['Paginasopcional']['imagenpath'])&&!empty($data{$numero}['Paginasopcional']['imagenpath'])&&$data{$numero}['Paginasopcional']['imagenpath']!=$emptyImagen){
                 $imagenPath=$data{$numero}['Paginasopcional']['imagenpath'];
-
                 if (isset($data{$numero}['Paginastexto']['contenido_imagenes'])){
                     foreach ($data{$numero}['Paginastexto']['contenido_imagenes'] as $imagenData):
                         if ($imagenData['url']===$imagenPath){
@@ -322,7 +323,7 @@ class PaginasController extends AppController {
                 if($existe==false&&isset($data{$numero}['Paginasimagen'])&&!empty($data{$numero}['Paginasimagen'])){
                     foreach ($data{$numero}['Paginasimagen'] as $imagenData):
                         if ($imagenData['imagen']['path']===$imagenPath){
-                            $rutaCompleta=substr_replace($imagenData['url'], WWW_ROOT, 0, 1);
+                            $rutaCompleta=substr_replace($imagenData['imagen']['path'], WWW_ROOT, 0, 1);
                             if(file_exists($rutaCompleta)===true&&@getimagesize($rutaCompleta)==true){
                                 $existe=true;
                             }
@@ -352,6 +353,7 @@ class PaginasController extends AppController {
                 }
             }
             if($existe===false){
+
                 $data{$numero}['Paginasopcional']['imagenpath']=Configure::read('Default.imgNotAvailable');
             }
 
@@ -509,6 +511,11 @@ class PaginasController extends AppController {
                     $i++;
                 endforeach;
             }
+            if($i==0){
+                $result['Imagen'][$i]['id']=Configure::read('Default.imgNotAvailable');  //era $key
+                $result['Imagen'][$i]['name']='No existe imagen';
+            }
+
 
 		}
 		if (isset($result)){$this->set('result', $result);}else{$this->set('result', '');}
