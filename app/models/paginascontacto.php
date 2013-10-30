@@ -13,7 +13,7 @@ class Paginascontacto extends AppModel {
             'defaultvalue'=>array(
                 'campos'=>array(
                     'destinatario'=>'ventas@amanecertours.com'
-                    ,'cco'=>'cco@amanecertours.com'
+                    ,'cco'=>'gerencia@amanecertours.com'
                 )
                 ,'booldependiente'=>'Pagina.contacto'
             )

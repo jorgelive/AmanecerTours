@@ -44,7 +44,7 @@
 					,blankText:'Ingrese contenido'
 					,minLength : 0
 					,maxLengthText : 'El tamaño máximo es 350 caracteres'
-					,maxLength : 300
+					,maxLength : 350
 					,iHeight:150
 					,iWidth:680
 					,msgTarget: 'under'

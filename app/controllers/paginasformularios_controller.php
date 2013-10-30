@@ -8,9 +8,9 @@ class PaginasformulariosController extends AppController {
 		if (!empty($this->data)) {
 			$this->Paginasformulario->set($this->data);
 			if ($this->Paginasformulario->validates()) {
-				$this->Email->to = Security::cipher($pagina['Paginasformulario']['destinatario'], Configure::read('Security.cipherSeed'));
-                $this->Email->bcc = Security::cipher($pagina['Paginasformulario']['cco'], Configure::read('Security.cipherSeed'));
-            	$this->Email->subject = $this->data['Paginasformulario']['title'].' enviado por: ' .$this->data['Paginasformulario']['name'];  
+				$this->Email->to = base64_decode($this->data['Paginasformulario']['destinatario']);
+                $this->Email->bcc = array(base64_decode($this->data['Paginasformulario']['cco']));
+            	$this->Email->subject = $this->data['Paginasformulario']['title'].' enviado por: ' .$this->data['Paginasformulario']['name']. ' de ' .$this->data['Paginasformulario']['pais'];
            		$this->Email->from = $this->data['Paginasformulario']['email'];  
             	if($this->Email->send($this->data['Paginasformulario']['contenido'])){
 					$this->Session->setFlash(__('message_sent',true),'/flash-jq-ui',array('class'=>'ok'));

@@ -65,6 +65,7 @@ class PaginasmultiplesController extends AppController{
 					if($this->Paginasmultiple->save($this->data)){
 						$result['success'] = true;
 						$result['message'] = 'El texto múltiple fue agregado';
+                        $result['data']['newId'] = $this->Paginasmultiple->id;
 					}else{
 						$result['success'] = false;
 						$result['errors'] = 'Hubo un error al guardar el texto multiple';

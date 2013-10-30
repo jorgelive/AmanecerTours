@@ -66,9 +66,6 @@ class PaginasopcionalesController extends AppController {
 		if (!empty($this->data)) {
 			$opcional=$this->Paginasopcional->findById($this->data['Paginasopcional']['id']);
 			if(!empty($opcional)){
-				if($this->data['Paginasopcional']['etiquetas']==Configure::read('Empresa.tags')){
-					$this->data['Paginasopcional']['etiquetas']='';
-				}
 				$this->Paginasopcional->set($this->data);
 				if ($this->Paginasopcional->validates($this->data)) {
 					if($this->Paginasopcional->save($this->data)){

@@ -62,6 +62,7 @@
 								}
 								generalForm.getForm().findField('Pagina.mostrarinicio').setValue(obj.data.Pagina.mostrarinicio);
 								generalForm.getForm().findField('Pagina.mostrarfooter').setValue(obj.data.Pagina.mostrarfooter);
+								generalForm.getForm().findField('Pagina.hidetitle').setValue(obj.data.Pagina.hidetitle);
 								generalForm.getForm().findField('Pagina.texto').setValue(obj.data.Pagina.texto);
 								generalForm.getForm().findField('Pagina.multiple').setValue(obj.data.Pagina.multiple);
 								generalForm.getForm().findField('Pagina.imagen').setValue(obj.data.Pagina.imagen);
@@ -94,8 +95,15 @@
 										opcionalForm.getForm().findField('Paginasopcional.publicado_final').setValue(obj.data.Paginasopcional.publicado_final);
 									}
 									opcionalForm.getForm().findField('Paginasopcional.imagenpath').setValue(obj.data.Paginasopcional.imagenpath);
-									opcionalForm.getForm().findField('Paginasopcional.etiquetas').setValue(obj.data.Paginasopcional.etiquetas);
-									opcionalForm.getForm().findField('Paginasopcional.duracion').setValue(obj.data.Paginasopcional.duracion);
+									opcionalForm.getForm().findField('Paginasopcional.textocontacto').setValue(obj.data.Paginasopcional.textocontacto);
+                                    opcionalForm.getForm().findField('Paginasopcional.textoimagen').setValue(obj.data.Paginasopcional.textoimagen);
+                                    opcionalForm.getForm().findField('Paginasopcional.textovideo').setValue(obj.data.Paginasopcional.textovideo);
+                                    opcionalForm.getForm().findField('Paginasopcional.textoadjunto').setValue(obj.data.Paginasopcional.textoadjunto);
+                                    opcionalForm.getForm().findField('Paginasopcional.textopromocion').setValue(obj.data.Paginasopcional.textopromocion);
+
+
+
+                                    opcionalForm.getForm().findField('Paginasopcional.duracion').setValue(obj.data.Paginasopcional.duracion);
                                     opcionalForm.getForm().url='<?php echo $html->url('/paginasopcionales/modificar/') ?>';
 									opcionalPanel.setTitle('Información opcional ('+idiomaName+')');
 								}else{
@@ -105,7 +113,11 @@
 									opcionalForm.getForm().findField('Paginasopcional.publicado_inicio').setValue('');
 									opcionalForm.getForm().findField('Paginasopcional.publicado_final').setValue('');
 									opcionalForm.getForm().findField('Paginasopcional.imagenpath').setValue('');
-									opcionalForm.getForm().findField('Paginasopcional.etiquetas').setValue('');
+									opcionalForm.getForm().findField('Paginasopcional.textocontacto').setValue('');
+                                    opcionalForm.getForm().findField('Paginasopcional.textoimagen').setValue('');
+                                    opcionalForm.getForm().findField('Paginasopcional.textovideo').setValue('');
+                                    opcionalForm.getForm().findField('Paginasopcional.textoadjunto').setValue('');
+                                    opcionalForm.getForm().findField('Paginasopcional.textopromocion').setValue('');
                                     opcionalForm.getForm().findField('Paginasopcional.duracion').setValue('');
 									
 									

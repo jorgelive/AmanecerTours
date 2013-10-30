@@ -116,6 +116,18 @@ class Pagina extends AppModel {
                 ,'message' => 'Mostrar en inicio debe ser solo 1 ó 0'
             )
         )
+        ,'mostrarfooter' => array(
+            'empty' => array(
+                'rule' => 'notEmpty'
+                ,'required' => true
+                ,'message' => 'Seleccione si quiere mostrar o no ocultar el titulo'
+                ,'last' => true
+            )
+            ,'boolean' => array(
+                'rule' => array('boolean')
+                ,'message' => 'Mostrar en inicio debe ser solo 1 ó 0'
+            )
+        )
 		,'texto' => array(
 			'empty' => array(
                 'rule' => 'notEmpty'

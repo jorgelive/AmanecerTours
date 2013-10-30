@@ -30,7 +30,7 @@
 				,stripeRows: true
 				,autoExpandColumn: 'accion'
 				,clicksToEdit: 2
-				,height:240
+				,height:270
 			});
 			
 			var generalForm = new Ext.FormPanel({ 
@@ -99,6 +99,12 @@
                     ,fieldLabel:'Mostrar en menú'
                     ,xtype:'checkbox'
                     ,name:'Pagina.mostrarfooter'
+                    ,inputValue:1
+                },{
+                    hidden:true
+                    ,fieldLabel:'Esconder titulo'
+                    ,xtype:'checkbox'
+                    ,name:'Pagina.hidetitle'
                     ,inputValue:1
                 },{
 					

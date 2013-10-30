@@ -24,11 +24,21 @@
                         ?>
                         <span class="menuBottom <?php echo $currentSpanClass;?>">
                         <?php
+
+                        $childrenValido=false;
                         if(!empty($item['children'])){
-                            if($item[$modelo]['notempty']==0&&$item[$modelo]['vigencia']=='ok'){
-                                echo '<a class="'.$currentAClass.'" id="menu'.$item[$modelo]['id'].'" href="#">'.$item[$modelo][$grupo{'settings'}['textField']].'</a>';
-                            }else{
+                            foreach($item['children'] as $children):
+                                if($children[$modelo]['notempty']==1&&$children[$modelo]['vigencia']=='ok'&&$children[$modelo]['publicado']==1){
+                                    $childrenValido=true;
+                                    break;
+                                }
+                            endforeach;
+                        }
+                        if($childrenValido===true){
+                            if($item[$modelo]['notempty']==1&&$item[$modelo]['vigencia']=='ok'){
                                 echo '<a class="'.$currentAClass.'" id="menu'.$item[$modelo]['id'].'" href="/'.strtolower($grupo{'settings'}{'controlador'}).'/'.$grupo{'settings'}['accion'].'/'.$item[$modelo]['id'].'/idioma:'.Configure::read('Config.language').'">'.$item[$modelo][$grupo{'settings'}['textField']].'</a>';
+                            }else{
+                                echo '<a class="'.$currentAClass.'" id="menu'.$item[$modelo]['id'].'" href="#">'.$item[$modelo][$grupo{'settings'}['textField']].'</a>';
                             }
                             echo '<div id="contentMenu'.$item[Inflector::singularize($grupo{'settings'}{'controlador'})]['id'].'" class="hidden">';
                             echo $tree->generate($item['children'],array('alias'=>$grupo{'settings'}['textField'],'element' => 'menu'.strtolower($modelo)));
@@ -49,6 +59,7 @@
                         }elseif($item[$modelo]['publicado']==1&&$item[$modelo]['vigencia']=='ok'&&$item[$modelo]['notempty']==1){
                             echo '<a class="'.$currentAClass.' fg-button ui-widget ui-state-default" href="/'.strtolower($grupo{'settings'}{'controlador'}).'/'.$grupo{'settings'}{'accion'}.'/'.$item[$modelo]['id'].'/idioma:'.Configure::read('Config.language').'">'.$item[$modelo][$grupo{'settings'}['textField']].'</a>';
                         }
+
                         ?>
 
                         </span>

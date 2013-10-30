@@ -64,6 +64,7 @@ class PaginasimagenesController extends AppController{
 					if($this->Paginasimagen->save($this->data)){
 						$result['success'] = true;
 						$result['message'] = 'La imagen fue agregada';
+                        $result['data']['newId'] = $this->Paginasimagen->id;
 					}else{
 						$result['success'] = false;
 						$result['errors'] = 'Hubo un error al guardar la imagen';

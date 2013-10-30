@@ -15,10 +15,10 @@ class AppController extends  Controller{
 		Configure::write('Default.tipos',array(
 			//'texto'=>__('descripcion',true)
 			//,'imagen'=>__('imagenes',true)
-            'multiple' => __('Textos multiples',true)
-			,'video'=>__('Videos',true)
-			,'adjunto'=>__('Adjuntos',true)
-			,'contacto'=>__('Contacto',true)
+            'multiple' => __('textos_multiples',true)
+			,'video'=>__('galeria_videos',true)
+			,'adjunto'=>__('panel_adjuntos',true)
+			,'contacto'=>__('formulario_contacto',true)
 		));
         //if(isset($this->Auth->user)&&$this->Auth->user('id') == 35)//jorge
         //    Configure::write('debug', 2);

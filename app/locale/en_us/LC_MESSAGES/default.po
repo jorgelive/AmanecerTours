@@ -2,64 +2,45 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Andeanyways\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-01 09:23-0500\n"
-"PO-Revision-Date: 2011-04-01 09:23-0500\n"
-"Last-Translator: Jorge Gomez <Jorge@live.com.pe>\n"
+"POT-Creation-Date: 2013-10-30 03:27-0500\n"
+"PO-Revision-Date: 2013-10-30 04:46-0500\n"
+"Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__\n"
-"X-Poedit-Basepath: Z:\\cusco\\app\\\n"
-"X-Poedit-Language: English\n"
-"X-Poedit-Country: UNITED STATES\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-Basepath: /Volumes/Archivo/Desarrollo/Web/AmanecerTours/app\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: config\n"
 "X-Poedit-SearchPath-2: models\n"
 "X-Poedit-SearchPath-3: controllers\n"
-"X-Poedit-SearchPath-4: views\\paginas\n"
-"X-Poedit-SearchPath-5: views\\paginastestimonios\n"
-"X-Poedit-SearchPath-6: views\\paginasnoticias\n"
-"X-Poedit-SearchPath-7: views\\elements\n"
-"X-Poedit-SearchPath-8: views\\layouts\n"
-"X-Poedit-SearchPath-9: views\\paginascabeceras\n"
-
-#: app_controller.php:16
-msgid "descripcion"
-msgstr "Description"
-
-#: app_controller.php:17
-msgid "imagenes"
-msgstr "Images"
+"X-Poedit-SearchPath-4: views/paginas\n"
+"X-Poedit-SearchPath-5: views/paginastestimonios\n"
+"X-Poedit-SearchPath-6: views/paginasnoticias\n"
+"X-Poedit-SearchPath-7: views/elements\n"
+"X-Poedit-SearchPath-8: views/layouts\n"
+"X-Poedit-SearchPath-9: views/paginascabeceras\n"
+"X-Poedit-SearchPath-10: views/paginasformularios\n"
 
 #: app_controller.php:18
-msgid "videos"
-msgstr "Videos"
+msgid "textos_multiples"
+msgstr "Multitext"
 
-#: app_controller.php:19
-msgid "adjuntos"
-msgstr "Attachment"
+#: app_controller.php:19 models/paginasopcional.php:102
+msgid "galeria_videos"
+msgstr "Video playlist"
 
-#: app_controller.php:21
-msgid "inicio"
-msgstr "Home page"
+#: app_controller.php:20 models/paginasopcional.php:103
+msgid "panel_adjuntos"
+msgstr "Attachments panel"
 
-#: app_controller.php:24
-msgid "testimonios"
-msgstr "Testimonies"
-
-#: webroot/test.php:88
-msgid "Debug setting does not allow access to this url."
-msgstr "Debug setting does not allow access to this url."
-
-#: controllers/paginas_controller.php:33
-msgid "pagina de inicio"
-msgstr "Home page"
-
-#: controllers/paginasnoticias_controller.php:71
-msgid "noticias"
-msgstr "News"
+#: app_controller.php:21 models/paginasopcional.php:100
+msgid "formulario_contacto"
+msgstr "Contact form"
 
 #: controllers/paginasformularios_controller.php:16
 msgid "message_sent"
@@ -73,81 +54,103 @@ msgstr "There was an error, try again please"
 msgid "message_error"
 msgstr "There was an error"
 
-#: models/paginasformulario.php:84
+#: controllers/paginasnoticias_controller.php:46
+msgid "noticias"
+msgstr "News"
+
+#: controllers/paginastestimonios_controller.php:46
+msgid "testimonios"
+msgstr "Testimonies"
+
+#: models/paginasformulario.php:104
 msgid "nombre_required"
 msgstr "Name is requiered"
 
-#: models/paginasformulario.php:85
+#: models/paginasformulario.php:105
 msgid "nombre_max40"
 msgstr "Maximum name length is 40"
 
-#: models/paginasformulario.php:86
+#: models/paginasformulario.php:106
 msgid "nombre_min7"
-msgstr "Minimum content length is 4000"
+msgstr "Minimum content length is 7"
 
-#: models/paginasformulario.php:87
+#: models/paginasformulario.php:107
 msgid "correo_required"
 msgstr "E-mail is requiered"
 
-#: models/paginasformulario.php:88
+#: models/paginasformulario.php:108
 msgid "correo_valido"
 msgstr "E-mail must be valid"
 
-#: models/paginasformulario.php:89
+#: models/paginasformulario.php:109
 msgid "titulo_required"
 msgstr "Title is requiered"
 
-#: models/paginasformulario.php:90
+#: models/paginasformulario.php:110
 msgid "title_max60"
 msgstr "Maximum title length is 60"
 
-#: models/paginasformulario.php:91
+#: models/paginasformulario.php:111
 msgid "title_min10"
 msgstr "Minimum title length is 10"
 
-#: models/paginasformulario.php:92
+#: models/paginasformulario.php:112
+msgid "pais_required"
+msgstr "Country is required"
+
+#: models/paginasformulario.php:113
+msgid "pais_max30"
+msgstr "Maximum pais length is 30"
+
+#: models/paginasformulario.php:114
+msgid "pais_min3"
+msgstr "Minimum content length is 3"
+
+#: models/paginasformulario.php:115
 msgid "contenido_required"
 msgstr "Content is requiered"
 
-#: models/paginasformulario.php:93
+#: models/paginasformulario.php:116
 msgid "contenido_max4000"
 msgstr "Maximum content length is 4000"
 
-#: models/paginasformulario.php:94
+#: models/paginasformulario.php:117
 msgid "contenido_min10"
 msgstr "Minimum content length is 10"
 
-#: views/paginasnoticias/index.ctp:33
-#: views/paginastestimonios/index.ctp:33
-#: views/paginas/detalle.ctp:33
-#: views/paginas/index.ctp:64
+#: models/paginasopcional.php:101
+msgid "galeria_imagenes"
+msgstr "Image gallery"
+
+#: models/paginasopcional.php:104
+msgid "panel_promociones"
+msgstr "On sale"
+
+#: webroot/test.php:88
+msgid "Debug setting does not allow access to this url."
+msgstr "Debug setting does not allow access to this url."
+
+#: views/elements/flash-jq-ui.ctp:6
+msgid "alerta"
+msgstr "Alert"
+
+#: views/elements/flash-jq-ui.ctp:10
+msgid "informacion"
+msgstr "Information"
+
+#: views/elements/header.ctp:7 views/paginasnoticias/index.ctp:31
+#: views/paginastestimonios/index.ctp:31
 msgid "correo"
 msgstr "Mail"
 
-#: views/paginasnoticias/index.ctp:34
-#: views/paginastestimonios/index.ctp:34
-#: views/paginas/detalle.ctp:34
-#: views/paginas/index.ctp:65
+#: views/elements/header.ctp:8 views/paginasnoticias/index.ctp:32
+#: views/paginastestimonios/index.ctp:32
 msgid "administracion"
 msgstr "Administration"
 
-#: views/paginasnoticias/index.ctp:35
-#: views/paginastestimonios/index.ctp:35
-#: views/paginas/detalle.ctp:35
-#: views/paginas/index.ctp:66
-msgid "soporte"
-msgstr "Online support"
-
-#: views/paginasnoticias/index.ctp:79
-msgid "titulo"
-msgstr "Title"
-
-#: views/paginasnoticias/index.ctp:80
-#: views/paginasnoticias/index.ctp:128
-#: views/paginastestimonios/index.ctp:81
-#: views/paginastestimonios/index.ctp:130
-msgid "fecha"
-msgstr "Date"
+#: views/elements/menu.ctp:34 views/elements/menuPrincipal.ctp:52
+msgid "escoja"
+msgstr "Choose"
 
 #: views/errors/missing_table.ctp:20
 msgid "La tabla no exixte"
@@ -162,126 +165,125 @@ msgstr "Error"
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 msgstr "Table %1$s of model %2$s can't be found in the database"
 
-#: views/paginasformularios/form.ctp:6
-msgid "contacto_nombre"
-msgstr "Name"
+#: views/paginas/index.ctp:32 views/paginas/index.ctp:270
+msgid "dias"
+msgstr "days"
 
-#: views/paginasformularios/form.ctp:7
-msgid "contacto_email"
-msgstr "E-mail"
-
-#: views/paginasformularios/form.ctp:8
-msgid "contacto_titulo"
-msgstr "Title"
-
-#: views/paginasformularios/form.ctp:9
-msgid "contacto_detalle"
-msgstr "Content"
-
-#: views/paginasformularios/form.ctp:10
-msgid "contacto_enviar"
-msgstr "Send"
-
-#: views/paginastestimonios/index.ctp:79
-msgid "nombre"
-msgstr "Name"
-
-#: views/paginastestimonios/index.ctp:80
-#: views/paginastestimonios/index.ctp:129
-#: views/paginas/index.ctp:358
-msgid "nacionalidad"
-msgstr "Nationality"
-
-#: views/paginas/detalle.ctp:205
-#: views/paginas/index.ctp:163
-msgid "ofertas"
-msgstr "Deals"
-
-#: views/paginas/detalle.ctp:213
-#: views/paginas/index.ctp:200
-msgid "notas"
-msgstr "Notes"
-
-#: views/paginas/detalle.ctp:219
-#: views/paginas/index.ctp:206
-msgid "condiciones"
-msgstr "Conditions"
-
-#: views/paginas/detalle.ctp:224
-#: views/paginas/index.ctp:211
-msgid "desde"
-msgstr "From"
-
-#: views/paginas/detalle.ctp:238
-msgid "contacto_form"
-msgstr "Contact form"
-
-#: views/paginas/detalle.ctp:245
+#: views/paginas/index.ctp:161
 msgid "acerca de"
 msgstr "About"
 
-#: views/paginas/detalle.ctp:259
-msgid "enlaces"
-msgstr "Links"
-
-#: views/paginas/index.ctp:6
-msgid "slogan"
-msgstr "Peru at your"
-
-#: views/paginas/index.ctp:218
-msgid "ver oferta"
-msgstr "See deal"
-
-#: views/paginas/index.ctp:296
-msgid "ampliar noticia"
-msgstr "See news"
-
-#: views/paginas/index.ctp:351
-msgid "leer mas"
-msgstr "Read more"
-
-#: views/elements/footer.ctp:18
-msgid "redes sociales"
-msgstr "Social networks"
-
-#: views/elements/footer.ctp:18
-msgid "redes"
-msgstr "Networks"
-
-#: views/elements/footer.ctp:29
-msgid "feeds"
-msgstr "Feeds"
-
-#: views/elements/footer.ctp:37
-msgid "mostrar barra"
-msgstr "Show toolbar"
-
-#: views/elements/footer.ctp:38
-msgid "ocultar barra"
-msgstr "Hide toolbar"
-
-#: views/elements/menu.ctp:29
-msgid "escoja"
-msgstr "Choose"
-
-#: views/elements/flash-jq-ui.ctp:6
-msgid "alerta"
-msgstr "Alert"
-
-#: views/elements/flash-jq-ui.ctp:10
-msgid "informacion"
-msgstr "Information"
-
 #: views/paginascabeceras/listarxml.ctp:34
-#, fuzzy
 msgid "ver mas"
 msgstr "Read more"
 
-#~ msgid "ver imagenes"
-#~ msgstr "Go to images"
+#: views/paginasformularios/form.ctp:6
+msgid "contacto_nombre_apellido"
+msgstr "Name & surname"
 
-#~ msgid "ver videos"
-#~ msgstr "Go to videos"
+#: views/paginasformularios/form.ctp:7
+msgid "pais"
+msgstr "Country"
+
+#: views/paginasformularios/form.ctp:8
+msgid "contacto_email"
+msgstr "E-mail"
+
+#: views/paginasformularios/form.ctp:9
+msgid "contacto_titulo"
+msgstr "Title"
+
+#: views/paginasformularios/form.ctp:10
+msgid "contacto_detalle"
+msgstr "Content"
+
+#: views/paginasformularios/form.ctp:11
+msgid "contacto_enviar"
+msgstr "Send"
+
+#: views/paginasnoticias/index.ctp:33 views/paginastestimonios/index.ctp:33
+msgid "soporte"
+msgstr "Online support"
+
+#: views/paginasnoticias/index.ctp:73
+msgid "titulo"
+msgstr "Title"
+
+#: views/paginasnoticias/index.ctp:74 views/paginasnoticias/index.ctp:122
+#: views/paginastestimonios/index.ctp:75
+#: views/paginastestimonios/index.ctp:124
+msgid "fecha"
+msgstr "Date"
+
+#: views/paginastestimonios/index.ctp:73
+msgid "nombre"
+msgstr "Name"
+
+#: views/paginastestimonios/index.ctp:74
+#: views/paginastestimonios/index.ctp:123
+msgid "nacionalidad"
+msgstr "Nationality"
+
+#, fuzzy
+#~ msgid "contacto"
+#~ msgstr "Contact form"
+
+#~ msgid "descripcion"
+#~ msgstr "Description"
+
+#~ msgid "imagenes"
+#~ msgstr "Images"
+
+#~ msgid "videos"
+#~ msgstr "Videos"
+
+#~ msgid "inicio"
+#~ msgstr "Home page"
+
+#~ msgid "pagina de inicio"
+#~ msgstr "Home page"
+
+#~ msgid "ofertas"
+#~ msgstr "Deals"
+
+#~ msgid "notas"
+#~ msgstr "Notes"
+
+#~ msgid "condiciones"
+#~ msgstr "Conditions"
+
+#~ msgid "desde"
+#~ msgstr "From"
+
+#~ msgid "enlaces"
+#~ msgstr "Links"
+
+#~ msgid "slogan"
+#~ msgstr "Peru at your"
+
+#~ msgid "ver oferta"
+#~ msgstr "See deal"
+
+#~ msgid "ampliar noticia"
+#~ msgstr "See news"
+
+#~ msgid "leer mas"
+#~ msgstr "Read more"
+
+#~ msgid "redes sociales"
+#~ msgstr "Social networks"
+
+#~ msgid "redes"
+#~ msgstr "Networks"
+
+#~ msgid "feeds"
+#~ msgstr "Feeds"
+
+#~ msgid "mostrar barra"
+#~ msgstr "Show toolbar"
+
+#~ msgid "ocultar barra"
+#~ msgstr "Hide toolbar"
 
 #~ msgid "ver archivos adjuntos"
 #~ msgstr "Go to attached files"

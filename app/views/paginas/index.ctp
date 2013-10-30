@@ -41,7 +41,7 @@
                     <div style="width:<?php echo $textColWidth; ?>%" class="textCol column">
 
                         <?php
-                        if(!isset($pagina['Pagina']['isStart'])){
+                        if($pagina['Pagina']['hidetitle']!=1){
                             ?>
                             <h1><?php echo $pagina['Pagina']['title'];?></h1>
                         <?php
@@ -64,6 +64,7 @@
 
 
                 <?php
+                //print_r($pagina);
                 $tipos=Configure::read('Default.tipos');
                 $nroPredeterminado = 0;
                 $tabPredeterminado = array();
@@ -92,7 +93,7 @@
                                 <?php
                                 }else{
                                     ?>
-                                    <li><a href="#tab-<?php echo $key;?>"><?php echo $tipos{$key};?></a></li>
+                                    <li><a href="#tab-<?php echo $key;?>"><?php echo $pagina['Paginasopcional']['texto'.$key];?></a></li>
                                 <?php
                                 }
                             endforeach;
@@ -157,7 +158,7 @@
                                                 $.ajax({
                                                     type: "POST"
                                                     ,url: "/paginasformularios/form"
-                                                    ,data: "idioma=<?php echo Configure::read('Config.language');?>&destinatario=<?php echo Security::cipher($pagina['Paginascontacto']['destinatario'], Configure::read('Security.cipherSeed'));?>&cco=<?php echo Security::cipher($pagina['Paginascontacto']['cco'], Configure::read('Security.cipherSeed'));?>&title=<?php echo __('acerca de').': '.$pagina['Pagina']['title'];?>"
+                                                    ,data: "idioma=<?php echo Configure::read('Config.language');?>&destinatario=<?php echo base64_encode($pagina['Paginascontacto']['destinatario']);?>&cco=<?php echo base64_encode($pagina['Paginascontacto']['cco']);?>&title=<?php echo __('acerca de').': '.$pagina['Pagina']['title'];?>"
                                                     ,success: function(respuesta){
                                                         $("div#content div.row_2 div.column div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm").html(respuesta);
                                                     }

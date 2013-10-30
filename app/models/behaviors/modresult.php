@@ -71,11 +71,10 @@ class ModresultBehavior extends ModelBehavior {
                             }
                         }
                     }
-
                     if(isset($settings['ancestorfind'])
                         &&!empty($settings['ancestorfind'])
                     ){
-                        if(array_key_exists('parent_id', $results{$key}{$modelName})){
+                        if(isset($results{$key}{$modelName})&&array_key_exists('parent_id', $results{$key}{$modelName})){
                             if(is_null($results{$key}{$modelName}{'parent_id'})){
                                 $results{$key}{$modelName}{'ancestor'}=$results{$key}{$modelName}{'id'};
                             }else{
@@ -112,16 +111,10 @@ class ModresultBehavior extends ModelBehavior {
                 !isset($data[$key])
                 ||empty($data{$key})
             ){
-                $data{$key}=$value;
+                $data{$key}=__($value,true);
             }
 
         endforeach;
-        if(
-            !isset($data['id'])
-            ||empty($data['id'])
-        ){
-            $data['id']=1;
-        }
         return $data;
     }
 }

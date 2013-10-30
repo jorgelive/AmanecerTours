@@ -160,14 +160,27 @@ class ComprobadoBehavior extends ModelBehavior {
             $fin=$settings['rango']['fin'];
             $modelofields=$settings{'modelofields'};
 
-            if(is_null($relacionado)&&isset($model->$modelofields)){
+            if(!is_array($relacionado)){
+                $relacionado=array();
+            }
+            if(!array_key_exists(0,$relacionado)){
+                $relacionado=array($relacionado);
+            }
+
+            if(!isset($relacionado[0][$inicio])||!isset($relacionado[0][$fin])){
+                $relacionado[0][$inicio]=null;
+                $relacionado[0][$fin]=null;
+
+            }
+
+            //para consulta trabajo con 1 ya que normalmente para multiples sed darian en la misma tabla y en este caso relacionado se encuentra ya definido para el metodo
+            //igual hago el artificio de hacer array para trabajar para los dos casos
+            if(!isset($relacionado[0]['id'])&&isset($model->$modelofields)){
+
                 $resultquery=$model->$modelofields->find('first',array('recursive'=>-1,'conditions'=>array($modelofields.'.'.strtolower($model->name).'_id'=>$data{'id'})));
                 if(!empty($resultquery)){
-                    $relacionado = $resultquery{$modelofields};
+                    $relacionado[0] = Set::merge($resultquery{$modelofields},$relacionado[0]);
                 }
-            }elseif(is_null($relacionado)){
-                //trigger_error("asumimos que si");
-                return null;
             }
 
             $extractAtFinish=false;
@@ -177,16 +190,11 @@ class ComprobadoBehavior extends ModelBehavior {
                 $extractAtFinish=true;
             }
 
-            if(!is_array($relacionado)){
-                $relacionado=array(0=>array($inicio=>null,$fin=>null));
 
-            }
-            if(!array_key_exists(0,$relacionado)){
-                $relacionado=array($relacionado);
-            }
 
             foreach($data as $key => $valor):
                 $data{$key}{'vigencia'}='ok';
+                //print_r($relacionado{$key});
                 $relacionado{$key}{$inicio}=($relacionado{$key}{$inicio}=='0000-00-00')?null:$relacionado{$key}{$inicio};
                 $relacionado{$key}{$fin}=($relacionado{$key}{$fin}=='0000-00-00')?null:$relacionado{$key}{$fin};
 

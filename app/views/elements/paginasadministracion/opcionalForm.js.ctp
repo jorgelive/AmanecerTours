@@ -84,14 +84,41 @@
                     ,emptyText:'Sólo para excursiones'
                     ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
                 },{
-					xtype: "textarea"
-					,name:'Paginasopcional.etiquetas'
-					,fieldLabel: 'Etiquetas'
-					,allowBlank: true
-					,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
-					,anchor: '100%'
-					,height:70
-				},{
+                    xtype: "textfield"
+                    ,name:'Paginasopcional.textocontacto'
+                    ,fieldLabel: 'Texto para formulario de contacto'
+                    ,allowBlank: true
+                    ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
+                    ,anchor: '100%'
+                },{
+                    xtype: "textfield"
+                    ,name:'Paginasopcional.textoimagen'
+                    ,fieldLabel: 'Texto para galeria de imágenes'
+                    ,allowBlank: true
+                    ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
+                    ,anchor: '100%'
+                },{
+                   xtype: "textfield"
+                    ,name:'Paginasopcional.textovideo'
+                    ,fieldLabel: 'Texto para galeria de videos'
+                    ,allowBlank: true
+                    ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
+                    ,anchor: '100%'
+                },{
+                    xtype: "textfield"
+                    ,name:'Paginasopcional.textoadjunto'
+                    ,fieldLabel: 'Texto para panel de adjuntos'
+                    ,allowBlank: true
+                    ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
+                    ,anchor: '100%'
+                },{
+                    xtype: "textfield"
+                    ,name:'Paginasopcional.textopromocion'
+                    ,fieldLabel: 'Texto para panel de promociones'
+                    ,allowBlank: true
+                    ,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginasopcionales/validar/') ?>'})]
+                    ,anchor: '100%'
+                },{
 					xtype: 'radiogroup'
 					,name:'idioma'
 					,allowBlank:false

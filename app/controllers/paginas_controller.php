@@ -362,27 +362,6 @@ class PaginasController extends AppController {
         return $data;
     }
 	
-	function __tags(){
-		if(empty($data)){
-			return false;
-		}
-		if(!array_key_exists(0, $data)){
-			$data=array($data); 	
-			$extractAtFinish=TRUE;
-		}
-		foreach ($data as $numero => $dummy):
-			if(!empty($tags)){
-				if(empty($data{$numero}['Paginasopcional']['etiquetas'])){
-					$data{$numero}['Paginasopcional']['etiquetas']=Configure::read('Default.tags');
-				}
-			}
-		endforeach;	
-		if(isset($extractAtFinish)&&$extractAtFinish===TRUE){
-			$data=$data[0];	
-		}
-		return $data;
-	}
-	
 	function administracion($id=NULL){
 		$this->set('title_for_layout',$this->__getTitulo($this->modelNames[0]));
 		if($id!=NULL){
@@ -512,15 +491,25 @@ class PaginasController extends AppController {
 	
 	function listadofotos() {
 		if (isset($this->params['form']['id'])){
-			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional','Paginascontacto'),'hasMany'=>array('Paginasimagen','Paginasvideo','Paginasadjunto','Paginaspromocion')));
+			$this->Pagina->unbindModel(array('hasOne'=>array('Paginasopcional','Paginascontacto'),'hasMany'=>array('Paginasvideo','Paginasadjunto','Paginaspromocion')));
 			$pagina=$this->Pagina->findById($this->params['form']['id']);
-			if(isset($pagina['Paginastexto']['contenido'])){
+			$i=0;
+            if(isset($pagina['Paginastexto']['contenido'])){
 				preg_match_all('@src=[\'"]?([^\'" >]+)[\'" >]@',$pagina['Paginastexto']['contenido'],$imagenes);
-				foreach($imagenes[1] as $key=>$imagen):
-					$result['Imagen'][$key]['id']=$imagen;  //era $key
-					$result['Imagen'][$key]['name']=$imagen;
+				foreach($imagenes[1] as $imagen):
+					$result['Imagen'][$i]['id']=$imagen;  //era $key
+					$result['Imagen'][$i]['name']=$imagen;
+                    $i++;
 				endforeach;
 			}
+            if(isset($pagina['Paginasimagen'])&&!empty($pagina['Paginasimagen'])){
+                foreach($pagina['Paginasimagen'] as $imagen):
+                    $result['Imagen'][$i]['id']=$imagen['imagen']['path'];  //era $key
+                    $result['Imagen'][$i]['name']=$imagen['title'];
+                    $i++;
+                endforeach;
+            }
+
 		}
 		if (isset($result)){$this->set('result', $result);}else{$this->set('result', '');}
 		$this->render('/elements/ajax');
@@ -553,15 +542,14 @@ class PaginasController extends AppController {
 			$this->set('result', $result);
 		}else{
 			$result['Tipos'][0]['id']='';
-			$result['Tipos'][0]['name']='Seleccione contenido (verifique publicación)';
+			$result['Tipos'][0]['name']='Seleccione el tabulador activo';
 			$this->set('result', $result);
 		}
 		$this->render('/elements/ajax');
     }
 	
 	function agregar() {
-		Configure::write('debug', 0);
-		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.mostrarfooter','Pagina.texto','Pagina.multiple','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
+		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.mostrarfooter','Pagina.hidetitle','Pagina.texto','Pagina.multiple','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
 		if (!empty($this->data)) {
 			if (isset($this->data['Pagina']['parent_id'])&&$this->data['Pagina']['parent_id']=='root'){
 				$this->data['Pagina']['parent_id']=NULL;
@@ -604,7 +592,7 @@ class PaginasController extends AppController {
 	}
 	
 	function modificar() {
-		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.mostrarfooter','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
+		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],array('Pagina.publicado','Pagina.mostrarinicio','Pagina.texto','Pagina.mostrarfooter','Pagina.hidetitle','Pagina.imagen','Pagina.video','Pagina.adjunto','Pagina.contacto','Pagina.promocion'));}
 		if (!empty($this->data)) {
 			$pagina=$this->Pagina->findById($this->data['Pagina']['id']);
 			if(!empty($pagina)){

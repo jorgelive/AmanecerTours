@@ -58,7 +58,27 @@ class Paginasformulario extends AppModel {
 				,'message' => 'title_min10'
 			)
 		)
-		,'contenido' => array(
+        ,'pais' => array(
+            'empty' => array(
+                'rule' => 'notEmpty'
+                ,'required' => true
+                ,'message' => 'pais_required'
+                ,'last' => true
+                )
+            ,'maxlength' => array(
+                'rule' => array('maxLength', 30)
+                ,'required' => false
+                ,'allowEmpty' => true
+                ,'message' => 'pais_max30'
+                )
+            ,'minlength' => array(
+                'rule' => array('minLength', 3)
+                ,'required' => false
+                ,'allowEmpty' => true
+                ,'message' => 'pais_min3'
+                )
+            )
+        ,'contenido' => array(
 			'empty' => array(
 				'rule' => 'notEmpty'
 				,'required' => true
@@ -89,6 +109,9 @@ class Paginasformulario extends AppModel {
 		$dummy = __('titulo_required',true);
 		$dummy = __('title_max60',true);
 		$dummy = __('title_min10',true);
+        $dummy = __('pais_required',true);
+        $dummy = __('pais_max30',true);
+        $dummy = __('pais_min3',true);
 		$dummy = __('contenido_required',true);
 		$dummy = __('contenido_max4000',true);
 		$dummy = __('contenido_min10',true);
