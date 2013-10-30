@@ -352,7 +352,15 @@ class FileBehavior extends ModelBehavior {
 			$fileName=$value[0].'_'.$field.'.'.$ext;
 			$result['path']=$folderName.$fileName;
 			$result['icon']=$this->baseDir.DS.IMAGES_URL.'Filebehavior/'.$ext.'.png';
-			if($fields[$field]['type']=='imagen'){
+
+            if($fields[$field]['type']=='imagen'){
+                if (file_exists(WWW_ROOT.$result['path'])) {
+                    $imageSize = getimagesize(WWW_ROOT.$result['path']);
+                    if(is_array($imageSize)){
+                        $result['width'] = $imageSize[0];
+                        $result['height'] = $imageSize[1];
+                    }
+                }
 				if(isset($fields[$field]['thumbnail'])){
 					$thumb=$fields[$field]['thumbnail'];
 					$result['thumb']=$folderName.$this->__getPrefix($thumb).'_'.$fileName;
@@ -427,7 +435,7 @@ class FileBehavior extends ModelBehavior {
 	
 	function __getFullFolder(&$model, $field) {
 		extract($this->settings[$model->name]);
-		if($fields[$field]['type']=='imagen'){
+        if(isset($fields[$field])&&$fields[$field]['type']=='imagen'){
 			$tipo=IMAGES_URL;
 		}else{
 			$tipo=FILES_URL;

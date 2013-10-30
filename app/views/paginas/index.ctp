@@ -215,13 +215,20 @@
                     <div class="imagenes">
                     <?php
                     foreach($pagina['Paginasimagen'] as $imagen):
-                        $height='150';
-                        $width='220';
                         $crop='C';
-                        $zoomWidth="800";
-                        $zoomHeight="600";
-                        ?>
+                        if($imagen['imagen']['width']>$imagen['imagen']['height']){
+                            $height='150';
+                            $width='220';
+                            $zoomWidth="800";
+                            $zoomHeight="600";
 
+                        }else{
+                            $height='220';
+                            $width='150';
+                            $zoomWidth="450";
+                            $zoomHeight="600";
+                        }
+                        ?>
                             <a class="item grupo_<?php echo $pagina['Pagina']['id'];?>" href="/thumbs/index/?src=<?php echo $imagen['imagen']['path'];?>&h=<?php echo $zoomHeight;?>&w=<?php echo $zoomWidth;?>&zc=<?php echo $crop;?>" title="<?php echo $imagen['title'];?>">
                                 <img src="/thumbs/index/?src=<?php echo $imagen['imagen']['path'];?>&h=<?php echo $height;?>&w=<?php echo $width;?>&zc=<?php echo $crop;?>" />
                                 <div class="clear"></div>
