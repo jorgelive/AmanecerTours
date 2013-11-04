@@ -96,6 +96,10 @@ div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel 
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text input, div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text textarea{width:96%; margin: 0 2% 0 2%;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .error-message{color:#cd0a0a; margin: 0 2% 0 2%;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .submit{float:right; margin-top:10px;}
+div#content div.row_2 div.col_1 div.imagenes{display: block; margin: 10px 0;}
+div#content div.row_2 div.col_1 div.imagenes a.item{padding-bottom:10px; display: block;}
+div#content div.row_2 div.col_1 div.imagenes a.item img{border-radius: 10px;}
+
 
 div#content div.row_2 div.col_2{}
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content{color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}

@@ -214,17 +214,23 @@ class PaginasController extends AppController {
 			$existe=false;
 			foreach($pagina['Pagina'] as $key => $valor):
 				if(in_array($key,$tipos)&&!empty($valor)&&!empty($pagina['Paginas'.$key])){
-					if(empty($pagina['Pagina']['predeterminado'])){
+
+                    if(empty($pagina['Pagina']['predeterminado'])){
+
 						if(!empty($valor)){
-							if(array_key_exists('id',$pagina['Paginas'.$key])&&!empty($pagina['Paginas'.$key]['id'])){
-								$data['Pagina']['predeterminado']=$key;
-								$existe=true;
-								break;
-							}elseif(!array_key_exists('id',$pagina['Paginas'.$key])){
-								$data['Pagina']['predeterminado']=$key;
+                            //print_r($pagina['Paginas'.$key]);
+                            //echo (count($pagina['Paginas'.$key]));
+                            if(array_key_exists(0, $pagina['Paginas'.$key])){
+
+                                $data['Pagina']['predeterminado']=$key;
+                                $existe=true;
+                                break;
+                            }elseif(!array_key_exists(0, $pagina['Paginas'.$key])&&count($pagina['Paginas'.$key])!=0){
+                                $data['Pagina']['predeterminado']=$key;
 								$existe=true;
 								break;
 							}
+                            echo ('aqui'.count($pagina['Paginas'.$key]));
 						}
 					}else{
 						$existe=true;
@@ -533,10 +539,10 @@ class PaginasController extends AppController {
 					!empty($pagina['Pagina']{$key})
                     &&
                     (
-						(!empty($pagina['Paginas'.$key])&&!array_key_exists('id',$pagina['Paginas'.$key]))
+						(!empty($pagina['Paginas'.$key])&&array_key_exists(0, $pagina['Paginas'.$key]))
                         ||
-                        (!empty($pagina['Paginas'.$key])&&isset($pagina['Paginas'.$key]['id'])&&!empty($pagina['Paginas'.$key]['id'])
-						)
+                        (!empty($pagina['Paginas'.$key])&&count($pagina['Paginas'.$key])!=0)
+
 					)
 				){
 					$result['Tipos'][$i]['id']=$key;
