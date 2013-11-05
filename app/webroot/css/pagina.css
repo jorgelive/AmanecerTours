@@ -21,7 +21,6 @@ ul { list-style:none;}
 /*globales*/
 div#main
 ,div#header
-,div#flash_header
 ,div#content
 ,div#footer {margin:0 auto; text-align:left;}
 
@@ -38,7 +37,6 @@ div#imageHeader
 ,div#imageHeader div.headerContent a div.headerItem
 ,div#imageHeader div.headerContent a div.headerItem img{width:100%;}
 
-
 /*header*/
 div#header {}
 div#header div.col_1 {width:320px;}
@@ -51,9 +49,6 @@ div#header div.col_2 div.row_2{}
 div#header div.col_2 div.row_2 div#menu {width:100%; height:50px;}
 div#header div.col_2 div.row_2 div#menu span.menuBottom{background:none; display: inline-block;height:32px;}
 div#header div.col_2 div.row_2 div#menu span.menuActivo{background:url(../img/comun/menuBottom.png) bottom center no-repeat;}
-
-/*flash header*/
-div#main div#flashHeader {margin-bottom:20px;}
 
 #flashMessage{margin:60px 0 0 1%; padding:7px .5% 7px .5%; width:45%; float: right;}
 
@@ -124,7 +119,7 @@ div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel 
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .error-message{color:#cd0a0a; margin: 0 2% 0 2%;font-size: 0.8em;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .submit{float:right; margin-top:10px;}
 div#content div.row_2 div.col_1 div.imagenes{display: block; margin: 10px 0;}
-div#content div.row_2 div.col_1 div.imagenes a.item{padding-bottom:10px; display: block;}
+div#content div.row_2 div.col_1 div.imagenes a.item{padding-bottom:10px; display: inline-block;}
 div#content div.row_2 div.col_1 div.imagenes a.item img{border-radius: 10px;}
 
 

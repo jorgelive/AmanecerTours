@@ -1,9 +1,17 @@
 <div id="<?php echo (isset($pagina['Pagina']['isStart'])?'start':'nostart');?>">
+
+    <!--[if lt IE 8]>
+    <div style="clear: both; height: 59px; width:950px;margin: 0 auto; padding:0 0 0 15px; position: relative;">
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+            <img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+        </a>
+    </div>
+    <![endif]-->
     <?php
     echo $this->element('header',$menuPrincipal);
-    //echo $this->element('flashheader');
     echo $this->element('imageheader',$cabeceras);
     ?>
+
     <div id="content">
         <div class="row_1 w100">
             <div class="column col_1">
@@ -383,29 +391,48 @@
                     <script type='text/javascript'>
                         //<![CDATA[
                         $(document).ready(function() {
-                            $(".rotatorPaging").show();
-                            $(".rotatorPaging a:first").addClass("active");
+                            $("#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging").show();
+                            $("div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a:first").addClass("active");
                             var itemHeight = $(".rotatorWindow").height();
-                            var itemSum = $(".rotatorContent div").size();
+                            var itemSum = $("div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent div").size();
                             var contentHeight = itemHeight * itemSum;
+                            var playInicio;
                             $(".rotatorContent").css({'height' : contentHeight});
-                            rotate = function(){
+                            var rotateInicio = function(){
                                 var triggerID = $active.attr("rel") - 1;
                                 var contentPosition = triggerID * itemHeight;
-                                $(".rotatorPaging a").removeClass('active');
+                                $("div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a").removeClass('active');
                                 $active.addClass('active');
-                                $(".rotatorContent").animate({top: -contentPosition}, 500 );
+                                $("div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent").animate(
+                                    {top: -contentPosition}
+                                    , 500
+                                );
                             };
-                            rotateSwitch = function(){
-                                play = setInterval(function(){
-                                    $active = $('.rotatorPaging a.active').next();
-                                    if ( $active.length === 0) {$active = $('.rotatorPaging a:first');}
-                                    rotate();
-                                }, 7000); // este es el valor que define la velocidad (7 segundos)
+                            var rotateInicioSwitch = function(){
+                                playInicio = setInterval(function(){
+                                    $active = $('div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.active').next();
+                                    if ( $active.length === 0) {
+                                        $active = $('div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a:first');
+                                    }
+                                    rotateInicio();
+                                }, 12000);
                             };
-                            rotateSwitch();
-                            $(".rotatorContent a").hover(function() {clearInterval(play);}, function() {rotateSwitch();});
-                            $(".rotatorPaging a").click(function() {$active = $(this);clearInterval(play);rotate();rotateSwitch();return false;});
+                            rotateInicioSwitch();
+                            $("div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a").hover(
+                                function() {
+                                    clearInterval(playInicio);
+                                }
+                                , function() {
+                                    rotateInicioSwitch();
+                                }
+                            );
+                            $("div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a").click(function() {
+                                $active = $(this);
+                                clearInterval(playInicio);
+                                rotateInicio();
+                                rotateInicioSwitch();
+                                return false;
+                            });
                         });
                         //]]>
                     </script>

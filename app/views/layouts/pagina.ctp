@@ -1,9 +1,11 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title><?php echo $title_for_layout; ?></title>
-    <meta name="Author" content="Jorge Luis Gómez Valencia" lang="es">
-    <?php 
+    <meta name="Author" content="Jorge Luis Gómez Valencia"/>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="icon" type="image/gif" href="animated_favicon1.gif" />
+<?php
     echo $html->charset('UTF-8')."\n";
 	echo $html->css('/js/jquery-ui-1.10.3/amanecer-theme/jquery-ui-1.10.3')."\n";
 	echo $html->css('/js/fg.menu/fg.menu')."\n";
