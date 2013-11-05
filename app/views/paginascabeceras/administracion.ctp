@@ -69,8 +69,6 @@ Ext.onReady(function() {
 			},{
 				name: 'texto'
 			},{
-				name: 'tiempo'
-			},{
 				name: 'externo'
 				,type: 'boolean'
 			},{
@@ -146,14 +144,7 @@ Ext.onReady(function() {
 						boxLabel:'Es externo?'
 						,name:'Paginascabecera.externo'
 						,inputValue:1
-					}),{ 
-						fieldLabel:'Tiempo'
-						,name:'Paginascabecera.tiempo'
-						,width:100
-						,allowBlank:false
-						,blankText:'Ingrese el tiempo de reproducción'
-						,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginascabeceras/validar/') ?>'})]
-					}]
+					})]
 					,buttons:[{ 
 						text:'Enviar'
 						,formBind: true
@@ -778,15 +769,6 @@ Ext.onReady(function() {
 			,trueText: 'Si'
 			,falseText: 'No'
 			,editor: {xtype: 'checkbox'}
-		},{
-			header: "Tiempo"
-			,dataIndex: 'tiempo'
-			,width: 80
-			,editor: {
-				allowBlank:false
-				,blankText:'Ingrese la el tiempo'
-				,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginascabeceras/validar/') ?>'})]
-			}
 		}]
 		,plugins: [cabeceraEditor,new Ext.ux.dd.GridDragDropRowOrder({
 			scrollable: true // enable scrolling support (default is false)

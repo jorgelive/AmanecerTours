@@ -1,7 +1,5 @@
-
 	<div id="menu">
-
-			<script type="text/javascript">    
+			<script type="text/javascript">
             $(function(){
                 $('.fg-button').hover(
                     function(){ $(this).removeClass('ui-state-default').addClass('ui-state-focus');},
@@ -10,7 +8,6 @@
             });
             </script>
             <?php
-            print_r($menu);
             foreach(Configure::read('Menu') as $var => $settings):
                 if($settings['tipo']=='boton'){
                     echo '<a class="fg-button ui-widget ui-state-default" href="'.$settings['url'].'/idioma:'.Configure::read('Config.language').'">'.$settings['texto'].'</a>';

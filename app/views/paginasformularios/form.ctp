@@ -1,6 +1,7 @@
 <?php
 if (!isset($ok)){
 	echo $form->create('Paginasformulario',array('action'=>'form'));
+    echo $form->input('Paginasformulario.idioma',array('type'=>'hidden'));
 	echo $form->input('Paginasformulario.destinatario',array('type'=>'hidden'));
 	echo $form->input('Paginasformulario.cco',array('type'=>'hidden'));
 	echo $form->input('Paginasformulario.name',array('label'=>__('contacto_nombre_apellido',true)));

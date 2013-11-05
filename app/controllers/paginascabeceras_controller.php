@@ -203,8 +203,6 @@ class PaginascabecerasController extends AppController {
 		Configure::write('debug', 0);
 		$cabeceras = $this->Paginascabecera->children(NULL, true);
 		if(!empty($cabeceras)){
-			$user = $this->Session->read('Auth.Acluser.username');
-			$acciones=array('read','create','update','delete','grant');
 			foreach($cabeceras as $key=>$cabecera):
 				$result[$key]['path']=$cabecera['Paginascabecera']['imagen']['path'];
 				$result[$key]['title']=$cabecera['Paginascabecera']['title'];

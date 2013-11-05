@@ -19,10 +19,24 @@ ul { list-style:none;}
 
 
 /*globales*/
-div#main, div#header, div#flash_header, div#content, div#footer {margin:0 auto; text-align:left;}
-div#start, div#nostart {width:100%; min-width:966px; max-width:1440px;}
-div#header, div#content, div#footer {width:966px;}
-div#flashHeader{width:100%;}
+div#main
+,div#header
+,div#flash_header
+,div#content
+,div#footer {margin:0 auto; text-align:left;}
+
+div#start
+,div#nostart {width:100%; min-width:966px; max-width:1440px;}
+
+div#header
+,div#content
+,div#footer {width:966px;}
+
+div#imageHeader
+,div#imageHeader div.headerContent
+,div#imageHeader div.headerContent a
+,div#imageHeader div.headerContent a div.headerItem
+,div#imageHeader div.headerContent a div.headerItem img{width:100%;}
 
 
 /*header*/
@@ -42,6 +56,19 @@ div#header div.col_2 div.row_2 div#menu span.menuActivo{background:url(../img/co
 div#main div#flashHeader {margin-bottom:20px;}
 
 #flashMessage{margin:60px 0 0 1%; padding:7px .5% 7px .5%; width:45%; float: right;}
+
+
+div#imageHeader {position: relative; margin: 10px 0 10px 0;}
+div#imageHeader div.headerContent {}
+div#imageHeader div.headerContent a {display:block; position:absolute; top: 0; left: 0;}
+div#imageHeader div.headerContent a div.headerItem {}
+div#imageHeader div.headerContent a div.headerItem img {}
+div#imageHeader div.headerContent a div.headerItem div.overlay {color:#fff; position:relative; bottom:150px;left:0px; height:60px; padding:10px 10px 10px 60px;}
+div#imageHeader div.headerContent a div.headerItem div.back {opacity: 0.6; bottom:80px; background: url(../img/comun/bgTab.png) no-repeat center left #000;}
+div#imageHeader div.headerContent a div.headerItem div h2 {padding-bottom:5px; border-bottom: 2px solid #A6A6A7; margin-bottom: 5px;}
+div#imageHeader div.headerPaging { font-size: 1.1em; color:#243A56; display: none; position: absolute;  bottom: 10px; right: 10px; background:#fff; padding: 5px 10px;}
+div#imageHeader div.headerPaging a.divVinculo {text-decoration: none; color:#243A56; }
+div#imageHeader div.headerPaging a.current {color:#e6a003;}
 
 
 /*footer*/
@@ -94,7 +121,7 @@ div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel 
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text{}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text label{font-weight:bold; display:block; margin: 5px 2% 0 2%;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text input, div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text textarea{width:96%; margin: 0 2% 0 2%;}
-div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .error-message{color:#cd0a0a; margin: 0 2% 0 2%;}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .error-message{color:#cd0a0a; margin: 0 2% 0 2%;font-size: 0.8em;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .submit{float:right; margin-top:10px;}
 div#content div.row_2 div.col_1 div.imagenes{display: block; margin: 10px 0;}
 div#content div.row_2 div.col_1 div.imagenes a.item{padding-bottom:10px; display: block;}

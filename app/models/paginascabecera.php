@@ -65,23 +65,6 @@ class Paginascabecera extends AppModel {
                 ,'message' => 'El tipo debe tener como máximo 250 caracteres'
             )
 		)
-		,'tiempo' => array(
-			'empty' => array(
-                'rule' => 'notEmpty'
-                ,'required' => true
-                ,'message' => 'Ingrese el tiempo de reproducción'
-				,'last' => true
-            )
-            ,'maxlength' => array(
-                'rule' => array('maxLength', 8)
-                ,'message' => 'El tiempo de reproducción debe tener como máximo 3 caracteres'
-            )
-            ,'numeric' => array(
-                'rule' => 'numeric'
-                ,'message' => 'El tiempo de reproducción debe ser un valor numérico'
-            )
-		)
-		
 	);
 	
 	function alias(){

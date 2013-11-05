@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Andeanyways\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-30 03:27-0500\n"
-"PO-Revision-Date: 2013-10-30 04:46-0500\n"
+"POT-Creation-Date: 2013-11-04 09:03-0500\n"
+"PO-Revision-Date: 2013-11-04 09:04-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -165,7 +165,7 @@ msgstr "Error"
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 msgstr "Table %1$s of model %2$s can't be found in the database"
 
-#: views/paginas/index.ctp:32 views/paginas/index.ctp:270
+#: views/paginas/index.ctp:32 views/paginas/index.ctp:314
 msgid "dias"
 msgstr "days"
 

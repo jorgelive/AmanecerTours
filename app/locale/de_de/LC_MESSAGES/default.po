@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amanecer Tours\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-30 03:28-0500\n"
-"PO-Revision-Date: 2013-10-30 03:28-0500\n"
+"POT-Creation-Date: 2013-11-04 09:05-0500\n"
+"PO-Revision-Date: 2013-11-04 09:07-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -26,203 +26,202 @@ msgstr ""
 
 #: app_controller.php:18
 msgid "textos_multiples"
-msgstr "Textos multiples"
+msgstr "Mehrfachstexte"
 
 #: app_controller.php:19 models/paginasopcional.php:102
 msgid "galeria_videos"
-msgstr "Lista de videos"
+msgstr "Videogalerie"
 
 #: app_controller.php:20 models/paginasopcional.php:103
 msgid "panel_adjuntos"
-msgstr "Archivos adjuntos"
+msgstr "Anlagen"
 
 #: app_controller.php:21 models/paginasopcional.php:100
 msgid "formulario_contacto"
-msgstr "Formulario de contacto"
+msgstr "kontakt Formular"
 
 #: controllers/paginasformularios_controller.php:16
 msgid "message_sent"
-msgstr "Mensaje enviado"
+msgstr "Die Nachricht wurde geschickt"
 
 #: controllers/paginasformularios_controller.php:19
 msgid "message_error_retray"
-msgstr "Hubo un error, por favor reintente"
+msgstr "Das war ein Fehler, versuchen sie es nochmal"
 
 #: controllers/paginasformularios_controller.php:22
 msgid "message_error"
-msgstr "Hubo un error"
+msgstr "Das war ein Fehler"
 
 #: controllers/paginasnoticias_controller.php:46
 msgid "noticias"
-msgstr "Noticias"
+msgstr "Nachrichten"
 
 #: controllers/paginastestimonios_controller.php:46
 msgid "testimonios"
-msgstr "Testimonios"
+msgstr "Zeugenaussagen"
 
 #: models/paginasformulario.php:104
 msgid "nombre_required"
-msgstr "El nombre es requerido"
+msgstr "Name ist erforderlich"
 
 #: models/paginasformulario.php:105
 msgid "nombre_max40"
-msgstr "El nombre debe tener como máximo 40 caracteres"
+msgstr "Maximale Namenslänger beträgt 40"
 
 #: models/paginasformulario.php:106
 msgid "nombre_min7"
-msgstr "El nombre debe tener como mínimo 10 caracteres"
+msgstr "Mindest Inhaltslänger beträgt 7"
 
 #: models/paginasformulario.php:107
 msgid "correo_required"
-msgstr "El correo electrónico es requerido"
+msgstr "E-Mail Adresse ist erforderlich"
 
 #: models/paginasformulario.php:108
 msgid "correo_valido"
-msgstr "El correo electrónico debe ser válido"
+msgstr "Gültige E-Mail Adresse"
 
 #: models/paginasformulario.php:109
 msgid "titulo_required"
-msgstr "El título es requerido"
+msgstr "Überschrift ist erforderlich"
 
 #: models/paginasformulario.php:110
 msgid "title_max60"
-msgstr "El título debe tener como máximo 60 caracteres"
+msgstr "Maximale überschriftslänger beträgt 60"
 
 #: models/paginasformulario.php:111
 msgid "title_min10"
-msgstr "El título debe tener como mínimo 10 caracteres"
+msgstr "Mindest Überschriftslänger beträgt 10"
 
 #: models/paginasformulario.php:112
-#, fuzzy
 msgid "pais_required"
-msgstr "El título es requerido"
+msgstr "Land ist erforderlich"
 
 #: models/paginasformulario.php:113
 msgid "pais_max30"
-msgstr ""
+msgstr "Maximale Länger des landes beträgt 30"
 
 #: models/paginasformulario.php:114
 msgid "pais_min3"
-msgstr ""
+msgstr "Mindest Landslänger beträgt 3"
 
 #: models/paginasformulario.php:115
 msgid "contenido_required"
-msgstr "El contenido es requerido"
+msgstr "Der Inhalt ist erforderlich"
 
 #: models/paginasformulario.php:116
 msgid "contenido_max4000"
-msgstr "El contenido debe tener como máximo 4000 caracteres"
+msgstr "Maximale Inhaltslänger beträgt 4000"
 
 #: models/paginasformulario.php:117
 msgid "contenido_min10"
-msgstr "El contenido debe tener como mínimo 10 caracteres"
+msgstr "Mindest Inhaltslänger beträgt 10"
 
 #: models/paginasopcional.php:101
 msgid "galeria_imagenes"
-msgstr "Galeria de imágenes"
+msgstr "Gallerie Bilder"
 
 #: models/paginasopcional.php:104
 msgid "panel_promociones"
-msgstr "Promociones"
+msgstr "Angebote"
 
 #: webroot/test.php:88
+#, fuzzy
 msgid "Debug setting does not allow access to this url."
-msgstr "Las opciones de depuracion no permiten el acceso al enlace"
+msgstr "Debug setting does not allow access to this url"
 
 #: views/elements/flash-jq-ui.ctp:6
 msgid "alerta"
-msgstr "Alerta"
+msgstr "Warnung"
 
 #: views/elements/flash-jq-ui.ctp:10
 msgid "informacion"
-msgstr "Información"
+msgstr "Auskunft"
 
 #: views/elements/header.ctp:7 views/paginasnoticias/index.ctp:31
 #: views/paginastestimonios/index.ctp:31
 msgid "correo"
-msgstr "Correo"
+msgstr "E-mail"
 
 #: views/elements/header.ctp:8 views/paginasnoticias/index.ctp:32
 #: views/paginastestimonios/index.ctp:32
 msgid "administracion"
-msgstr "Administración"
+msgstr "Verwaltung"
 
 #: views/elements/menu.ctp:34 views/elements/menuPrincipal.ctp:52
 msgid "escoja"
-msgstr "Escoja"
+msgstr "auswählen"
 
 #: views/errors/missing_table.ctp:20
 msgid "La tabla no exixte"
-msgstr "La tabla no exixte"
+msgstr "Die Tabelle existiert nicht"
 
 #: views/errors/missing_table.ctp:22
 msgid "Error"
-msgstr "Error"
+msgstr "Fehler"
 
 #: views/errors/missing_table.ctp:23
-#, php-format
+#, fuzzy, php-format
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
-msgstr "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
+msgstr "Die Tabelle des Models wurde in der Datenbank nicht gefunden"
 
-#: views/paginas/index.ctp:32 views/paginas/index.ctp:270
+#: views/paginas/index.ctp:32 views/paginas/index.ctp:314
 msgid "dias"
-msgstr "tage"
+msgstr "Tage"
 
 #: views/paginas/index.ctp:161
 msgid "acerca de"
-msgstr "Acerca de"
+msgstr "in Bezug auf"
 
 #: views/paginascabeceras/listarxml.ctp:34
 msgid "ver mas"
-msgstr "More"
+msgstr "Mehr anzeigen"
 
 #: views/paginasformularios/form.ctp:6
-#, fuzzy
 msgid "contacto_nombre_apellido"
-msgstr "Nombre"
+msgstr "Vorname und Name"
 
 #: views/paginasformularios/form.ctp:7
 msgid "pais"
-msgstr ""
+msgstr "Land"
 
 #: views/paginasformularios/form.ctp:8
 msgid "contacto_email"
-msgstr "Correo electrónico"
+msgstr "E-Mail Adresse"
 
 #: views/paginasformularios/form.ctp:9
 msgid "contacto_titulo"
-msgstr "Título"
+msgstr "Überschrift"
 
 #: views/paginasformularios/form.ctp:10
 msgid "contacto_detalle"
-msgstr "Contenido"
+msgstr "Bildausschnitt"
 
 #: views/paginasformularios/form.ctp:11
 msgid "contacto_enviar"
-msgstr "Enviar"
+msgstr "Senden"
 
 #: views/paginasnoticias/index.ctp:33 views/paginastestimonios/index.ctp:33
 msgid "soporte"
-msgstr "Soporte en línea"
+msgstr "Online Support "
 
 #: views/paginasnoticias/index.ctp:73
 msgid "titulo"
-msgstr "Título"
+msgstr "Überschrift"
 
 #: views/paginasnoticias/index.ctp:74 views/paginasnoticias/index.ctp:122
 #: views/paginastestimonios/index.ctp:75
 #: views/paginastestimonios/index.ctp:124
 msgid "fecha"
-msgstr "Fecha"
+msgstr "Datum"
 
 #: views/paginastestimonios/index.ctp:73
 msgid "nombre"
-msgstr "Nombre"
+msgstr "Name"
 
 #: views/paginastestimonios/index.ctp:74
 #: views/paginastestimonios/index.ctp:123
 msgid "nacionalidad"
-msgstr "Nacionalidad"
+msgstr "Staatsangehörigkeit"
 
 #~ msgid "contacto"
 #~ msgstr "Contacto"

@@ -2,7 +2,7 @@
 class PaginasController extends AppController {
     var $name = 'Paginas';
 	var $components = array('RequestHandler','SessionAcl','Auth');
-	var $uses = array('Pagina','Recurso','Paginasenlace','Paginasnoticia','Paginastestimonio');
+	var $uses = array('Pagina','Recurso','Paginasenlace','Paginasnoticia','Paginastestimonio','Paginascabecera');
 	var $helpers = array('Ext','Tree','Session');
     
 	function beforeFilter() {
@@ -49,6 +49,8 @@ class PaginasController extends AppController {
             $pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
             $pagina = $this->__comprobarImagenPath($pagina);
 
+            $cabeceras = $this->Paginascabecera->children(NULL, true);
+            $this->set('cabeceras',$cabeceras);
 
 //echo '<br>'.'accion: menu principal'.'<br>';
             $menuPagina=$this->Pagina->children(NULL, true);

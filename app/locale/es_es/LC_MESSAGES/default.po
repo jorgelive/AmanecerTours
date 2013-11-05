@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amanecer Tours\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-10-30 03:12-0500\n"
-"PO-Revision-Date: 2013-10-30 03:17-0500\n"
+"POT-Creation-Date: 2013-11-04 09:04-0500\n"
+"PO-Revision-Date: 2013-11-04 09:05-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -61,47 +61,59 @@ msgstr "Noticias"
 msgid "testimonios"
 msgstr "Testimonios"
 
-#: models/paginasformulario.php:84
+#: models/paginasformulario.php:104
 msgid "nombre_required"
 msgstr "El nombre es requerido"
 
-#: models/paginasformulario.php:85
+#: models/paginasformulario.php:105
 msgid "nombre_max40"
 msgstr "El nombre debe tener como máximo 40 caracteres"
 
-#: models/paginasformulario.php:86
+#: models/paginasformulario.php:106
 msgid "nombre_min7"
 msgstr "El nombre debe tener como mínimo 10 caracteres"
 
-#: models/paginasformulario.php:87
+#: models/paginasformulario.php:107
 msgid "correo_required"
 msgstr "El correo electrónico es requerido"
 
-#: models/paginasformulario.php:88
+#: models/paginasformulario.php:108
 msgid "correo_valido"
 msgstr "El correo elecrónico debe ser válido"
 
-#: models/paginasformulario.php:89
+#: models/paginasformulario.php:109
 msgid "titulo_required"
 msgstr "El título es requerido"
 
-#: models/paginasformulario.php:90
+#: models/paginasformulario.php:110
 msgid "title_max60"
 msgstr "El título debe tener como máximo 60 caracteres"
 
-#: models/paginasformulario.php:91
+#: models/paginasformulario.php:111
 msgid "title_min10"
 msgstr "El título debe tener como mínimo 10 caracteres"
 
-#: models/paginasformulario.php:92
+#: models/paginasformulario.php:112
+msgid "pais_required"
+msgstr "El pais es requerido"
+
+#: models/paginasformulario.php:113
+msgid "pais_max30"
+msgstr "El país debe tener como máximo 30 caracteres"
+
+#: models/paginasformulario.php:114
+msgid "pais_min3"
+msgstr "El país debe rever como mínimo 3 caracrteres"
+
+#: models/paginasformulario.php:115
 msgid "contenido_required"
 msgstr "El contenido es requerido"
 
-#: models/paginasformulario.php:93
+#: models/paginasformulario.php:116
 msgid "contenido_max4000"
 msgstr "El contenido debe tener como máximo 4000 caracteres"
 
-#: models/paginasformulario.php:94
+#: models/paginasformulario.php:117
 msgid "contenido_min10"
 msgstr "El contenido debe tener como mínimo 10 caracteres"
 
@@ -152,7 +164,7 @@ msgstr "Error"
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 msgstr "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 
-#: views/paginas/index.ctp:32 views/paginas/index.ctp:270
+#: views/paginas/index.ctp:32 views/paginas/index.ctp:314
 msgid "dias"
 msgstr "dias"
 
@@ -162,25 +174,29 @@ msgstr "Acerca de"
 
 #: views/paginascabeceras/listarxml.ctp:34
 msgid "ver mas"
-msgstr "More"
+msgstr "ver más"
 
 #: views/paginasformularios/form.ctp:6
 msgid "contacto_nombre_apellido"
 msgstr "Nombre y apellido"
 
 #: views/paginasformularios/form.ctp:7
+msgid "pais"
+msgstr "País"
+
+#: views/paginasformularios/form.ctp:8
 msgid "contacto_email"
 msgstr "Correo electrónico"
 
-#: views/paginasformularios/form.ctp:8
+#: views/paginasformularios/form.ctp:9
 msgid "contacto_titulo"
 msgstr "Título"
 
-#: views/paginasformularios/form.ctp:9
+#: views/paginasformularios/form.ctp:10
 msgid "contacto_detalle"
 msgstr "Contenido"
 
-#: views/paginasformularios/form.ctp:10
+#: views/paginasformularios/form.ctp:11
 msgid "contacto_enviar"
 msgstr "Enviar"
 

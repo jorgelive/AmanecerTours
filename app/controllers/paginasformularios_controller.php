@@ -5,7 +5,10 @@ class PaginasformulariosController extends AppController {
 	var $components = array('RequestHandler','Email');
 	
 	function form(){
-		if (!empty($this->data)) {
+        if(isset($this->data['Paginasformulario']['idioma'])){
+            Configure::write('Config.language',$this->data['Paginasformulario']['idioma']);
+        }
+        if (!empty($this->data)) {
 			$this->Paginasformulario->set($this->data);
 			if ($this->Paginasformulario->validates()) {
 				$this->Email->to = base64_decode($this->data['Paginasformulario']['destinatario']);
@@ -22,7 +25,8 @@ class PaginasformulariosController extends AppController {
 				$this->Session->setFlash(__('message_error',true),'/flash-jq-ui',array('class'=>'error'));
 			}
 		}else{
-			$this->data['Paginasformulario']['title']=$this->params['form']['title'];
+            $this->data['Paginasformulario']['idioma']=$this->params['form']['idioma'];
+            $this->data['Paginasformulario']['title']=$this->params['form']['title'];
 			$this->data['Paginasformulario']['destinatario']=$this->params['form']['destinatario'];
 			$this->data['Paginasformulario']['cco']=$this->params['form']['cco'];
 		}
