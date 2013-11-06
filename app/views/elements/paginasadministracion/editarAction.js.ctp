@@ -85,43 +85,44 @@
 									generalForm.getForm().findField('Pagina.title').allowBlank=false;
 								}
 								
-								if(obj.data.Paginasopcional.id){
+								if(obj.data.Paginasopcional.hasOwnProperty('id') && obj.data.Paginasopcional.id!='auto'){
 									opcionalForm.getForm().findField('Paginasopcional.id').setValue(obj.data.Paginasopcional.id);
-									opcionalForm.getForm().findField('Paginasopcional.pagina_id').setValue(obj.data.Paginasopcional.pagina_id);
-									if(obj.data.Paginasopcional.publicado_inicio!='0000-00-00'){
-										opcionalForm.getForm().findField('Paginasopcional.publicado_inicio').setValue(obj.data.Paginasopcional.publicado_inicio);
-									}
-									if(obj.data.Paginasopcional.publicado_final!='0000-00-00'){
-										opcionalForm.getForm().findField('Paginasopcional.publicado_final').setValue(obj.data.Paginasopcional.publicado_final);
-									}
-									opcionalForm.getForm().findField('Paginasopcional.imagenpath').setValue(obj.data.Paginasopcional.imagenpath);
-									opcionalForm.getForm().findField('Paginasopcional.textocontacto').setValue(obj.data.Paginasopcional.textocontacto);
-                                    opcionalForm.getForm().findField('Paginasopcional.textoimagen').setValue(obj.data.Paginasopcional.textoimagen);
-                                    opcionalForm.getForm().findField('Paginasopcional.textovideo').setValue(obj.data.Paginasopcional.textovideo);
-                                    opcionalForm.getForm().findField('Paginasopcional.textoadjunto').setValue(obj.data.Paginasopcional.textoadjunto);
-                                    opcionalForm.getForm().findField('Paginasopcional.textopromocion').setValue(obj.data.Paginasopcional.textopromocion);
-
-
-
-                                    opcionalForm.getForm().findField('Paginasopcional.duracion').setValue(obj.data.Paginasopcional.duracion);
+                                    opcionalForm.getForm().findField('Paginasopcional.pagina_id').setValue(obj.data.Paginasopcional.pagina_id);
                                     opcionalForm.getForm().url='<?php echo $html->url('/paginasopcionales/modificar/') ?>';
-									opcionalPanel.setTitle('Información opcional ('+idiomaName+')');
+                                    opcionalPanel.setTitle('Información opcional ('+idiomaName+')');
+                                }else{
+                                    opcionalForm.getForm().findField('Paginasopcional.id').setValue('');
+                                    opcionalForm.getForm().findField('Paginasopcional.pagina_id').setValue(obj.data.Pagina.id);
+                                    opcionalForm.getForm().url='<?php echo $html->url('/paginasopcionales/agregar/') ?>';
+                                }
+
+                                if(obj.data.Paginasopcional.hasOwnProperty('publicado_inicio')&&obj.data.Paginasopcional.publicado_inicio!='0000-00-00'){
+                                    opcionalForm.getForm().findField('Paginasopcional.publicado_inicio').setValue(obj.data.Paginasopcional.publicado_inicio);
+                                }else{
+                                    opcionalForm.getForm().findField('Paginasopcional.publicado_inicio').setValue('');
+                                }
+
+								if(obj.data.Paginasopcional.hasOwnProperty('publicado_final')&&obj.data.Paginasopcional.publicado_final!='0000-00-00'){
+									opcionalForm.getForm().findField('Paginasopcional.publicado_final').setValue(obj.data.Paginasopcional.publicado_final);
 								}else{
-									opcionalForm.getForm().url='<?php echo $html->url('/paginasopcionales/agregar/') ?>';
-									opcionalForm.getForm().findField('Paginasopcional.pagina_id').setValue(obj.data.Pagina.id);
-									opcionalForm.getForm().findField('Paginasopcional.id').setValue('');
-									opcionalForm.getForm().findField('Paginasopcional.publicado_inicio').setValue('');
-									opcionalForm.getForm().findField('Paginasopcional.publicado_final').setValue('');
-									opcionalForm.getForm().findField('Paginasopcional.imagenpath').setValue('');
-									opcionalForm.getForm().findField('Paginasopcional.textocontacto').setValue('');
-                                    opcionalForm.getForm().findField('Paginasopcional.textoimagen').setValue('');
-                                    opcionalForm.getForm().findField('Paginasopcional.textovideo').setValue('');
-                                    opcionalForm.getForm().findField('Paginasopcional.textoadjunto').setValue('');
-                                    opcionalForm.getForm().findField('Paginasopcional.textopromocion').setValue('');
+                                    opcionalForm.getForm().findField('Paginasopcional.publicado_final').setValue('');
+                                }
+
+                                if(obj.data.Paginasopcional.hasOwnProperty('duracion')){
+                                    opcionalForm.getForm().findField('Paginasopcional.duracion').setValue(obj.data.Paginasopcional.duracion);
+                                }else{
                                     opcionalForm.getForm().findField('Paginasopcional.duracion').setValue('');
-									
-									
-								}
+                                }
+
+                                //autovalues de controlador
+                                opcionalForm.getForm().findField('Paginasopcional.imagenpath').setValue(obj.data.Paginasopcional.imagenpath);
+                                opcionalForm.getForm().findField('Paginasopcional.textocontacto').setValue(obj.data.Paginasopcional.textocontacto);
+                                opcionalForm.getForm().findField('Paginasopcional.textoimagen').setValue(obj.data.Paginasopcional.textoimagen);
+                                opcionalForm.getForm().findField('Paginasopcional.textovideo').setValue(obj.data.Paginasopcional.textovideo);
+                                opcionalForm.getForm().findField('Paginasopcional.textoadjunto').setValue(obj.data.Paginasopcional.textoadjunto);
+                                opcionalForm.getForm().findField('Paginasopcional.textopromocion').setValue(obj.data.Paginasopcional.textopromocion);
+
+
 								opcionalForm.getForm().findField('Paginasopcional.imagenpath').getStore().proxy.setUrl('<?php echo $html->url('/paginas/listadofotos') ?>',true);
 								opcionalForm.getForm().findField('Paginasopcional.imagenpath').getStore().load({params:{id:obj.data.Pagina.id}});
 							}
@@ -156,21 +157,20 @@
 									
 								}
 							}
-							
 							if (in_array('contacto',parcial)||in_array('todo',parcial)){
-								if(obj.data.Paginascontacto.id){
+								if(obj.data.Paginascontacto.hasOwnProperty('id') && obj.data.Paginascontacto.id!='auto'){
 									contactoForm.getForm().findField('Paginascontacto.id').setValue(obj.data.Paginascontacto.id);
 									contactoForm.getForm().findField('Paginascontacto.pagina_id').setValue(obj.data.Paginascontacto.pagina_id);
-									contactoForm.getForm().findField('Paginascontacto.destinatario').setValue(obj.data.Paginascontacto.destinatario);
-									contactoForm.getForm().findField('Paginascontacto.cco').setValue(obj.data.Paginascontacto.cco);
-									contactoForm.getForm().url='<?php echo $html->url('/paginascontactos/modificar/') ?>';
-								}else{
-									contactoForm.getForm().url='<?php echo $html->url('/paginascontactos/agregar/') ?>';
-									contactoForm.getForm().findField('Paginascontacto.pagina_id').setValue(obj.data.Pagina.id);
-									contactoForm.getForm().findField('Paginascontacto.id').setValue('');
-									contactoForm.getForm().findField('Paginascontacto.destinatario').setValue('');
-									contactoForm.getForm().findField('Paginascontacto.cco').setValue('');
-								}
+                                    contactoForm.getForm().url='<?php echo $html->url('/paginascontactos/modificar/') ?>';
+                                }else{
+                                    contactoForm.getForm().url='<?php echo $html->url('/paginascontactos/agregar/') ?>';
+                                    contactoForm.getForm().findField('Paginascontacto.pagina_id').setValue(obj.data.Pagina.id);
+                                    contactoForm.getForm().findField('Paginascontacto.id').setValue('');
+                                }
+
+                                //autovalues de behavior
+                                contactoForm.getForm().findField('Paginascontacto.destinatario').setValue(obj.data.Paginascontacto.destinatario)
+                                contactoForm.getForm().findField('Paginascontacto.cco').setValue(obj.data.Paginascontacto.cco);
 							}
 							
 							if (in_array('multiple',parcial)||in_array('todo',parcial)){

@@ -78,9 +78,6 @@ class ComprobadoBehavior extends ModelBehavior {
             endforeach;
         endforeach;
 
-        //print_r($results);
-
-
         foreach($results as $key => $item):
             foreach($item as $modelName => $valores):
                 if(
@@ -92,14 +89,9 @@ class ComprobadoBehavior extends ModelBehavior {
                 ){
                     $results{$key}{$modelName}=$this->_comprobarDependientes($model,$valores,$results{$key},$this->modelos{$modelName}['comprobarDependientes'],$modelName);
                 }
-
-                //print_r($results);
             endforeach;
         endforeach;
-
-        //print_r($results);
         return $results;
-
 	}
 
 
@@ -115,11 +107,6 @@ class ComprobadoBehavior extends ModelBehavior {
         foreach($data as $key => $valor):
             $data{$key}{'notempty'}=$this->_comprobarDependienteProceso($model,$existentes,$settings{'modelos'},$data{$key}{'id'});
         endforeach;
-
-        /*echo "<br>datos<br>";
-        print_r($data);
-        echo "<br>relacionado<br>";
-        print_r($settings);*/
 
         if($extractAtFinish===true){
             $data=$data{0};
@@ -175,11 +162,13 @@ class ComprobadoBehavior extends ModelBehavior {
 
             //para consulta trabajo con 1 ya que normalmente para multiples sed darian en la misma tabla y en este caso relacionado se encuentra ya definido para el metodo
             //igual hago el artificio de hacer array para trabajar para los dos casos
-            if(!isset($relacionado[0]['id'])&&isset($model->$modelofields)){
+            //en el caso de autovalues compruebo que sea numerico
+            if((!isset($relacionado[0]['id'])||(isset($relacionado[0]['id'])&&!is_numeric($relacionado[0]['id'])))&&isset($model->$modelofields)){
 
                 $resultquery=$model->$modelofields->find('first',array('recursive'=>-1,'conditions'=>array($modelofields.'.'.strtolower($model->name).'_id'=>$data{'id'})));
+
                 if(!empty($resultquery)){
-                    $relacionado[0] = Set::merge($resultquery{$modelofields},$relacionado[0]);
+                    $relacionado[0] = Set::merge($relacionado[0],$resultquery{$modelofields});
                 }
             }
 
@@ -194,7 +183,6 @@ class ComprobadoBehavior extends ModelBehavior {
 
             foreach($data as $key => $valor):
                 $data{$key}{'vigencia'}='ok';
-                //print_r($relacionado{$key});
                 $relacionado{$key}{$inicio}=($relacionado{$key}{$inicio}=='0000-00-00')?null:$relacionado{$key}{$inicio};
                 $relacionado{$key}{$fin}=($relacionado{$key}{$fin}=='0000-00-00')?null:$relacionado{$key}{$fin};
 
@@ -220,11 +208,6 @@ class ComprobadoBehavior extends ModelBehavior {
                     }
                 }
             endforeach;
-/*
-            echo "<br>datos<br>";
-            print_r($data);
-            echo "<br>relacionado<br>";
-            print_r($relacionado);*/
 
             if($extractAtFinish===true){
                 $data=$data{0};
@@ -232,6 +215,4 @@ class ComprobadoBehavior extends ModelBehavior {
         }
         return $data;
     }
-
-
 }

@@ -172,7 +172,8 @@ class PaginasController extends AppController {
 
 	function paginainfo() {
 		if (isset($this->params['form']['id'])){
-			$pagina = $this->Pagina->findById($this->params['form']['id']);
+            $this->Pagina->unBindModel(array('hasMany' => array('Paginasmultiple','Paginasimagen','Paginasvideo','Paginasadjunto')));
+            $pagina = $this->Pagina->findById($this->params['form']['id']);
 			$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 			if(!empty($pagina)){
 				$pagina = $this->__tiposPublicacionSave($pagina);
@@ -232,7 +233,6 @@ class PaginasController extends AppController {
 								$existe=true;
 								break;
 							}
-                            echo ('aqui'.count($pagina['Paginas'.$key]));
 						}
 					}else{
 						$existe=true;
@@ -342,7 +342,7 @@ class PaginasController extends AppController {
             }
             if($existe===false){
                 if(!isset($data{$numero}['Paginasopcional']['id'])){
-                    $data{$numero}['Paginasopcional']['id']=1;
+                    $data{$numero}['Paginasopcional']['id']='auto';
                     $data{$numero}['Paginasopcional']['pagina_id']=$data{$numero}['Pagina']['id'];
 
                 }

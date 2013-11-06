@@ -71,7 +71,6 @@ class Paginascabecera extends AppModel {
 		if (!$this->id && empty($this->data)) {
 			return NULL;
 		}
-		//print_r($this->data);
 		$lenguaje=I18n::getInstance()->l10n->__l10nCatalog[Configure::read('Empresa.language')]['locale'];
 		foreach ($this->data['Paginascabecera'] as $key => $valor):
 			$posicion=strpos($key, 'title_');

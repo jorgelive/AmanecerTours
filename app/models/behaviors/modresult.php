@@ -106,6 +106,10 @@ class ModresultBehavior extends ModelBehavior {
     }
 
     function _defaultValue($data,$campos){
+        if(!isset($data{'id'})||(isset($data{'id'})&&!is_numeric($data{'id'}))){
+            $data{'id'}='auto';
+
+        }
         foreach($campos as $key => $value):
             if(
                 !isset($data[$key])

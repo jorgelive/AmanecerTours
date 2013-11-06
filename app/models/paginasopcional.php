@@ -52,11 +52,12 @@ class Paginasopcional extends AppModel {
         ,'duracion' => array(
             'maxlength' => array(
                 'rule' => array('maxLength', 2)
-                ,'message' => 'El identificador de página debe tener como máximo 2 caracteres'
+                ,'message' => 'La duración debe  tener como máximo 2 caracteres'
             )
             ,'numeric' => array(
                 'rule' => 'numeric'
-                ,'message' => 'El identificador de página debe ser un valor numérico'
+                ,'allowEmpty' => true
+                ,'message' => 'La duración debe ser un valor numérico'
             )
 		)
 		,'textocontacto' => array(
@@ -69,29 +70,29 @@ class Paginasopcional extends AppModel {
         ,'textoimagen' => array(
             'maxlength' => array(
                 'rule' => array('maxLength', 30)
-            ,'required' => true
-            ,'message' => 'El texto debe tener como máximo 30 caracteres '
+                ,'required' => true
+                ,'message' => 'El texto debe tener como máximo 30 caracteres '
             )
         )
         ,'textovideo' => array(
             'maxlength' => array(
                 'rule' => array('maxLength', 30)
-            ,'required' => true
-            ,'message' => 'El texto debe tener como máximo 30 caracteres '
+                ,'required' => true
+                ,'message' => 'El texto debe tener como máximo 30 caracteres '
             )
         )
         ,'textoadjunto' => array(
             'maxlength' => array(
                 'rule' => array('maxLength', 30)
-            ,'required' => true
-            ,'message' => 'El texto debe tener como máximo 30 caracteres '
+                ,'required' => true
+                ,'message' => 'El texto debe tener como máximo 30 caracteres '
             )
         )
         ,'textopromocion' => array(
             'maxlength' => array(
                 'rule' => array('maxLength', 30)
-            ,'required' => true
-            ,'message' => 'El texto debe tener como máximo 30 caracteres '
+                ,'required' => true
+                ,'message' => 'El texto debe tener como máximo 30 caracteres '
             )
         )
 	);

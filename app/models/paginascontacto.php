@@ -37,29 +37,17 @@ class Paginascontacto extends AppModel {
             )
 		)
         ,'destinatario' => array(
-            'empty' => array(
-                'rule' => 'notEmpty'
-                ,'required' => true
-                ,'message' => 'Ingrese el correo electrónico'
-				,'last' => true
-            )
-            ,'maxlength' => array(
-                'rule' => array('maxLength', 40)
-                ,'message' => 'El correo electrónico debe tener como máximo 40 caracteres'
-            )
-			,'email' => array(
+
+			'email' => array(
                 'rule' => 'email'
+                ,'allowEmpty' => true
                 ,'message' => 'Ingrese un correo electrónico válido'
             )
         )
         ,'cco' => array(
-            'maxlength' => array(
-                'rule' => array('maxLength', 40)
-				,'required' => true
-                ,'message' => 'El CCO debe tener como máximo 40 caracteres'
-            )
-			,'email' => array(
+                'email' => array(
                 'rule' => 'email'
+                ,'allowEmpty' => true
                 ,'message' => 'Ingrese una dirección CCO válida'
             )
         )

@@ -14,15 +14,13 @@
 					fieldLabel:'Destinatario'
 					,name:'Paginascontacto.destinatario'
 					,width:200
-					,allowBlank:false
-					,emptyText:'<?php echo Configure::read('Default.email');?>'
+					,allowBlank:true
 					,blankText:'Ingrese destinatario'
 					,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginascontactos/validar/') ?>'})]
 				},{ 
 					fieldLabel:'CCO'
 					,name:'Paginascontacto.cco'
-					,emptyText:'<?php echo Configure::read('Default.cco');?>'
-					,width:200
+    				,width:200
 					,allowBlank:true
 					,plugins:[new Ext.ux.form.ServerValidator({url:'<?php echo $html->url('/paginascontactos/validar/') ?>'})]
 				}]
