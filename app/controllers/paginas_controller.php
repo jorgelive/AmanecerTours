@@ -32,8 +32,6 @@ class PaginasController extends AppController {
 
         $this->layout='pagina';
 
-//echo '<br>'.'accion: inicio'.'<br>';
-
         $start=$this->Pagina->find('first',array('conditions' => array('Pagina.publicado' => 1),'recursive'=>-1,'order'=>array('Pagina.lft ASC')));
 
 		if(empty($id)||(isset($id)&&$id==$start['Pagina']['id'])){
@@ -41,18 +39,68 @@ class PaginasController extends AppController {
             $isStart=true;
         }
 
-//echo '<br>'.'accion: pagina'.'<br>';
         $pagina = $this->Pagina->findById($id);
-        if (!empty($pagina)){
+
+        if (!empty($pagina)&&isset($pagina['Pagina'])&&!empty($pagina['Pagina'])&&$pagina['Pagina']['publicado']==1){
 
             $pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
             $pagina = $this->__thumbImages($pagina,'Paginastexto.contenido',true);
             $pagina = $this->__comprobarImagenPath($pagina);
 
-            $cabeceras = $this->Paginascabecera->children(NULL, true);
-            $this->set('cabeceras',$cabeceras);
 
-//echo '<br>'.'accion: menu principal'.'<br>';
+            $items=$this->Pagina->find('all',array('conditions'=>array('parent_id'=>$id)));
+
+            if(!empty($items)){
+                $items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
+                $items = $this->__thumbImages($items,'Paginastexto.contenido',true);
+                $items = $this->__comprobarImagenPath($items);
+                $pagina['items']=$items;
+
+            }
+
+            if(isset($isStart)){
+                $pagina['Pagina']['isStart']=true;
+
+                $mostrarInicios=$this->Pagina->find('all',array('conditions'=>array('Pagina.publicado'=>1,'Pagina.mostrarinicio'=>1),'order' => 'Pagina.lft ASC'));
+                $mostrarInicios=$this->__resumen($mostrarInicios,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+                $mostrarInicios=$this->__thumbImages($mostrarInicios,'Paginastexto.contenido',false);
+                $mostrarInicios=$this->__comprobarImagenPath($mostrarInicios);
+                $this->set('mostrarInicios',$mostrarInicios);
+
+                $promociones=$this->Pagina->find('all',array('conditions'=>array('Pagina.promocion'=>1),'order' => 'Pagina.lft ASC'));
+                $promociones=$this->__resumen($promociones,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+                $promociones=$this->__thumbImages($promociones,'Paginastexto.contenido',false);
+                $promociones=$this->__comprobarImagenPath($promociones);
+                $this->set('promociones',$promociones);
+
+            }
+
+            $this->set('pagina',$pagina);
+            $this->set('title_for_layout',$pagina['Pagina']['title']);
+
+            $mostrarRelateds=$this->Pagina->find(
+                'all'
+                ,array(
+                    'conditions' => array(
+                        'Pagina.publicado' => 1
+                    ,'or' => array(
+                            'and' =>array(
+                                array('Pagina.parent_id' => $pagina['Pagina']['parent_id'])
+                            ,array("not"=> array('Pagina.parent_id' => null,'Pagina.id' => $pagina['Pagina']['id']))
+                            )
+                        ,array('Pagina.parent_id' => $pagina['Pagina']['id'])
+                        )
+                    )
+                ,'order' => 'Pagina.lft ASC'
+                )
+            );
+            $mostrarRelateds=$this->__resumen($mostrarRelateds,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
+            $mostrarRelateds=$this->__thumbImages($mostrarRelateds,'Paginastexto.contenido',false);
+            $mostrarRelateds=$this->__comprobarImagenPath($mostrarRelateds);
+            $this->set('mostrarRelateds',$mostrarRelateds);
+
+            $this->Pagina->unBindModel(array('hasMany' => array('Paginaspromocion','Paginasmultiple','Paginasimagen','Paginasvideo','Paginasadjunto'),'hasOne'=>array('Paginastexto','Paginascontacto')));
+
             $menuPagina=$this->Pagina->children(NULL, true);
             foreach ($menuPagina as $key=>$item):
                 $children=$this->Pagina->children($item['Pagina']['id']);
@@ -76,91 +124,27 @@ class PaginasController extends AppController {
                 )
             );
 
-//echo '<br>'.'accion: menu inferior'.'<br>';
-            $this->Pagina->unBindModel(array('hasMany' => array('Paginaspromocion','Paginasmultiple','Paginasimagen','Paginasvideo','Paginasadjunto'),'hasOne'=>array('Paginastexto','Paginasopcional','Paginascontacto')));
             $menuInferior=$this->Pagina->find('all', array('conditions'=>array('Pagina.mostrarfooter'=>1),'order'=>'Pagina.lft ASC'));
             $this->set('menuInferior',$menuInferior);
 
-//echo '<br>'.'accion: items'.'<br>';
-            $items=$this->Pagina->find('all',array('conditions'=>array('parent_id'=>$id)));
+            $enlaces=$this->Paginasenlace->find('all',array('order'=>'Paginasenlace.lft ASC'));
+            $this->set('enlaces',$enlaces);
 
-            if(!empty($items)){
-                $items = $this->__resumen($items,array('Paginastexto.contenido'=>'Paginastexto.resumen','Paginasmultiple.contenido'=>'Paginasmultiple.resumen'));
-                $items = $this->__thumbImages($items,'Paginastexto.contenido',true);
-                $items = $this->__comprobarImagenPath($items);
-                $pagina['items']=$items;
+            $cabeceras = $this->Paginascabecera->children(NULL, true);
+            $this->set('cabeceras',$cabeceras);
 
+            if(isset($isStart)){
+
+                $noticias=$this->Paginasnoticia->find('all',array('order'=>'Paginasnoticia.fecha DESC'));
+                $noticias=$this->__resumen($noticias,'Paginasnoticia.contenido',400);
+                $this->set('noticias',$noticias);
+
+
+                $testimonios=$this->Paginastestimonio->find('all',array('order'=>'Paginastestimonio.fecha DESC'));
+                $testimonios=$this->__resumen($testimonios,'Paginastestimonio.contenido');
+                $this->set('testimonios',$testimonios);
             }
-            if(isset($pagina['Pagina'])&&!empty($pagina['Pagina'])&&$pagina['Pagina']['publicado']==1){
-                //detalle
-                if(isset($isStart)){
-                    $pagina['Pagina']['isStart']=true;
-                }
-                $this->set('pagina',$pagina);
-                $this->set('title_for_layout',$pagina['Pagina']['title']);
 
-                //enlaces
-                $enlaces=$this->Paginasenlace->find('all',array('order'=>'Paginasenlace.lft ASC'));
-                $this->set('enlaces',$enlaces);
-//echo '<br>'.'accion: relacionados'.'<br>';
-                //mostrar en inicio
-                $this->Pagina->unBindModel(array('hasMany' => array('Paginaspromocion','Paginasmultiple','Paginasvideo','Paginasadjunto'),'hasOne'=>array('Paginasopcional','Paginascontacto')));
-                $mostrarRelateds=$this->Pagina->find(
-                    'all'
-                    ,array(
-                        'conditions' => array(
-                            'Pagina.publicado' => 1
-                            ,'or' => array(
-                                'and' =>array(
-                                    array('Pagina.parent_id' => $pagina['Pagina']['parent_id'])
-                                    ,array("not"=> array('Pagina.parent_id' => null,'Pagina.id' => $pagina['Pagina']['id']))
-                                )
-                                ,array('Pagina.parent_id' => $pagina['Pagina']['id'])
-                            )
-                        )
-                        ,'order' => 'Pagina.lft ASC'
-                    )
-                );
-                $mostrarRelateds=$this->__resumen($mostrarRelateds,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
-                $mostrarRelateds=$this->__thumbImages($mostrarRelateds,'Paginastexto.contenido',false);
-                $mostrarRelateds=$this->__comprobarImagenPath($mostrarRelateds);
-                $this->set('mostrarRelateds',$mostrarRelateds);
-
-//echo '<br>'.'accion: mostrarinicio'.'<br>';
-                if(isset($isStart)){
-
-                    //mostrar en inicio
-                    $mostrarInicios=$this->Pagina->find('all',array('conditions'=>array('Pagina.publicado'=>1,'Pagina.mostrarinicio'=>1),'order' => 'Pagina.lft ASC'));
-                    $mostrarInicios=$this->__resumen($mostrarInicios,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
-                    $mostrarInicios=$this->__thumbImages($mostrarInicios,'Paginastexto.contenido',false);
-                    $mostrarInicios=$this->__comprobarImagenPath($mostrarInicios);
-                    $this->set('mostrarInicios',$mostrarInicios);
-
-//echo '<br>'.'accion: promocion'.'<br>';
-                    //promocion
-                    $this->Pagina->unBindModel(array('hasMany' => array('Paginasmultiple','Paginasimagen','Paginasvideo','Paginasadjunto'),'hasOne'=>array('Paginastexto','Paginasopcional','Paginascontacto')));
-                    $promociones=$this->Pagina->find('all',array('conditions'=>array('Pagina.promocion'=>1),'order' => 'Pagina.lft ASC'));
-                    $promociones=$this->__resumen($promociones,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
-                    $promociones=$this->__thumbImages($promociones,'Paginastexto.contenido',false);
-                    $promociones=$this->__comprobarImagenPath($promociones);
-                    $this->set('promociones',$promociones);
-
-                    //noticias
-                    $noticias=$this->Paginasnoticia->find('all',array('order'=>'Paginasnoticia.fecha DESC'));
-                    $noticias=$this->__resumen($noticias,'Paginasnoticia.contenido',400);
-                    $this->set('noticias',$noticias);
-
-                    //testimonios
-                    $testimonios=$this->Paginastestimonio->find('all',array('order'=>'Paginastestimonio.fecha DESC'));
-                    $testimonios=$this->__resumen($testimonios,'Paginastestimonio.contenido');
-                    $this->set('testimonios',$testimonios);
-
-                }
-
-
-            }else{
-                $this->redirect(array('controller'=>'paginas','action'=>'index'));
-            }
 
         }else{
             $this->redirect(array('controller'=>'paginas','action'=>'index'));
@@ -172,7 +156,7 @@ class PaginasController extends AppController {
 
 	function paginainfo() {
 		if (isset($this->params['form']['id'])){
-            $this->Pagina->unBindModel(array('hasMany' => array('Paginasmultiple','Paginasimagen','Paginasvideo','Paginasadjunto')));
+            $this->Pagina->unBindModel(array('hasMany' => array('Paginasmultiple','Paginasvideo','Paginasadjunto')));
             $pagina = $this->Pagina->findById($this->params['form']['id']);
 			$pagina = $this->__resumen($pagina,array('Paginastexto.contenido'=>'Paginastexto.resumen'));
 			if(!empty($pagina)){
@@ -329,6 +313,7 @@ class PaginasController extends AppController {
                 }
 
                 if($existe==false&&isset($data{$numero}['Paginasimagen'])&&!empty($data{$numero}['Paginasimagen'])){
+
                     foreach ($data{$numero}['Paginasimagen'] as $imagenData):
                         if ($imagenData['imagen']['path']===$imagenPath){
                             $rutaCompleta=substr_replace($imagenData['imagen']['path'], WWW_ROOT, 0, 1);
@@ -341,6 +326,7 @@ class PaginasController extends AppController {
                 }
             }
             if($existe===false){
+
                 if(!isset($data{$numero}['Paginasopcional']['id'])){
                     $data{$numero}['Paginasopcional']['id']='auto';
                     $data{$numero}['Paginasopcional']['pagina_id']=$data{$numero}['Pagina']['id'];

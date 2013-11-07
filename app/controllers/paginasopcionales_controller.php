@@ -27,7 +27,7 @@ class PaginasopcionalesController extends AppController {
 	function agregar(){
 		Configure::write('debug', 0);
 		//debug ($this->Paginasopcional);
-		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],'Paginasopcional.idfoto');}
+		if (isset($this->params['form'])){$this->data=$this->__paramstodata($this->params['form'],'Paginasopcional.duracion','Paginasopcional.imagenpath','Paginasopcional.textocontacto','Paginasopcional.textoimagen','Paginasopcional.textovideo','Paginasopcional.textoadjunto','Paginasopcional.textopromocion');}
 		if (!empty($this->data)) {
 			$pagina=$this->Paginasopcional->Pagina->findById($this->data['Paginasopcional']['pagina_id']);
 			if(!empty($pagina)){
