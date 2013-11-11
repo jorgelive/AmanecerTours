@@ -191,7 +191,7 @@
                             $("#tabs").tabs().tabs("option", "active", <?php echo $tabPredeterminado{$pagina['Pagina']['predeterminado']};?> );
                             var anchoTotal=$("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul").width();
                             var cantidadTab= $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).size();
-                            $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).width((anchoTotal-29*cantidadTab)/cantidadTab);
+                            $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).width((anchoTotal-32*cantidadTab)/cantidadTab);
                         });
                     </script>
                 <?php
@@ -204,14 +204,14 @@
                     foreach($pagina['Paginasimagen'] as $imagen):
                         $crop='C';
                         if($imagen['imagen']['width']>$imagen['imagen']['height']){
-                            $height='150';
-                            $width='220';
+                            $height='160';
+                            $width='235';
                             $zoomWidth="800";
                             $zoomHeight="600";
 
                         }else{
-                            $height='220';
-                            $width='150';
+                            $height='235';
+                            $width='160';
                             $zoomWidth="450";
                             $zoomHeight="600";
                         }
@@ -415,7 +415,7 @@
                                         $active = $('div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a:first');
                                     }
                                     rotateInicio();
-                                }, 12000);
+                                }, 15000);
                             };
                             rotateInicioSwitch();
                             $("div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a").hover(

@@ -1,5 +1,5 @@
 * { margin:0; padding:0;}
-body { font-size:75%; line-height:1em; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#243A56;font-size:75%;}
+body { font-size:84%; line-height:1em; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#243A56;}
 h1 { font-size:130%;}
 h2 { font-size:120%;}
 h3 { font-size:110%;}
@@ -124,9 +124,11 @@ div#content div.row_2 div.col_1 div.imagenes a.item img{border-radius: 10px;}
 
 
 div#content div.row_2 div.col_2{}
-div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content{color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
+div#content div.row_2 div.col_2 a.divVinculo{text-decoration: none;}
+div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content{width:100%; color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
 div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content:hover{border-color: #e6a003; background: #142031;}
-div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content span.texto{padding-top: 5px; display:block; float:right; width: 130px;}
+div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content img{display:inline-block; vertical-align:middle;}
+div#content div.row_2 div.col_2 a.divVinculo div.ui-widget-content span.texto{padding-left: 5px; display:inline-block; width: 140px;vertical-align:middle;}
 div#content div.row_2 div.col_2 div.imagenes{text-align:center;}
 div#content div.row_2 div.col_2 div.imagenes a.item{padding-bottom:10px; display: block;}
 div#content div.row_2 div.col_2 div.imagenes a.item img{border-radius: 10px;}
@@ -144,8 +146,9 @@ div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorCon
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div p.resumen {}
 
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging {width:280px; top: 10px; display: none; position: absolute; right: 10px;z-index: 100;}
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content{ float:right; color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content{float:right; color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content:hover{border-color: #e6a003; background: #142031;}
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content span.texto{display:block; float:right; width: 180px; padding: 5px;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content span.texto{display:inline-block; width: 180px; padding: 0 5px; vertical-align:middle;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content img{display:inline-block; vertical-align:middle;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.active div.ui-widget-content {border-left-width: 12px; border-color: #e6a003;}
 

@@ -97,7 +97,7 @@
         var rotateHeaderSwitch = function(){
             playHeader = setInterval(function(){
                 rotateHeader();
-            }, 15000); // este es el valor que define la velocidad (7 segundos)
+            }, 5000); // este es el valor que define la velocidad (7 segundos)
         };
         var playHeader;
         var actual=1;

@@ -197,7 +197,7 @@ Ext.onReady(function() {
 					,title:'Agregar cabecera'
 					,modal:true
 					,width: 430
-					,height: 500
+					,height: 410
 					,items:[agregarCabeceraForm]
 					,layout: 'fit'
 				}).show();
