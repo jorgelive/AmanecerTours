@@ -140,12 +140,12 @@
 							,plugins: "paste,nonbreaking,insertdatetime"
 							,theme_advanced_resizing : true
 							,theme_advanced_buttons1: "bold,italic,underline,|,justifyleft,justifycenter,justifyright,justifyfull,|,fontsizeselect,|,cut,copy,paste,pasteword"
-							,theme_advanced_buttons2: "insertdate,inserttime,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,cleanup,code,|,forecolor,backcolor"
+							,theme_advanced_buttons2: "bullist,numlist,|,outdent,indent|,undo,redo,|,cleanup,code,|,forecolor,backcolor,|,link,unlink"
 							,theme_advanced_buttons3:""
 							,theme_advanced_toolbar_location: "bottom"
 							,theme_advanced_toolbar_align: "left"
 							,theme_advanced_statusbar : false
-							,extended_valid_elements: "a[name],hr[class|width|size|noshade]"
+							,extended_valid_elements: "a[name|href],hr[class|width|size|noshade]"
 							,content_css: "/css/tinyMCE_content.css"
 							,accessibility_focus: false
 							,accessibility_warnings : false

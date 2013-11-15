@@ -187,11 +187,10 @@
                     </div><!-- tabs  -->
                     <script>
                         $(function() {
-
                             $("#tabs").tabs().tabs("option", "active", <?php echo $tabPredeterminado{$pagina['Pagina']['predeterminado']};?> );
                             var anchoTotal=$("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul").width();
                             var cantidadTab= $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).size();
-                            $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).width((anchoTotal-32*cantidadTab)/cantidadTab);
+                            $("div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a" ).width((anchoTotal-29*cantidadTab)/cantidadTab);
                         });
                     </script>
                 <?php
@@ -452,5 +451,14 @@
     echo $this->element('sql_dump');
     ?>
 </div><!-- start nostart  -->
+<script type='text/javascript'>
+    //<![CDATA[
+    $(document).ready(function() {
+        $(document.links).each( function(){
+        this.target = ~this.href.indexOf( "amanecertours.com/") ? "" : "_blank";
+        });
+    });
+    //]]>
+</script>
 
 

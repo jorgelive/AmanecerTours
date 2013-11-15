@@ -85,9 +85,8 @@ div#footer .row_3 h2 { margin:15px 0 5px 0;}
 /*content*/
 
 #content {word-wrap: break-word;line-height:1.25em;}
-#content a:hover {text-decoration:none}
-#content a span.link,a.link {text-decoration:underline !important; color:#4C4B93 !important; background:url(../img/comun/marker_link.gif) no-repeat 0 5px !important; padding-left:18px}
-#content a:hover span.link,a.link:hover {text-decoration:none !important; background:url(../img/comun/marker_link.gif) no-repeat 4px 5px!important}
+#content a span.link,a.link {text-decoration:none;  color:#243A56;}
+#content a:hover span.link,a.link:hover {text-decoration:none;}
 
 
 div#nostart div#content div.col_1{width:75%;}
@@ -110,7 +109,7 @@ div#content div.row_2 div.col_1 div.textRow .textCol{}
 div#content div.row_2 div.col_1 div.textRow .textCol .texto{margin:0; }
 div#content div.row_2 div.col_1 div.textRow div.textCol div.mceContentBody table tbody tr td{padding:5px;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav{border: none; background: none;}
-div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a{text-transform: uppercase; text-align: center;}
+div#content div.row_2 div.col_1 div#tabs.ui-tabs ul.ui-tabs-nav li a{font-size:90%; text-transform: uppercase; text-align: center;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div.ui-tabs-panel{background:url(../img/comun/tabTop.png) no-repeat center 5px;}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm{}
 div#content div.row_2 div.col_1 div#tabs.ui-tabs div#tab-contacto.ui-tabs-panel div#contactForm .text{}

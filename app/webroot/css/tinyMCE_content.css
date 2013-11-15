@@ -1,6 +1,9 @@
 .mceContentBody * { margin:0; padding:0;}
-.mceContentBody p{margin-top:10px;}
-.mceContentBody ul{padding:0 0 0 20px; list-style: square; margin-top: 10px;}
+.mceContentBody p{ margin-top:10px;}
+.mceContentBody a{ text-decoration:underline; font-weight: bold;}
+.mceContentBody a:hover{ background: #cce6ff;text-decoration:underline;}
+
+.mceContentBody ul{ padding:0 0 0 20px; list-style: square; margin-top: 10px;}
 .mceContentBody h1 { font-size:130%; margin-top:15px;}
 .mceContentBody h2 { font-size:120%; margin-top:14px;}
 .mceContentBody h3 { font-size:110%;margin-top:13px;}
