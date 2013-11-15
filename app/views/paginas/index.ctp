@@ -448,9 +448,12 @@
     </div><!-- content  -->
     <?php
     echo $this->element('footer',$menuInferior);
+    echo $this->element('floatingRight',$enlaces);
     echo $this->element('sql_dump');
     ?>
+
 </div><!-- start nostart  -->
+
 <script type='text/javascript'>
     //<![CDATA[
     $(document).ready(function() {

@@ -61,7 +61,7 @@ div#imageHeader div.headerContent a div.headerItem img {}
 div#imageHeader div.headerContent a div.headerItem div.overlay {color:#fff; position:relative; bottom:150px;left:0px; height:60px; padding:10px 10px 10px 60px;}
 div#imageHeader div.headerContent a div.headerItem div.back {opacity: 0.6; bottom:80px; background: url(../img/comun/bgTab.png) no-repeat center left #000;}
 div#imageHeader div.headerContent a div.headerItem div h2 {padding-bottom:5px; border-bottom: 2px solid #A6A6A7; margin-bottom: 5px;}
-div#imageHeader div.headerPaging { font-size: 1.1em; color:#243A56; display: none; position: absolute;  bottom: 10px; right: 10px; background:#fff; padding: 5px 10px;}
+div#imageHeader div.headerPaging { font-size: 1.1em; color:#243A56; display: none; position: absolute;  bottom: 10px; right: 30px; background:#fff; padding: 5px 10px;}
 div#imageHeader div.headerPaging a.divVinculo {text-decoration: none; color:#243A56; }
 div#imageHeader div.headerPaging a.current {color:#e6a003;}
 
@@ -139,15 +139,23 @@ div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorCon
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.duracion{top: 7px; right:80px; position:absolute; top:0px;color:#fff; border-radius: 0px 0px 5px 5px; text-shadow: -1px 0 #444, 0 1px #444, 1px 0 #444, 0 -1px #444; background: #30394F; padding: 5px 10px;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.duracion .duracionNumero{font-size: 2.5em; line-height: 1em; margin: 0 auto; text-align: center; }
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.duracion .duracionDias{font-size: 1.3em; margin: 0 auto; text-align: center;}
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.overlay {color:#fff; position:relative; bottom:200px;left:0px; height:90px; padding:10px 10px 10px 60px;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.overlay {color:#fff; position:relative; bottom:200px;left:0px; height:90px; padding:7px 10px 10px 60px;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div.back {opacity: 0.6; bottom:90px; background: url(../img/comun/bgTab.png) no-repeat center left #000;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div h2 {padding-bottom:5px; border-bottom: 2px solid #A6A6A7; margin-bottom: 5px;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorWindow div.rotatorContent a div.rotatorItem div p.resumen {}
 
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging {width:280px; top: 10px; display: none; position: absolute; right: 10px;z-index: 100;}
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content{float:right; color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging {width:280px; top: 10px; display: none; position: absolute; right: 10px;z-index: 2;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content{float:right; color:#fff; margin-bottom: 7px; border-width: 4px; border-color: #696B81; background: #9B9FAE; width: 260px;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content:hover{border-color: #e6a003; background: #142031;}
-div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content span.texto{display:inline-block; width: 180px; padding: 0 5px; vertical-align:middle;}
+div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content span.texto{display:inline-block; width: 165px; padding: 0 5px; vertical-align:middle;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.divVinculo div.ui-widget-content img{display:inline-block; vertical-align:middle;}
 div#content div.row_3 div.col_1 div.rotatorView div.rotatorPaging a.active div.ui-widget-content {border-left-width: 12px; border-color: #e6a003;}
 
+div#floatingRight{position:fixed;top:0;right:0;width:250px;height: 300px;z-index: 3;text-align: right;}
+div#floatingRight.colapsado{}
+div#floatingRight div.left{vertical-align:middle;display:inline-block; width:20px;height:100%;}
+div#floatingRight div.left a.boton{display:block; width:300px; text-align:center; display: block;position:relative; top:50%;transform: rotate(-90deg); left: -142px; padding:5px;}
+div#floatingRight div.right{border-left:#DADAe3 solid 2px;  vertical-align:middle;display:inline-block; width:210px; height:100%;}
+div#floatingRight div.right div.contenedor{width:100%;height:100%;position:relative; top:0; left:0;}
+div#floatingRight div.right div.contenedor div.background{position:absolute;top:0;left:0;width:100%;height:100%;background:#a28356;opacity: 0.8;}
+div#floatingRight div.right div.contenedor div.content{text-align:left;padding:5px;position:absolute;top:0;left:0;width:100%;height:100%;}
