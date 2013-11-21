@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amanecer Tours\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-04 09:05-0500\n"
-"PO-Revision-Date: 2013-11-04 09:07-0500\n"
+"POT-Creation-Date: 2013-11-21 10:11-0500\n"
+"PO-Revision-Date: 2013-11-21 10:15-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -28,27 +28,27 @@ msgstr ""
 msgid "textos_multiples"
 msgstr "Mehrfachstexte"
 
-#: app_controller.php:19 models/paginasopcional.php:102
+#: app_controller.php:19 models/paginasopcional.php:103
 msgid "galeria_videos"
 msgstr "Videogalerie"
 
-#: app_controller.php:20 models/paginasopcional.php:103
+#: app_controller.php:20 models/paginasopcional.php:104
 msgid "panel_adjuntos"
 msgstr "Anlagen"
 
-#: app_controller.php:21 models/paginasopcional.php:100
+#: app_controller.php:21 models/paginasopcional.php:101
 msgid "formulario_contacto"
 msgstr "kontakt Formular"
 
-#: controllers/paginasformularios_controller.php:16
+#: controllers/paginasformularios_controller.php:19
 msgid "message_sent"
 msgstr "Die Nachricht wurde geschickt"
 
-#: controllers/paginasformularios_controller.php:19
+#: controllers/paginasformularios_controller.php:22
 msgid "message_error_retray"
 msgstr "Das war ein Fehler, versuchen sie es nochmal"
 
-#: controllers/paginasformularios_controller.php:22
+#: controllers/paginasformularios_controller.php:25
 msgid "message_error"
 msgstr "Das war ein Fehler"
 
@@ -116,11 +116,11 @@ msgstr "Maximale Inhaltslänger beträgt 4000"
 msgid "contenido_min10"
 msgstr "Mindest Inhaltslänger beträgt 10"
 
-#: models/paginasopcional.php:101
+#: models/paginasopcional.php:102
 msgid "galeria_imagenes"
 msgstr "Gallerie Bilder"
 
-#: models/paginasopcional.php:104
+#: models/paginasopcional.php:105
 msgid "panel_promociones"
 msgstr "Angebote"
 
@@ -137,6 +137,19 @@ msgstr "Warnung"
 msgid "informacion"
 msgstr "Auskunft"
 
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:76
+msgid "mostrar"
+msgstr "Zeigen"
+
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:70
+#: views/elements/floatingRight.ctp:76
+msgid "informacion_util"
+msgstr "Nützliche Informationen"
+
+#: views/elements/floatingRight.ctp:70
+msgid "ocultar"
+msgstr "Verbergen"
+
 #: views/elements/header.ctp:7 views/paginasnoticias/index.ctp:31
 #: views/paginastestimonios/index.ctp:31
 msgid "correo"
@@ -147,7 +160,7 @@ msgstr "E-mail"
 msgid "administracion"
 msgstr "Verwaltung"
 
-#: views/elements/menu.ctp:34 views/elements/menuPrincipal.ctp:52
+#: views/elements/menu.ctp:31 views/elements/menuPrincipal.ctp:52
 msgid "escoja"
 msgstr "auswählen"
 
@@ -164,11 +177,11 @@ msgstr "Fehler"
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 msgstr "Die Tabelle des Models wurde in der Datenbank nicht gefunden"
 
-#: views/paginas/index.ctp:32 views/paginas/index.ctp:314
+#: views/paginas/index.ctp:41 views/paginas/index.ctp:322
 msgid "dias"
 msgstr "Tage"
 
-#: views/paginas/index.ctp:161
+#: views/paginas/index.ctp:170
 msgid "acerca de"
 msgstr "in Bezug auf"
 
@@ -176,27 +189,27 @@ msgstr "in Bezug auf"
 msgid "ver mas"
 msgstr "Mehr anzeigen"
 
-#: views/paginasformularios/form.ctp:6
+#: views/paginasformularios/form.ctp:7
 msgid "contacto_nombre_apellido"
 msgstr "Vorname und Name"
 
-#: views/paginasformularios/form.ctp:7
+#: views/paginasformularios/form.ctp:8
 msgid "pais"
 msgstr "Land"
 
-#: views/paginasformularios/form.ctp:8
+#: views/paginasformularios/form.ctp:9
 msgid "contacto_email"
 msgstr "E-Mail Adresse"
 
-#: views/paginasformularios/form.ctp:9
+#: views/paginasformularios/form.ctp:10
 msgid "contacto_titulo"
 msgstr "Überschrift"
 
-#: views/paginasformularios/form.ctp:10
+#: views/paginasformularios/form.ctp:11
 msgid "contacto_detalle"
 msgstr "Bildausschnitt"
 
-#: views/paginasformularios/form.ctp:11
+#: views/paginasformularios/form.ctp:12
 msgid "contacto_enviar"
 msgstr "Senden"
 
@@ -276,12 +289,6 @@ msgstr "Staatsangehörigkeit"
 
 #~ msgid "feeds"
 #~ msgstr "Entradas"
-
-#~ msgid "mostrar barra"
-#~ msgstr "Mostrar barra"
-
-#~ msgid "ocultar barra"
-#~ msgstr "Ocultar barra"
 
 #~ msgid "ver archivos adjuntos"
 #~ msgstr "Ver archivos adjuntos"

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Andeanyways\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-04 09:03-0500\n"
-"PO-Revision-Date: 2013-11-04 09:04-0500\n"
+"POT-Creation-Date: 2013-11-21 10:10-0500\n"
+"PO-Revision-Date: 2013-11-21 10:10-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -30,27 +30,27 @@ msgstr ""
 msgid "textos_multiples"
 msgstr "Multitext"
 
-#: app_controller.php:19 models/paginasopcional.php:102
+#: app_controller.php:19 models/paginasopcional.php:103
 msgid "galeria_videos"
 msgstr "Video playlist"
 
-#: app_controller.php:20 models/paginasopcional.php:103
+#: app_controller.php:20 models/paginasopcional.php:104
 msgid "panel_adjuntos"
 msgstr "Attachments panel"
 
-#: app_controller.php:21 models/paginasopcional.php:100
+#: app_controller.php:21 models/paginasopcional.php:101
 msgid "formulario_contacto"
 msgstr "Contact form"
 
-#: controllers/paginasformularios_controller.php:16
+#: controllers/paginasformularios_controller.php:19
 msgid "message_sent"
 msgstr "Message was sent"
 
-#: controllers/paginasformularios_controller.php:19
+#: controllers/paginasformularios_controller.php:22
 msgid "message_error_retray"
 msgstr "There was an error, try again please"
 
-#: controllers/paginasformularios_controller.php:22
+#: controllers/paginasformularios_controller.php:25
 msgid "message_error"
 msgstr "There was an error"
 
@@ -118,11 +118,11 @@ msgstr "Maximum content length is 4000"
 msgid "contenido_min10"
 msgstr "Minimum content length is 10"
 
-#: models/paginasopcional.php:101
+#: models/paginasopcional.php:102
 msgid "galeria_imagenes"
 msgstr "Image gallery"
 
-#: models/paginasopcional.php:104
+#: models/paginasopcional.php:105
 msgid "panel_promociones"
 msgstr "On sale"
 
@@ -138,6 +138,19 @@ msgstr "Alert"
 msgid "informacion"
 msgstr "Information"
 
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:76
+msgid "mostrar"
+msgstr "Show"
+
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:70
+#: views/elements/floatingRight.ctp:76
+msgid "informacion_util"
+msgstr "Useful Information"
+
+#: views/elements/floatingRight.ctp:70
+msgid "ocultar"
+msgstr "Hide"
+
 #: views/elements/header.ctp:7 views/paginasnoticias/index.ctp:31
 #: views/paginastestimonios/index.ctp:31
 msgid "correo"
@@ -148,7 +161,7 @@ msgstr "Mail"
 msgid "administracion"
 msgstr "Administration"
 
-#: views/elements/menu.ctp:34 views/elements/menuPrincipal.ctp:52
+#: views/elements/menu.ctp:31 views/elements/menuPrincipal.ctp:52
 msgid "escoja"
 msgstr "Choose"
 
@@ -165,11 +178,11 @@ msgstr "Error"
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 msgstr "Table %1$s of model %2$s can't be found in the database"
 
-#: views/paginas/index.ctp:32 views/paginas/index.ctp:314
+#: views/paginas/index.ctp:41 views/paginas/index.ctp:322
 msgid "dias"
 msgstr "days"
 
-#: views/paginas/index.ctp:161
+#: views/paginas/index.ctp:170
 msgid "acerca de"
 msgstr "About"
 
@@ -177,27 +190,27 @@ msgstr "About"
 msgid "ver mas"
 msgstr "Read more"
 
-#: views/paginasformularios/form.ctp:6
+#: views/paginasformularios/form.ctp:7
 msgid "contacto_nombre_apellido"
 msgstr "Name & surname"
 
-#: views/paginasformularios/form.ctp:7
+#: views/paginasformularios/form.ctp:8
 msgid "pais"
 msgstr "Country"
 
-#: views/paginasformularios/form.ctp:8
+#: views/paginasformularios/form.ctp:9
 msgid "contacto_email"
 msgstr "E-mail"
 
-#: views/paginasformularios/form.ctp:9
+#: views/paginasformularios/form.ctp:10
 msgid "contacto_titulo"
 msgstr "Title"
 
-#: views/paginasformularios/form.ctp:10
+#: views/paginasformularios/form.ctp:11
 msgid "contacto_detalle"
 msgstr "Content"
 
-#: views/paginasformularios/form.ctp:11
+#: views/paginasformularios/form.ctp:12
 msgid "contacto_enviar"
 msgstr "Send"
 
@@ -278,12 +291,6 @@ msgstr "Nationality"
 
 #~ msgid "feeds"
 #~ msgstr "Feeds"
-
-#~ msgid "mostrar barra"
-#~ msgstr "Show toolbar"
-
-#~ msgid "ocultar barra"
-#~ msgstr "Hide toolbar"
 
 #~ msgid "ver archivos adjuntos"
 #~ msgstr "Go to attached files"

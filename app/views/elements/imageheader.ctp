@@ -9,7 +9,11 @@
                 $url='#';
                 if(!empty($cabecera['Paginascabecera']['url'])){
                     if($cabecera['Paginascabecera']['externo']==1){
-                        $url='http://'.$cabecera['Paginascabecera']['url'];
+                        if(substr($cabecera['Paginascabecera']['url'], 0, 4)=='http'){
+                            $url=$cabecera['Paginascabecera']['url'];
+                        }else{
+                            $url='http://'.$cabecera['Paginascabecera']['url'];
+                        }
                     }else{
                         $cabecera['Paginascabecera']['url']=explode(':',$cabecera['Paginascabecera']['url'],3);
                         $reversed=array_reverse($cabecera['Paginascabecera']['url']);
