@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title><?php echo $title_for_layout; ?></title>
+    <title><?php echo $title_for_layout." - ". Configure::read('Empresa.nombre'); ?></title>
     <meta name="Author" content="Jorge Luis Gómez Valencia"/>
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="icon" type="image/gif" href="animated_favicon1.gif" />
