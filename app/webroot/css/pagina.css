@@ -74,6 +74,7 @@ div#footer .row_2 a {color: #fff; text-decoration: none; text-transform: upperca
 div#footer .row_3 {height:105px; background:#243A56;}
 div#footer .row_3 p { margin:7px 0;}
 div#footer .row_3 h2 { margin:15px 0 5px 0;}
+div#footer .row_3 p.pos { color:#243A56;  font-size: 50%;}
 
 
 /*cake-sql-log*/

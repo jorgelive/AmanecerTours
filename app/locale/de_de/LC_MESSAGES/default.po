@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amanecer Tours\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-21 10:11-0500\n"
-"PO-Revision-Date: 2013-11-21 10:15-0500\n"
+"POT-Creation-Date: 2014-01-06 09:26-0500\n"
+"PO-Revision-Date: 2014-01-06 09:27-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -137,18 +137,24 @@ msgstr "Warnung"
 msgid "informacion"
 msgstr "Auskunft"
 
-#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:76
-msgid "mostrar"
-msgstr "Zeigen"
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:81
+msgid "ocultar"
+msgstr "Verbergen"
 
-#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:70
-#: views/elements/floatingRight.ctp:76
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:75
+#: views/elements/floatingRight.ctp:81
 msgid "informacion_util"
 msgstr "Nützliche Informationen"
 
-#: views/elements/floatingRight.ctp:70
-msgid "ocultar"
-msgstr "Verbergen"
+#: views/elements/floatingRight.ctp:75
+msgid "mostrar"
+msgstr "Zeigen"
+
+#: views/elements/footer.ctp:24
+msgid "post_footer"
+msgstr ""
+"Peru Rundreisen, Urlaub in Peru, Peru reisen, reisen in Peru, Lima, Cusco, "
+"Arequipa"
 
 #: views/elements/header.ctp:7 views/paginasnoticias/index.ctp:31
 #: views/paginastestimonios/index.ctp:31
@@ -176,6 +182,10 @@ msgstr "Fehler"
 #, fuzzy, php-format
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 msgstr "Die Tabelle des Models wurde in der Datenbank nicht gefunden"
+
+#: views/layouts/pagina.ctp:4
+msgid "post_title"
+msgstr "Peru Rundreisen – Urlaub in Peru"
 
 #: views/paginas/index.ctp:41 views/paginas/index.ctp:322
 msgid "dias"

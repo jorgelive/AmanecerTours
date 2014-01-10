@@ -21,6 +21,7 @@
         <h2><?php echo Configure::read('Empresa.nombre');?></h2>
         <p><?php echo Configure::read('Footer.linea1');?></p>
         <p><?php echo Configure::read('Footer.linea2');?></p>
+        <p class="pos"><?php echo __('post_footer',true);?></p>
     </div>
 
     <br class="clear" />

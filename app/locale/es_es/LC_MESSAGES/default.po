@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Amanecer Tours\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-21 10:09-0500\n"
-"PO-Revision-Date: 2013-11-21 10:10-0500\n"
+"POT-Creation-Date: 2014-01-06 09:27-0500\n"
+"PO-Revision-Date: 2014-01-06 09:28-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -137,18 +137,24 @@ msgstr "Alerta"
 msgid "informacion"
 msgstr "Información"
 
-#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:76
-msgid "mostrar"
-msgstr "Mostrar"
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:81
+msgid "ocultar"
+msgstr "Ocultar"
 
-#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:70
-#: views/elements/floatingRight.ctp:76
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:75
+#: views/elements/floatingRight.ctp:81
 msgid "informacion_util"
 msgstr "Información Util"
 
-#: views/elements/floatingRight.ctp:70
-msgid "ocultar"
-msgstr "Ocultar"
+#: views/elements/floatingRight.ctp:75
+msgid "mostrar"
+msgstr "Mostrar"
+
+#: views/elements/footer.ctp:24
+msgid "post_footer"
+msgstr ""
+"Tours en Perú, tours a Machu Picchu, Cusco, Líneas de Nazca, Lago Titicaca, "
+"Machu Picchu"
 
 #: views/elements/header.ctp:7 views/paginasnoticias/index.ctp:31
 #: views/paginastestimonios/index.ctp:31
@@ -176,6 +182,10 @@ msgstr "Error"
 #, php-format
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 msgstr "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
+
+#: views/layouts/pagina.ctp:4
+msgid "post_title"
+msgstr "Tours en Perú – Tours a Machu Picchu"
 
 #: views/paginas/index.ctp:41 views/paginas/index.ctp:322
 msgid "dias"

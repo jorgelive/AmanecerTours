@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Andeanyways\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-21 10:10-0500\n"
-"PO-Revision-Date: 2013-11-21 10:10-0500\n"
+"POT-Creation-Date: 2014-01-06 09:28-0500\n"
+"PO-Revision-Date: 2014-01-06 09:28-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -138,18 +138,24 @@ msgstr "Alert"
 msgid "informacion"
 msgstr "Information"
 
-#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:76
-msgid "mostrar"
-msgstr "Show"
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:81
+msgid "ocultar"
+msgstr "Hide"
 
-#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:70
-#: views/elements/floatingRight.ctp:76
+#: views/elements/floatingRight.ctp:4 views/elements/floatingRight.ctp:75
+#: views/elements/floatingRight.ctp:81
 msgid "informacion_util"
 msgstr "Useful Information"
 
-#: views/elements/floatingRight.ctp:70
-msgid "ocultar"
-msgstr "Hide"
+#: views/elements/floatingRight.ctp:75
+msgid "mostrar"
+msgstr "Show"
+
+#: views/elements/footer.ctp:24
+msgid "post_footer"
+msgstr ""
+"Peru tours, Peru holidays, Peru vacations, Peru trips, Machu Picchu, Nazca "
+"lines, Ica, Lima, tours to Machu Picchu"
 
 #: views/elements/header.ctp:7 views/paginasnoticias/index.ctp:31
 #: views/paginastestimonios/index.ctp:31
@@ -177,6 +183,10 @@ msgstr "Error"
 #, php-format
 msgid "La tabla %1$s del modelo %2$s no fue encontrada en la base de datos."
 msgstr "Table %1$s of model %2$s can't be found in the database"
+
+#: views/layouts/pagina.ctp:4
+msgid "post_title"
+msgstr "Peru tours – Peru holidays"
 
 #: views/paginas/index.ctp:41 views/paginas/index.ctp:322
 msgid "dias"
