@@ -115,27 +115,52 @@ class ComprobadoBehavior extends ModelBehavior {
     }
 
     function _comprobarDependienteProceso(&$model,$existentes,$modelos,$id){
+        //print_r($existentes{$model->name});
         foreach($modelos as $modelo):
+
+            if($modelo!=$model->name){
+                $principal=$model->$modelo->displayField;
+            }else{
+                $principal=$model->displayField;
+            }
+            $modeloField=substr($modelo, strlen($model->name)+1);
+            //echo $modeloField;
             if(isset($existentes{$modelo})&&!empty($existentes{$modelo})){
                 if(!array_key_exists(0,$existentes{$modelo})){
                     if(isset($existentes{$modelo}{'id'})&&!empty($existentes{$modelo}{'id'})){
-                        return 1;
+
+                        if(isset($existentes{$model->name}{$modeloField})&&$existentes{$model->name}{$modeloField}==1&&isset($existentes{$modelo}{$principal})&&!empty($existentes{$modelo}{$principal})){
+                            return 1;
+
+                        }
+
+                        //echo $modelo."<br>";
+
                     }
                 }else{
-                    if(isset($existentes{$modelo}{0}{'id'})&&!empty($existentes{$modelo}{0}{'id'})){
+                    if(isset($existentes{$model->name}{$modeloField})&&$existentes{$model->name}{$modeloField}==1&&isset($existentes{$modelo}{0}{'id'})&&!empty($existentes{$modelo}{0}{'id'})){
+
                         return 1;
+
                     }
                 }
-            }
-        endforeach;
-        foreach($modelos as $modelo):
-            if(isset($model->$modelo)){
+            }elseif(isset($model->$modelo)){
                 $result=$model->$modelo->find('first',array('conditions'=>array($modelo.'.'.strtolower($model->name).'_id'=>$id)));
-                if(!empty($result)){
-                    return 1;
+                if(isset($result[$modelo]{'id'})&&!empty($result[$modelo]{'id'})){
+                    if(isset($existentes{$model->name}{$modeloField})&&$existentes{$model->name}{$modeloField}==1&&isset($result[$modelo]{$principal})&&!empty($result[$modelo]{$principal})){
+                        return 1;
+
+                    }
+
+                    //if($existentes{$model->name}{'id'}==443){
+                    //    print_r($result)."<br>";
+                    //}
+                    //return 1;
+
                 }
             }
         endforeach;
+
         return 0;
     }
 

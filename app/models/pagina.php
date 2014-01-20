@@ -25,7 +25,7 @@ class Pagina extends AppModel {
                 ,'modelofields'=>'Paginasopcional'
             )
             ,'comprobarDependientes'=>array(
-                'modelos'=>array('Paginastexto','Paginasmultiple','Paginasvideo','Paginascontacto')
+                'modelos'=>array('Paginastexto','Paginasimagen','Paginasmultiple','Paginasvideo','Paginascontacto')
             )
         )
 

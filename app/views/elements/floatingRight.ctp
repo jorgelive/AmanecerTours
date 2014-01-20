@@ -89,11 +89,12 @@
         });
 
         var playMostrarOcultar = setTimeout(function(){
-            mostrarOcultar();
+            //mostrarOcultar();
         }, 7000);
 
         changeHeight();
-        playMostrarOcultar;
+        //playMostrarOcultar;
+        mostrarOcultar();
         $(window).resize(changeHeight);
     });
 </script>

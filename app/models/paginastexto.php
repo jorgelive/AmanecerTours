@@ -1,7 +1,8 @@
 <?php
 class Paginastexto extends AppModel {
 	var $name = 'Paginastexto';
-	var $belongsTo = 'Pagina'; 
+	var $belongsTo = 'Pagina';
+    var $displayField = 'contenido';
 	var $actsAs = array(
 		'Acl'=>array(
 			'type'=>'controlled'

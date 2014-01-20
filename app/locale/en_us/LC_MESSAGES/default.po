@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Andeanyways\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-01-06 09:28-0500\n"
-"PO-Revision-Date: 2014-01-06 09:28-0500\n"
+"PO-Revision-Date: 2014-01-10 16:39-0500\n"
 "Last-Translator: Jorge Gomez <jorge@live.com.pe>\n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -186,7 +186,7 @@ msgstr "Table %1$s of model %2$s can't be found in the database"
 
 #: views/layouts/pagina.ctp:4
 msgid "post_title"
-msgstr "Peru tours – Peru holidays"
+msgstr "Peru tours, Peru holidays, individual and custom–made tours with"
 
 #: views/paginas/index.ctp:41 views/paginas/index.ctp:322
 msgid "dias"
